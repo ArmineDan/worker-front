@@ -5,32 +5,20 @@ import {db} from '../fire';
 
 
 import '../styles/category/bootstrap.css';
+import {getActiveCategories} from "../firebase/fireManager";
 
 let categories=[];
 export default  class Categories extends React.Component{
     state = {
-       item:{},
-        categories:[]
+       items:[]
     };
 
     componentDidMount() {
-        db.collection('Categories').where("status", "==", true).get().then((snapshot) => {
-            snapshot.docs.forEach((doc)=>{
-                console.log(doc.data());
-                this.setState({
-                    item: doc.data(),
-
-                });
-                categories.push(this.state.item)
-
-            })
-        })
+        getActiveCategories().then(data => this.setState({items: data}));
     }
     render(){
-        console.log(categories,"categories");
-        const div_cat = categories.map((item, index)=>{
+        const div_cat = this.state.items.map((item, index)=>{
             return(
-
                     <div key ={index} className="col-lg-3 col-md-6">
                         <div className="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
                             <div className="fbox-icon">
@@ -39,7 +27,6 @@ export default  class Categories extends React.Component{
                             <a href="#"><h3>{item.name}</h3></a>
                         </div>
                     </div>
-
             )
         });
 

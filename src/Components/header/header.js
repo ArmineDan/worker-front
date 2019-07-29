@@ -190,8 +190,8 @@ export default function PrimarySearchAppBar() {
           </div>
 
           <div className={classes.grow} />
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Register</Button>
+          <Button color="inherit">Sign In</Button>
+          <Button color="inherit">Sign Up</Button>
 
 
           <div className={classes.sectionDesktop}>

@@ -16,6 +16,11 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import image from './logo-var.png';
+import login from './login.js';
+import register from './register.js';
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 
@@ -77,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: 850,
+      width: 800,
     },
   },
   sectionDesktop: {
@@ -94,7 +99,12 @@ const useStyles = makeStyles(theme => ({
   },
   imgDiv: {
     width: "200px",
-  }
+  },
+
+  linkStyle: {
+      fontSize: "10",
+      marginRight: "10px",
+    }
 }));
 
 export default function PrimarySearchAppBar() {
@@ -167,6 +177,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
+    <Router>
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
@@ -190,11 +201,17 @@ export default function PrimarySearchAppBar() {
           </div>
 
           <div className={classes.grow} />
-          <Button color="inherit">Sign In</Button>
-          <Button color="inherit">Sign Up</Button>
+          <div className={classes.linkStyle}>
+          <Link to="/Login" >Login</Link>
+            <Route path="/Login/" component={login} marginRight= '200px'/>
+
+          </div>
+
+          <Link to="/register">Register</Link>
+            <Route path="/register/" component={register} />
 
 
-          <div className={classes.sectionDesktop}>
+      {/*    <div className={classes.sectionDesktop}>
 
             <IconButton
               edge="end"
@@ -219,11 +236,12 @@ export default function PrimarySearchAppBar() {
               <MoreIcon />
             </IconButton>
           </div>
-
+*/}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
     </div>
+    </Router>
   );
 }

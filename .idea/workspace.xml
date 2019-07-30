@@ -52,6 +52,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -59,6 +60,7 @@
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="category-comp.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/category/category-comp.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -77,20 +79,24 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+
             </state>
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="construction-icons.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/category/construction-icons.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
               <caret line="99" column="5" lean-forward="false" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
               <folding />
+
             </state>
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="Categories.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Categories.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -99,20 +105,24 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+
             </state>
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="fireManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
               <folding />
+
             </state>
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/App.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,6 +139,7 @@
             <state relative-caret-position="289">
               <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
+
             </state>
           </provider>
         </entry>
@@ -145,6 +156,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+
       <find>#007bff</find>
       <find>#ffb118</find>
       <find>a</find>
@@ -157,6 +169,7 @@
     <replaceStrings>
       <replace />
     </replaceStrings>
+
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -170,6 +183,7 @@
         <option value="$PROJECT_DIR$/src/styles/App.css" />
         <option value="$PROJECT_DIR$/src/fire.js" />
         <option value="$PROJECT_DIR$/src/firebase/fireManager.js" />
+
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/styles/category/bootstrap.css" />
@@ -195,6 +209,7 @@
     <option name="y" value="-8" />
     <option name="width" value="1616" />
     <option name="height" value="876" />
+
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -210,6 +225,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
+
     <panes>
       <pane id="Scope" />
       <pane id="Scratches" />
@@ -340,18 +356,23 @@
         </subPane>
       </pane>
     </panes>
+
   </component>
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/todoFirebase-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -458,11 +479,14 @@
       <workItem from="1564083880899" duration="2905000" />
       <workItem from="1564175978977" duration="6651000" />
       <workItem from="1564214009276" duration="3254000" />
+
       <workItem from="1564302863823" duration="18474000" />
+
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+
     <option name="totallyTimeSpent" value="36596000" />
   </component>
   <component name="ToolWindowManager">
@@ -486,7 +510,28 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08160237" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.057142857" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -499,6 +544,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -540,6 +586,7 @@
         <state relative-caret-position="187">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding />
+
         </state>
       </provider>
     </entry>
@@ -559,8 +606,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fire.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/category/category-comp.css">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="238">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
@@ -574,21 +622,26 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Categories.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/buttonicon.css" />
+    <entry file="file://$PROJECT_DIR$/src/styles/login-register.css">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="272">
           <caret line="16" column="73" lean-forward="false" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/App.css">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="136">
           <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
@@ -600,11 +653,13 @@
         <state relative-caret-position="1054">
           <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="25" />
           <folding />
+
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/App.css">
+    <entry file="file://$PROJECT_DIR$/src/Components/header/iconbuttonstyle.js">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="187">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding />
@@ -709,11 +764,13 @@
             <element signature="e#107012#107227#2" expanded="false" />
             <element signature="e#107273#107488#2" expanded="false" />
           </folding>
+
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/header/login.js">
+    <entry file="file://$PROJECT_DIR$/src/fire.js">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="357">
           <caret line="51" column="63" lean-forward="true" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
           <folding>
@@ -772,6 +829,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

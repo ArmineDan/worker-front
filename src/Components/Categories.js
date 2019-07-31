@@ -102,7 +102,7 @@ export default  class Categories extends React.Component{
           <section id="content" style={{marginBottom: '0px'}}>
                     <div className="content-wrap">
                         <div className="container clearfix">
-                            <div className="row clearfix center divcenter" style={{maxWidth: '960px'}}>
+                            <div className="row clearfix center divcenter" >
                                 <div className="col-lg-12">
                                     <div className="heading-block center">
                                         <h3>Construction Job Carrers</h3>

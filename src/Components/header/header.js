@@ -18,7 +18,6 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import image from './logo-var.png';
 import login from './login.js';
 import register from './register.js';
-
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 
@@ -26,15 +25,7 @@ const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
-    },
+
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -60,15 +51,6 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
     },
 
-    headerImage: {
-        width: 20,
-        height: 10,
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 
     inputRoot: {
         color: 'inherit',
@@ -82,18 +64,7 @@ const useStyles = makeStyles(theme => ({
             width: 800,
         },
     },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
+
     imgDiv: {
         width: "200px",
     },
@@ -106,72 +77,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    function handleProfileMenuOpen(event) {
-        setAnchorEl(event.currentTarget);
-    }
-
-    function handleMobileMenuClose() {
-        setMobileMoreAnchorEl(null);
-    }
-
-    function handleMenuClose() {
-        setAnchorEl(null);
-        handleMobileMenuClose();
-    }
-
-    function handleMobileMenuOpen(event) {
-        setMobileMoreAnchorEl(event.currentTarget);
-    }
-
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={menuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
-
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-    const renderMobileMenu = (
-        <Menu
-            anchorEl={mobileMoreAnchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={mobileMenuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-        >
-
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle/>
-                </IconButton>
-                <p>My Account</p>
-            </MenuItem>
-            <Button color="inherit">Login</Button>
-
-        </Menu>
-
-    );
 
     return (
         <Router>
@@ -235,8 +141,6 @@ export default function PrimarySearchAppBar() {
 */}
                     </Toolbar>
                 </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
             </div>
         </Router>
     );

@@ -4,6 +4,7 @@ import Categories from './Components/Categories';
 import PrimarySearchAppBar from './Components/header/header';
 import Login from './Components/header/login';
 import Register from'./Components/header/register'
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
           <Categories/>
           {/*<Register/>*/}
           {/*<Login/>*/}
+
       </header>
+      <Footer/>
     </div>
   );
 }

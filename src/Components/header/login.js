@@ -7,19 +7,9 @@ import Button from '@material-ui/core/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import "../../styles/login-register.css"
 import {fire} from '../../fire'
-const myStyles ={
-    button: {
-        margin: "10px auto",
-        width: 'inherit',
-    },
-    icon:{
-        width:100,
-        height: 100,
-        margin: 'auto',
-        color:"black"
-    },
+import {myStyles} from './iconbuttonstyle'
+import  {Redirect}  from 'react-router-dom'
 
-};
 
 const theme = createMuiTheme({
     palette: {
@@ -44,7 +34,7 @@ class Login extends React.Component{
                     password:''
                 }
             }
-            handleChange= (e) =>{
+            handleChange = (e) =>{
                 this.setState({[e.target.name]: e.target.value});
             };
             loginBtnClick =()=>{
@@ -57,6 +47,10 @@ class Login extends React.Component{
                     // ...
                 });
             };
+            regBtnClick = ()=>{
+                console.log("nhjhk");
+               return <Redirect to = '/Register'/>;
+                            };
             render() {
              return(
                  <div className="loginDiv">
@@ -84,7 +78,7 @@ class Login extends React.Component{
                      />
                      <Button onClick={this.loginBtnClick} variant="contained" color="primary" >Log in</Button>
                      <h6 className="regLine"> Are you new Varpet ? </h6>
-                     <Button variant="contained" color="primary"  >Register</Button>
+                     <Button variant="contained" color="primary"  onClick={this.regBtnClick}>Register</Button>
                  </ThemeProvider>
                 </div>
                 )

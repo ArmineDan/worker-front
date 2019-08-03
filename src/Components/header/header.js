@@ -6,35 +6,20 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import image from './logo-var.png';
 import login from './login.js';
 import register from './register.js';
-
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
     grow: {
-        flexGrow: 1,
+        flex: 1,
+        width: "100%",
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
-    },
+
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -42,11 +27,10 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
-        marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
+            marginLeft: theme.spacing(5),
             width: 'auto',
         },
     },
@@ -60,15 +44,6 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
     },
 
-    headerImage: {
-        width: 20,
-        height: 10,
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 
     inputRoot: {
         color: 'inherit',
@@ -79,99 +54,23 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-            width: 800,
+            width: 850,
         },
     },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
+
     imgDiv: {
         width: "200px",
     },
 
     linkStyle: {
         fontSize: "18px!important",
-        margin: "12px!important",
+        margin: "16px!important",
     }
 }));
 
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    function handleProfileMenuOpen(event) {
-        setAnchorEl(event.currentTarget);
-    }
-
-    function handleMobileMenuClose() {
-        setMobileMoreAnchorEl(null);
-    }
-
-    function handleMenuClose() {
-        setAnchorEl(null);
-        handleMobileMenuClose();
-    }
-
-    function handleMobileMenuOpen(event) {
-        setMobileMoreAnchorEl(event.currentTarget);
-    }
-
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={menuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
-
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-    const renderMobileMenu = (
-        <Menu
-            anchorEl={mobileMoreAnchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={mobileMenuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-        >
-
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle/>
-                </IconButton>
-                <p>My Account</p>
-            </MenuItem>
-            <Button color="inherit">Login</Button>
-
-        </Menu>
-
-    );
 
     return (
         <Router>
@@ -200,7 +99,7 @@ export default function PrimarySearchAppBar() {
                         <div className={classes.grow}/>
                         <div className={classes.linkStyle}>
                             <Link to="/Login">Login</Link>
-                            <Route path="/Login/" component={login} marginRight='200px'/>
+                            <Route path="/Login/" component={login} />
                         </div>
                         <div className={classes.linkStyle}>
                             <Link to="/register">Register</Link>
@@ -235,8 +134,6 @@ export default function PrimarySearchAppBar() {
 */}
                     </Toolbar>
                 </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
             </div>
         </Router>
     );

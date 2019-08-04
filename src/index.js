@@ -5,6 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {browserHistory} from "react-router";
+
+import login from "./Components/header/login";
+import register from "./Components/header/register";
+
+
 
 
 
@@ -17,13 +24,19 @@ const theme = createMuiTheme({
 
 });
 
-console.log(theme);
+const route=(
+<MuiThemeProvider theme={theme}>
+  <Router  history={browserHistory}>
+    <Route exact path="/" component ={App}/>
+    <Route path="/login/" component={login} marginRight='200px'/>
+    <Route path="/register/" component={register}/>
+  </Router>
+</MuiThemeProvider>
+
+)
 
 ReactDOM.render(
-
-    <MuiThemeProvider theme={theme}>
-        <App />
-    </MuiThemeProvider>,
+        route,
     document.getElementById('root')
 
 );

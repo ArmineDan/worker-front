@@ -24,17 +24,10 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     grow: {
-        flexGrow: 1,
+        flex: 1,
+        width: "100%",
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
-    },
+
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -42,7 +35,7 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(5),
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
@@ -60,15 +53,6 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
     },
 
-    headerImage: {
-        width: 20,
-        height: 10,
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 
     inputRoot: {
         color: 'inherit',
@@ -79,21 +63,10 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-            width: 800,
+            width: 850,
         },
     },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
+
     imgDiv: {
         width: "200px",
     },
@@ -129,52 +102,9 @@ export default function PrimarySearchAppBar() {
         setMobileMoreAnchorEl(event.currentTarget);
     }
 
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={menuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
-
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-    const renderMobileMenu = (
-        <Menu
-            anchorEl={mobileMoreAnchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={mobileMenuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-        >
-
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle/>
-                </IconButton>
-                <p>My Account</p>
-            </MenuItem>
-            <Button color="inherit">Login</Button>
-
-        </Menu>
-
-    );
 
     return (
-        <Router>
+
             <div className={classes.grow}>
                 <AppBar position="static">
                     <Toolbar>
@@ -200,11 +130,9 @@ export default function PrimarySearchAppBar() {
                         <div className={classes.grow}/>
                         <div className={classes.linkStyle}>
                             <Link to="/Login">Login</Link>
-                            <Route path="/Login/" component={login} marginRight='200px'/>
                         </div>
                         <div className={classes.linkStyle}>
                             <Link to="/register">Register</Link>
-                            <Route path="/register/" component={register}/>
                         </div>
 
                         {/*    <div className={classes.sectionDesktop}>
@@ -235,9 +163,8 @@ export default function PrimarySearchAppBar() {
 */}
                     </Toolbar>
                 </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
+
             </div>
-        </Router>
+
     );
 }

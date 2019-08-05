@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
+
+        marginRight: theme.spacing(5),
+
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
@@ -71,9 +74,8 @@ const useStyles = makeStyles(theme => ({
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
 
-
     return (
-        <Router>
+
             <div className={classes.grow}>
                 <AppBar position="static">
                     <Toolbar>
@@ -99,11 +101,9 @@ export default function PrimarySearchAppBar() {
                         <div className={classes.grow}/>
                         <div className={classes.linkStyle}>
                             <Link to="/Login">Login</Link>
-                            <Route path="/Login/" component={login} />
                         </div>
                         <div className={classes.linkStyle}>
                             <Link to="/register">Register</Link>
-                            <Route path="/register/" component={register}/>
                         </div>
 
                         {/*    <div className={classes.sectionDesktop}>
@@ -135,6 +135,6 @@ export default function PrimarySearchAppBar() {
                     </Toolbar>
                 </AppBar>
             </div>
-        </Router>
+
     );
 }

@@ -9,6 +9,7 @@ import "../../styles/login-register.css"
 import {fire} from '../../fire'
 import {myStyles} from './iconbuttonstyle'
 import  {Redirect}  from 'react-router-dom'
+import Header from "./header";
 
 
 const theme = createMuiTheme({
@@ -48,11 +49,13 @@ class Login extends React.Component{
                 });
             };
             regBtnClick = ()=>{
-                console.log("nhjhk");
-               return <Redirect to = '/Register'/>;
+              //  console.log("nhjhk");
+               this.props.history.push("/register")
                             };
             render() {
              return(
+               <div>
+                 <Header/>
                  <div className="loginDiv">
                   <AccountCircle style = {myStyles.icon}/>
                  <ThemeProvider theme={theme}>
@@ -81,11 +84,12 @@ class Login extends React.Component{
                      <Button variant="contained" color="primary"  onClick={this.regBtnClick}>Register</Button>
                  </ThemeProvider>
                 </div>
+              </div>
                 )
             }
 
         }
 
 
-export default Login; 
+export default Login;
 

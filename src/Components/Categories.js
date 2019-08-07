@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/category/category-comp.css';
 import '../styles/category/construction-icons.css';
-import {db} from '../fire';
+import {getUsersBySkills} from '../firebase/fireManager';
 
 
 import '../styles/category/bootstrap.css';
@@ -9,14 +9,19 @@ import {getActiveCategories,getsubCategories} from "../firebase/fireManager";
 
 const nav={};
 let nav_arr=['Home'];
-export default  class Categories extends React.Component{
-    state = {
-        items:[],
-        sub_items:[],
-        show:false,
-        breadcrumb:[]
 
-    };
+class Categories extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            items:[],
+            sub_items:[],
+            show:false,
+            breadcrumb:[]
+
+        };
+    }
+
 
     componentDidMount() {
         getActiveCategories().then(data => {
@@ -36,7 +41,30 @@ export default  class Categories extends React.Component{
         this.setState({
             show:false,
             breadcrumb:nav_arr      });
+
+        this.props.showUsers_Lists(false, []);
         }
+
+  showUsers=(e)=>{
+
+        const dat=[];
+        const self=this.props;
+      e.stopPropagation();
+       console.log(e.target.id,"userssssssssssss")
+      if(e.target.id){
+
+          getUsersBySkills(e.target.id).then((data)=>{
+                 dat.push(data)
+              console.log(dat,"dat-cat")
+              self.showUsers_Lists(true, dat);
+          }).catch((err)=>{
+              console.log(err)
+              self.showUsers_Lists(true,[]);
+          })
+       }
+
+
+    }
 
     openSubCategories=(e,id)=>{
         e.stopPropagation();
@@ -47,30 +75,27 @@ export default  class Categories extends React.Component{
         else{
             cat_id=e.target.id;
         }
-       // console.log(cat_id,"eeeeeeee");
-
+      //console.log(cat_id,"eeeeeeee");
         nav_arr.push(nav[cat_id]);
        getsubCategories(cat_id).then(data =>{
+               console.log(data,"data")
                this.setState({
                    sub_items: this.render_sub_Categories(data),
                    show:true,
                    breadcrumb:nav_arr
                });
-
-              // console.log(data,"data")
-       }
-          );
+       });
     };
 
     render_sub_Categories=(sub)=>{
         return sub.map((item, index)=>{
             return(
                 <div key={index} className="col-lg-3 col-md-6">
-                    <div id={item.id} className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+                    <div id={item.id} className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder" onClick={(e)=>{this.showUsers(e)}}>
                         <div className="fbox-icon">
                             <i className={item.icon_class}/>
                         </div>
-                        <span  className="pointer" ><h3>{item.name}</h3></span>
+                        <span  className="pointer" ><h3 >{item.name}</h3></span>
                     </div>
                 </div>
             )
@@ -99,6 +124,7 @@ export default  class Categories extends React.Component{
             )
        });
         return(
+
           <section id="content" style={{marginBottom: '0px'}}>
                     <div className="content-wrap">
                         <div className="container clearfix">
@@ -122,13 +148,10 @@ export default  class Categories extends React.Component{
                         </div>
                     </div>
           </section>
+
+
         )
-
-
-
     }
-
-
-
 }
 
+export default  Categories;

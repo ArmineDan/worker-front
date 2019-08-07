@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -12,20 +12,30 @@ import '../styles/workersStyle.css';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 150,
-      // width:200,
-    
+      maxWdth: '195px',
+      float: 'left',
+     margin: '0 12px'
     
   },
   media: {
     height: 35,
+      backgroundColor:'#ff9800'
+
   },
 });
 
-export default function MediaCard() {
+export default function MediaCard(props) {
+    const [users, setUsers] = useState();
+
+  console.log(users,"users-workers")
+    useEffect(()=>{
+        setUsers(props.users_list)
+    },[users,props])
   const classes = useStyles();
 
   return (
+      <>{users?
+
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
@@ -34,13 +44,16 @@ export default function MediaCard() {
           // image="C:\Users\Shushan\Desktop\Port.jpg"
           // title="Contemplative Reptile"
         />
-        <ImageAvatars/>
+        <ImageAvatars img={users.img}/>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Shushan Hovhannisyan
+              {users['firstName']}&nbsp;{users['lastName']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Yerevan, Masiv, Gayi ave.
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Age: {users['age']}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -50,6 +63,9 @@ export default function MediaCard() {
         </Button>
         </CardActions>
     </Card>
+
+            :null}
+    </>
   );
 }
 

@@ -9,18 +9,18 @@ const useStyles = makeStyles({
   },
   bigAvatar: {
     margin: 10,
-    width: 60,
-    height: 60,
+    width: 89,
+    height: 89,
   },
 });
 
-export default function ImageAvatars() {
+export default function ImageAvatars(props) {
+
   const classes = useStyles();
 
   return (
     <Grid container justify="center" alignItems="center">
-    
-      <Avatar alt="Remy Sharp" src="https://github.com/ShushanHov/shushanhov.github.io/blob/master/Port.jpg?raw=true" className={classes.bigAvatar} />
+      <Avatar alt="Varpet Avatar" src={props.img} className={classes.bigAvatar} />
     </Grid>
   );
 }

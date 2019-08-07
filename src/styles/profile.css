@@ -14,7 +14,7 @@
 .center {
     max-width: 1000px;
     margin: 0px auto;
-    background-color: #FF9750;
+    /*background-color: #FF9750;*/
     text-align: center;
     /*box-shadow: 0 0 15px #FF9750;*/
     position: relative;
@@ -71,7 +71,7 @@ position: relative;
 }
 
 span {
-    background-color: #25262A;
+    /*background-color: #25262A;*/
     color: #FA9A4D;
     margin: 20px;
 }

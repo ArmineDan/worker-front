@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/category/category-comp.css';
 import '../styles/category/construction-icons.css';
-import {getUsersBySkills} from '../firebase/fireManager';
+import {getUsers_IdBySkills,getUserData} from '../firebase/fireManager';
 
 
 import '../styles/category/bootstrap.css';
@@ -40,45 +40,61 @@ class Categories extends React.Component{
         nav_arr.push('Home');
         this.setState({
             show:false,
-            breadcrumb:nav_arr      });
-
+            breadcrumb:nav_arr });
         this.props.showUsers_Lists(false, []);
-        }
+        };
 
   showUsers=(e)=>{
+       e.stopPropagation();
+       const elem = e.target.parentNode;
+       const sub = document.getElementsByClassName('sub');
+      let sub_id=e.target.getAttribute('data-id')
 
-        const dat=[];
-        const self=this.props;
-      e.stopPropagation();
-       console.log(e.target.id,"userssssssssssss")
-      if(e.target.id){
 
-          getUsersBySkills(e.target.id).then((data)=>{
-                 dat.push(data)
-              console.log(dat,"dat-cat")
-              self.showUsers_Lists(true, dat);
+      if(!elem.classList.contains("check")){
+          for(let i=0; i<sub.length; i++){
+              if(sub[i].classList.contains("check")){
+                  sub[i].classList.remove('check')
+              }
+          }
+           elem.classList.add('check')
+      }
+      getUsers_IdBySkills(sub_id).then((data)=>{
+             this.makeData(data)
           }).catch((err)=>{
               console.log(err)
-              self.showUsers_Lists(true,[]);
           })
-       }
 
 
     }
+ makeData=(e)=>{
+   // console.log(e,"skizb")
+     const self=this.props;
+    const promises=[];
+    let i=0;
+    while(i<e.length){
+        promises.push(getUserData(e[i]))
+    i++;
+    }
+     Promise.all(promises).then(values => {
+         self.showUsers_Lists(true, values);
+
+     }).catch((e) => {
+         self.showUsers_Lists(true,[]);
+         console.log(e)})
+     }
+
+
+
 
     openSubCategories=(e,id)=>{
-        e.stopPropagation();
+       e.stopPropagation();
         let cat_id;
-        if(id ==='this-is-a-tag'){
-           cat_id=e.target.parentNode.parentNode.id;
-        }
-        else{
-            cat_id=e.target.id;
-        }
-      //console.log(cat_id,"eeeeeeee");
-        nav_arr.push(nav[cat_id]);
+        cat_id=e.target.getAttribute('data-id')
+       // console.log(cat_id,"cat_id")
+       nav_arr.push(nav[cat_id]);
        getsubCategories(cat_id).then(data =>{
-               console.log(data,"data")
+              // console.log(data,"data")
                this.setState({
                    sub_items: this.render_sub_Categories(data),
                    show:true,
@@ -90,12 +106,12 @@ class Categories extends React.Component{
     render_sub_Categories=(sub)=>{
         return sub.map((item, index)=>{
             return(
-                <div key={index} className="col-lg-3 col-md-6">
-                    <div id={item.id} className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder" onClick={(e)=>{this.showUsers(e)}}>
-                        <div className="fbox-icon">
-                            <i className={item.icon_class}/>
+                <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12 sub">
+                    <div data-id={item.id}  className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder cat" onClick={(e)=>{this.showUsers(e)}}>
+                        <div className="fbox-icon" data-id={item.id} onClick={(e)=>{this.showUsers(e)}}>
+                            <i className={item.icon_class} data-id={item.id} onClick={(e)=>{this.showUsers(e)}}/>
                         </div>
-                        <span  className="pointer" ><h3 >{item.name}</h3></span>
+                        <span  className="pointer"  data-id={item.id} onClick={(e)=>{this.showUsers(e)}}><h3 data-id={item.id} onClick={(e)=>{this.showUsers(e)}}>{item.name}</h3></span>
                     </div>
                 </div>
             )
@@ -103,17 +119,17 @@ class Categories extends React.Component{
     };
     render(){
 
-        const {items,breadcrumb}=this.state;
+        const {items,breadcrumb,sub_items,show}=this.state;
 
         const div_cat = items.map((item, index)=>{
             return(
-                    <div key={index} className="col-lg-3 col-md-6">
-                        <div id={item.id} className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"
-                             onClick={(e,id = 'div')=>{this.openSubCategories(e,id)}}>
-                            <div className="fbox-icon" onClick={(e,elem = 'this-is-a-tag')=>{this.openSubCategories(e,elem)}}>
-                                <i className={item.icon_class}/>
+                    <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div  data-id={item.id} className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder cat"
+                             onClick={(e)=>{this.openSubCategories(e)}}>
+                            <div className="fbox-icon" data-id={item.id}  onClick={(e)=>{this.openSubCategories(e)}}>
+                                <i className={item.icon_class} data-id={item.id} onClick={(e)=>{this.openSubCategories(e)}} />
                             </div>
-                            <span className="pointer" onClick={(e,elem = 'this-is-a-tag')=>{this.openSubCategories(e,elem)}}><h3>{item.name}</h3></span>
+                            <span className="pointer" data-id={item.id}  onClick={(e)=>{this.openSubCategories(e)}}><h3 data-id={item.id}  onClick={(e)=>{this.openSubCategories(e)}}>{item.name}</h3></span>
                         </div>
                     </div>
             )
@@ -140,7 +156,7 @@ class Categories extends React.Component{
 
                                     <div id="faqs-list">
                                         <div  className="row align-items-stretch grid-border clearfix">
-                                        {!this.state.show?div_cat:this.state.sub_items}
+                                        {!show?div_cat:sub_items}
                                         </div>
                                     </div>
                                 </div>

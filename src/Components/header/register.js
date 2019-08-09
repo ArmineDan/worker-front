@@ -6,7 +6,6 @@ import "../../styles/login-register.css"
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {myStyles,useStyles} from './iconbuttonstyle'
 import {fire,db} from '../../fire'
-import {ThemeProvider} from "@material-ui/styles";
 import Header from "./header";
 
 
@@ -30,7 +29,7 @@ import Header from "./header";
                  })
          }).catch(function (error) {
              // Handle Errors here.
-             var errorCode = error.code;
+             //const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage)
              // ...

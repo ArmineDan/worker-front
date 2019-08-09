@@ -5,10 +5,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import { orange } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import "../../styles/login-register.css"
-import {fire} from '../../fire'
-import {myStyles} from './iconbuttonstyle'
-import  {Redirect}  from 'react-router-dom'
+import "../../styles/login-register.css";
+import {fire} from '../../fire';
+import {myStyles} from './iconbuttonstyle';
 import Header from "./header";
 
 
@@ -42,8 +41,8 @@ class Login extends React.Component{
                 fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                     .then((u)=>{console.log(u);console.log('sign in')}).catch(function(error) {
                     // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+                    //const errorCode = error.code;
+                    const errorMessage = error.message;
                     console.log(errorMessage);
                     // ...
                 });

@@ -38,7 +38,7 @@ export default function Footer() {
   <div className={classes.grow}>
       <div className={classes.footerBackground}>
             <div className={classes.row}>
-                <img style={{width: "40px", height: "40px", marginRight: "20px"}}src={image}/>
+                <img style={{width: "40px", height: "40px", marginRight: "20px"}}src={image} alt="Varpet Logo"/>
                 <p style={{marginTop:"15px"}}>
                   Copyright 2019 - Varpet.com Incorporated. All rights reserved.
                 </p>

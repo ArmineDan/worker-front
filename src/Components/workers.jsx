@@ -26,11 +26,10 @@ const useStyles = makeStyles({
 
 export default function MediaCard(props) {
     const [users, setUsers] = useState();
-
-  console.log(users,"users-workers")
+  //console.log(users,"users-workers")
     useEffect(()=>{
         setUsers(props.users_list)
-    },[users,props])
+    },[users,props]);
   const classes = useStyles();
 
   return (

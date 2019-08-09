@@ -2,16 +2,10 @@ import React from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import image from './logo-var.png';
-import login from './login.js';
-import register from './register.js';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -80,7 +74,7 @@ export default function PrimarySearchAppBar() {
                 <AppBar position="static">
                     <Toolbar>
                         <div className={classes.imgDiv}>
-                            <img style={{width: "100%", display: "block"}} src={image}/>
+                            <img style={{width: "100%", display: "block"}} src={image} alt="Varpet Logo"/>
                         </div>
 
 

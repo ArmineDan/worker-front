@@ -2,16 +2,10 @@ import React from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import image from './logo-var.png';
-import login from './login.js';
-import register from './register.js';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,6 +21,9 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
+
+        marginRight: theme.spacing(5),
+
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
@@ -71,14 +68,13 @@ const useStyles = makeStyles(theme => ({
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
 
-
     return (
-        <Router>
+
             <div className={classes.grow}>
                 <AppBar position="static">
                     <Toolbar>
                         <div className={classes.imgDiv}>
-                            <img style={{width: "100%", display: "block"}} src={image}/>
+                            <img style={{width: "100%", display: "block"}} src={image} alt="Varpet Logo"/>
                         </div>
 
 
@@ -99,11 +95,9 @@ export default function PrimarySearchAppBar() {
                         <div className={classes.grow}/>
                         <div className={classes.linkStyle}>
                             <Link to="/Login">Login</Link>
-                            <Route path="/Login/" component={login} />
                         </div>
                         <div className={classes.linkStyle}>
                             <Link to="/register">Register</Link>
-                            <Route path="/register/" component={register}/>
                         </div>
 
                         {/*    <div className={classes.sectionDesktop}>
@@ -135,6 +129,6 @@ export default function PrimarySearchAppBar() {
                     </Toolbar>
                 </AppBar>
             </div>
-        </Router>
+
     );
 }

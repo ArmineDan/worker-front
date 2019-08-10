@@ -1,0 +1,35 @@
+.skillDiv{
+    height: fit-content;
+    display: flex;
+    background-color: orange;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px auto;
+    text-align: center;
+    flex-direction: column;
+    width: 50vh;
+    padding: 10px;
+    border-radius: 5px;
+}
+.MuiCollapse-wrapper {
+    margin-top: 8px;
+    background-color: white;
+    display: flex;
+}
+ .MuiListItem-gutters {
+     padding-left: 16px;
+     padding-right: 16px;
+ }
+
+.MuiListItem-root {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    text-decoration: none;
+}

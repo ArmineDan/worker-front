@@ -1,5 +1,5 @@
 import React from 'react';
-/*import './styles/App.css';*/
+import './styles/App.css';
 import Categories from './Components/Categories';
 import PrimarySearchAppBar from './Components/header/header';
 import Login from './Components/header/login';
@@ -8,17 +8,20 @@ import Register from'./Components/header/register'
 import Footer from './Components/Footer/Footer';
 
 
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <PrimarySearchAppBar/>
+  
+        <Profile />
+          {/* <PrimarySearchAppBar/>
           <Categories/>
-          {/*<Register/>*/}
-          {/*<Login/>*/}
+          <Register/>
+          <Login/> */}
 
       </header>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

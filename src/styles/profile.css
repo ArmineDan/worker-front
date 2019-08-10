@@ -11,12 +11,12 @@
     padding-top: 100px;
 }
 
-.center {
+.centerProf {
     max-width: 1000px;
     margin: 0px auto;
     background-color: #FF9750;
     text-align: center;
-    /*box-shadow: 0 0 15px #FF9750;*/
+    box-shadow: 0 0 15px #FF9750;
     position: relative;
     border-radius: 20px;
 }
@@ -43,7 +43,7 @@
     margin-top: -50px;
 }
 
-p {
+.pProf {
     background-color: #FF9750;
     font-size: 20px;
 }
@@ -53,6 +53,7 @@ background-color: #25262A;
 padding-top: 20px;
 box-shadow: 0 0 25px #25262A;
 position: relative;
+font-size: 14px;
 }
 
 .iconDiv {
@@ -62,18 +63,20 @@ position: relative;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    margin: 10px;
 }
 
 .icon {
     color: #FA9A4D;
-    background-color: #25262A;
+    background-color: #fff;
     box-shadow: 0 0 10px #FF6741;
+    border-radius: 5px;
 }
 
-span {
+.spanProf {
     background-color: #25262A;
     color: #FA9A4D;
-    margin: 20px;
+    margin-left: 15px;
 }
 
 textarea {
@@ -108,7 +111,7 @@ textarea {
       padding: 40px 0;
   }
 
-  .button {
+  .buttonProfile {
     padding: 4px 5px;
     cursor: pointer;
     outline: 0;
@@ -148,11 +151,11 @@ textarea {
   #skillDiv.skillClass{
     opacity: .9;
     width: 60%;
-    height: 280px;
+    height: 285px;
     background-color: #B6B7B1;
     border-radius: 20px;
     position: absolute;
-    top: 180px;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
@@ -165,7 +168,7 @@ textarea {
     height: 0;
     width: 0;
     position: absolute;
-    top: 220px;
+    top: 150px;
     left: 0;
     z-index: 1;
    }

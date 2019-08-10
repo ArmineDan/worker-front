@@ -6,7 +6,8 @@ import "../../styles/login-register.css"
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {myStyles,useStyles} from './iconbuttonstyle'
 import {fire,db} from '../../fire'
-import {ThemeProvider} from "@material-ui/styles";
+import Header from "./header";
+
 
 
  function Register() {
@@ -28,7 +29,7 @@ import {ThemeProvider} from "@material-ui/styles";
                  })
          }).catch(function (error) {
              // Handle Errors here.
-             var errorCode = error.code;
+             //const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage)
              // ...
@@ -40,6 +41,8 @@ import {ThemeProvider} from "@material-ui/styles";
     };
 
     return (
+      <div>
+        <Header/>
         <form className='loginDiv' noValidate autoComplete="on">
             <h4 style={myStyles.h4}>
                 <AccountCircle className={classes.iconColor}/>  Register page
@@ -93,6 +96,7 @@ import {ThemeProvider} from "@material-ui/styles";
             />
              <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick}> Register </Button>
         </form>
+      </div>
             )
         }
         export default Register;

@@ -1,0 +1,173 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.center {
+    max-width: 1000px;
+    margin: 0px auto;
+    /*background-color: #FF9750;*/
+    text-align: center;
+    /*box-shadow: 0 0 15px #FF9750;*/
+    position: relative;
+    border-radius: 20px;
+}
+
+.imgDiv {
+    max-width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    left: 50%;
+    top: -75px;
+    transform: translateX(-50%);
+    border: 5px solid #25262A;
+}
+
+.img {
+    width: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+.name {
+    background-color: #FF9750;
+    margin-top: -50px;
+}
+
+p {
+    background-color: #FF9750;
+    font-size: 20px;
+}
+
+.dark {
+background-color: #25262A;
+padding-top: 20px;
+box-shadow: 0 0 25px #25262A;
+position: relative;
+}
+
+.iconDiv {
+    background-color: #25262A;
+    max-width: 300px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.icon {
+    color: #FA9A4D;
+    background-color: #25262A;
+    box-shadow: 0 0 10px #FF6741;
+}
+
+span {
+    /*background-color: #25262A;*/
+    color: #FA9A4D;
+    margin: 20px;
+}
+
+textarea {
+    width: 500px;
+}
+
+.heading {
+    color: #FA9A4D;
+    background-color: #25262A;
+  }
+  
+  .text {
+    width: 250px;
+    padding: 20px;
+    font-size: 14px;
+    height: 100px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    color: #25262A;
+    box-shadow: 10px 10px #FF6741;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .textDiv {
+      background-color: #25262A;
+  }
+
+  .buttonDiv {
+      background-color: #25262A;
+      padding: 40px 0;
+  }
+
+  .button {
+    padding: 4px 5px;
+    cursor: pointer;
+    outline: 0;
+    color: #FF6741;
+    border-top: 4px solid #FF6741;
+    border-left: 4px solid #FF6741;
+    border-bottom: none;
+    border-right: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px #FF6741;
+    background-color: #25262A;
+    background-color: #25262A;
+    outline: none;
+  }
+  
+  .button:active {
+    transform: translateY(2px);
+    box-shadow: 4px 4px 0px #FF6741;
+  }
+  
+  /*.childDiv {
+    width: 100%;
+    height: 80%;
+    opacity: .7;
+    background-color: #FF6741;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 20px #FA9A4D;
+    padding: 40px;
+  }*/
+
+  #skillDiv.skillClass{
+    opacity: .9;
+    width: 60%;
+    height: 280px;
+    background-color: #B6B7B1;
+    border-radius: 20px;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    box-shadow: 0 0 20px #fff;
+   }
+   
+   #skillDiv {
+    transition: all .8s linear;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 220px;
+    left: 0;
+    z-index: 1;
+   }
+
+

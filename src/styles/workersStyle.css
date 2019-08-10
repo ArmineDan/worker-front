@@ -1,0 +1,27 @@
+.MuiButton-sizeSmall {
+    margin: auto !important;
+    padding: 4px 8px;
+    font-size: 0.8125rem;
+}
+
+.makeStyles-media-2 {
+    background-color: orange;
+    height: 55px !important;
+}
+.MuiTypography-h5 {
+    font-size: 1.2rem !important;
+}
+.MuiTypography-body2 {
+    font-size: 0.725rem !important;
+}
+
+.makeStyles-bigAvatar-40 {
+    width: 70px !important;
+    height: 70px !important;
+    margin: auto !important;
+    position: absolute !important;
+}
+.MuiCardContent-root {
+    padding: 16px;
+    margin-block-start: 28px;
+}

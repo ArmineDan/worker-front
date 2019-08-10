@@ -14,7 +14,7 @@
 .heading-block {
     margin-bottom: 50px;
 }
-#content {
+#content, #masters{
     margin: 0;
     width: 100%;
     min-height: 600px;
@@ -24,7 +24,9 @@
     position: relative;
     overflow: hidden;
     background-color: #fff;
-
+}
+#masters{
+    background-color: #eaeaea;
 }
 .pointer{cursor:pointer}
 .breadcrumb {
@@ -69,16 +71,24 @@
 }
 .grid-border [class^=col-] {
     margin: -1px 0 0 -1px;
-    padding: 30px;
     border: 1px solid #eee
 }
-
+.cat{
+    padding: 30px!important;
+}
 .grid-border [class^=col-]:hover {
     background-color: rgba(241, 128, 82, .1);
     border-color: #FF9800;
     z-index: 1;
 }
-
+.grid-border [class^=col-].check {
+    background-color: rgba(241, 128, 82, .1);
+    border-color: #FF9800;
+    z-index: 1;
+}
+.no-masters{
+    color:#ff9800
+}
 .feature-box {
     position: relative;
     margin-top: 20px;
@@ -200,7 +210,7 @@
 }
 
 .feature-box.fbox-center.fbox-small {
-    padding-left: 0 !important
+    padding-left: 0;
 }
 
 .feature-box.fbox-center .fbox-icon {

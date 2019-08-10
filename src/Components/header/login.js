@@ -5,10 +5,10 @@ import { ThemeProvider } from '@material-ui/styles';
 import { orange } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import "../../styles/login-register.css"
-import {fire} from '../../fire'
-import {myStyles} from './iconbuttonstyle'
-import  {Redirect}  from 'react-router-dom'
+import "../../styles/login-register.css";
+import {fire} from '../../fire';
+import {myStyles} from './iconbuttonstyle';
+import Header from "./header";
 
 
 const theme = createMuiTheme({
@@ -41,18 +41,20 @@ class Login extends React.Component{
                 fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                     .then((u)=>{console.log(u);console.log('sign in')}).catch(function(error) {
                     // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+                    //const errorCode = error.code;
+                    const errorMessage = error.message;
                     console.log(errorMessage);
                     // ...
                 });
             };
             regBtnClick = ()=>{
-                console.log("nhjhk");
-               return <Redirect to = '/Register'/>;
+              //  console.log("nhjhk");
+               this.props.history.push("/register")
                             };
             render() {
              return(
+               <div>
+                 <Header/>
                  <div className="loginDiv">
                   <AccountCircle style = {myStyles.icon}/>
                  <ThemeProvider theme={theme}>
@@ -81,6 +83,7 @@ class Login extends React.Component{
                      <Button variant="contained" color="primary"  onClick={this.regBtnClick}>Register</Button>
                  </ThemeProvider>
                 </div>
+              </div>
                 )
             }
 

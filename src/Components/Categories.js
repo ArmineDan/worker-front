@@ -147,8 +147,8 @@ class Categories extends React.Component{
                             <div className="row clearfix center divcenter" >
                                 <div className="col-lg-12">
                                     <div className="heading-block center">
-                                        <h3>Construction Job Carrers</h3>
-                                        <span>Browse Construction &amp; Extraction Job Descriptions By Job Titles</span>
+                                        <h3>Construction Job Careers</h3>
+                                        <span>Browse Construction Job Descriptions By Job Titles</span>
                                         <ol className="breadcrumb" >
                                             {nav}
                                         </ol>

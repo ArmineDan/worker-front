@@ -53,7 +53,7 @@ export function getUserData(u_id) {
         const docRef = db.collection('users').doc(u_id);
         docRef.get().then((doc) => {
            // console.log(doc.data(), "doc.data()")
-            resolve(doc.data())
+            resolve({...doc.data(),id:doc.id})
         })
             .catch((e) => reject(e));
 

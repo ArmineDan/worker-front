@@ -25,3 +25,12 @@
     padding: 16px;
     margin-block-start: 28px;
 }
+
+.MuiTypography-gutterBottom {
+    margin-bottom: 0.35em;
+    word-wrap: break-word!important;
+    overflow-wrap: break-word!important;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}

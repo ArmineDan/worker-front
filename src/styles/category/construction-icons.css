@@ -474,4 +474,7 @@
 .icon-realestate-wood:before {
 	content: "\e995";
 }
+.icon-others:before {
+	content: "...";
+}
 

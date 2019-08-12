@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+
 
 
 const useStyles = makeStyles({
@@ -29,8 +28,18 @@ const useStyles = makeStyles({
 
 });
 
-export default function MySkills() {
+export default function MySkills(props) {
     const classes = useStyles();
+    const [skills,setSkills]=useState([])
+        useEffect(()=>{
+            setSkills(props.skills)
+        },[props,skills])
+
+    const delete_skill=(e)=>{
+
+        //console.log(e.target.parentNode.getAttribute('data-id'),"delete_skills")
+      props.delete(e.target.id,e.target.parentNode.getAttribute('data-id'))
+    }
     return (
         <>
         <CardContent className={classes.btBorder} >
@@ -41,10 +50,17 @@ export default function MySkills() {
         <div className="row clearfix edit-sk">
             <span>
                 <ul className="select2-selection__rendered">
-                    <li className="select2-selection__choice" title="orange" data-select2-id="36">
-                        <span className="select2-selection__choice__remove" role="presentation">×</span>Dismantling</li>
-                    <li className="select2-selection__choice" title="purple" data-select2-id="37">
-                        <span className="select2-selection__choice__remove" role="presentation">×</span>Apartment</li>
+                    {
+                        skills.map((item,index)=>{
+                            return(
+                                <li key={index} data-id={index} className="select2-selection__choice" title={item.name} data-select2-id="36">
+                                    <span id={item.id} className="select2-selection__choice__remove" role="presentation" onClick={delete_skill}>×</span>{item.name}</li>
+                            )
+
+                        })
+
+                    }
+
                 </ul>
             </span>
         </div>

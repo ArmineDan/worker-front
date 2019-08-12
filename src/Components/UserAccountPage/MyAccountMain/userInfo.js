@@ -43,19 +43,19 @@ export default function UserInfo(props) {
                             My Profile
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p" >
-                            <span className={classes.color}>name:</span> Karine Karapetyan
+                            <span className={classes.color}>name:</span> {props.data.firstName} &nbsp; {props.data.lastName}
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
-                            <span className={classes.color}>address:</span> Yerevan, Masiv, Gayi ave.
+                            <span className={classes.color}>address:</span> {props.data.address}
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
-                            <span className={classes.color}>email:</span> karapetyan@gmail.com
+                            <span className={classes.color}>email:</span> {props.data.email}
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
-                            <span className={classes.color}>mobile:</span> 095 10 10 15
+                            <span className={classes.color}>mobile:</span> {props.data.mobile}
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
-                            <span className={classes.color}>age:</span> 28
+                            <span className={classes.color}>age:</span> {props.data.age}
                         </Typography>
                     </CardContent>
           </div>

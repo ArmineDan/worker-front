@@ -11,3 +11,6 @@
 .select2-selection__rendered li {
     list-style: none;
 }
+.select2-selection__choice__remove{
+    cursor:pointer
+}

@@ -52,6 +52,7 @@ export default function SkillList() {
 
     return (
         <div className='skillDiv' style={{display:loading?'block':'none'}}>
+            <h5 style={{color: 'white'}}>Choose your skills</h5>
             { catData.map(value => {
                     return (
                         <List key  = {value.id}

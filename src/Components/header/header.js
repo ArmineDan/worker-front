@@ -5,8 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import image from './logo-var.png';
+import SignInImage from "./SignInImage.svg"
+import SignUpImage from "./SignUp.svg"
 import {Link} from "react-router-dom";
-
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -72,10 +73,18 @@ const useStyles = makeStyles(theme => ({
         fontSize: "18px!important",
         margin: "16px!important",
     },
+
     padding:{
         padding:12,
         display:'flex'
+    },
+
+    row:
+    {
+        display: "flex",
+        flexDirection: "row",
     }
+
 }));
 
 export default function PrimarySearchAppBar() {
@@ -105,13 +114,23 @@ export default function PrimarySearchAppBar() {
                             />
                         </div>
 
+
                         <div className={classes.grow}/>
                         <div className={classes.linkStyle}>
+                        <div className={classes.row}>
+
+
+                           <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignInImage} alt="Varpet Logo"/>
                             <Link to="/Login" title="Login">Login</Link>
                         </div>
+                          </div>
+
                         <span style={{color: '#d46402'}}>|</span>
                         <div className={classes.linkStyle}>
+                          <div className={classes.row}>
+                           <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignUpImage} alt="Varpet Logo"/>
                             <Link to="/register" title="Register">Register</Link>
+                        </div>
                         </div>
 
                         {/*    <div className={classes.sectionDesktop}>

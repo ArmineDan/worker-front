@@ -5,7 +5,7 @@ import PrimarySearchAppBar from './Components/header/header';
 //import Login from './Components/header/login';
 //import Register from'./Components/header/register';
 import Footer from './Components/Footer/Footer';
-//import Profile from './Components/profile/profile';
+import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
 import firebase from 'firebase'
 //import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
@@ -19,9 +19,25 @@ class App extends React.Component{
         this.state = {
             open_users_list:false,
             users:[],
+            show_user_details:false,
+            current_user:[],
 
 
         };
+    }
+
+    anim=(type, id )=>{
+        const elem = document.getElementById(id);
+        elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
+        elem.style.opacity=type;
+        elem.style.zIndex=type?1190:-1;
+    }
+    close=(e)=>{
+        this.anim(0,"black")
+        this.setState({
+            show_user_details:false})
+        const elem = document.getElementById("masters") && document.getElementById("masters").offsetTop;
+        window.scroll(0,elem)
     }
 
    showUsers=(e,data)=>{
@@ -30,20 +46,40 @@ class App extends React.Component{
            users:data,
        });
       const elem = document.getElementById("masters") && document.getElementById("masters").offsetTop;
-      window.scroll(0,elem)
+
+      window.scroll(0,elem);
+       this.anim(1,"gotoTop")
+
        //console.log(elem,"data-App")
 
     };
-    handleChange=(e)=>{
-        let file = e.target.files[0];
-        firebase.storage().ref(`image/${file.name}`).put(file)
+
+    showUsers_Details=(e,data)=>{
+        console.log("dddddddddd")
+        this.setState({
+            show_user_details:e,
+            current_user:data,
+        });
+
+
+        this.anim(1,"black")
+    };
+    goTop=()=>{
+        window.scroll(0,0);
+        this.anim(0,"gotoTop")
     };
 
+componentDidUpdate(){
+    window.addEventListener("scroll",()=>{
+        window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+      })
+}
 render(){
-     const {open_users_list,users}=this.state;
+    const {open_users_list, users, show_user_details,current_user}=this.state;
+
     const draw_users=users.length?users.map((item,index)=>{
             return (
-                <MediaCard key={index} users_list={item} />
+                <MediaCard key={index} users_list={item} open_user_details={this.showUsers_Details}/>
             )
     }):(<div className="no-masters col-lg-12"><h4>Unfortunately we do not have masters registered in this profession yet</h4></div>)
     return (
@@ -66,9 +102,16 @@ render(){
                         </div>
                     </section>
                         :null}
-               {/* <Register/>
-                <Login/>*/}
+                        {show_user_details?
+                            <Profile data={current_user} close={this.close}/>
+                        :null}
+                        <div id="black" className="mfp-bg mfp-no-margins mfp-fade mfp-ready" onClick={show_user_details?this.close:null}/>
             </header>
+            <div id="gotoTop" onClick={this.goTop}>
+                <i className="material-icons" style={{top: '6px', position: 'relative'}}>
+            keyboard_arrow_up
+                     </i>
+            </div>
             <Footer/>
         </div>
     );

@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import "../../styles/login-register.css"
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {myStyles,useStyles} from './iconbuttonstyle'
-import {fire,db} from '../../fire'
+import {fire,db} from '../../firebase/fire'
 import Header from "./header";
 
 
@@ -17,6 +17,7 @@ import Header from "./header";
         lastName:'',
         email: '',
         password: '',
+        status:false
        });
      const registerBtnClick = ()=>{
          fire.auth().createUserWithEmailAndPassword(values.email, values.password).then((cred) => {
@@ -26,6 +27,7 @@ import Header from "./header";
                  firstName:values.firstName,
                  lastName:values.lastName,
                  email:values.email,
+                 status:true
                  })
          }).catch(function (error) {
              // Handle Errors here.

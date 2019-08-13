@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7ce8733-676b-42af-a46a-43bad85c08c8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" />
+     <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userInfo.js" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/firebase/fireManager.js" afterPath="$PROJECT_DIR$/src/firebase/fireManager.js" />
@@ -37,7 +37,7 @@
             <state relative-caret-position="224">
               <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -370,18 +370,21 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\worker-front\src\styles" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\worker-front\src\firebase" />
       <recent name="D:\project\worker-front\src\Components\UserAccountPage\SkillList" />
       <recent name="D:\project\worker-front\src\Components\UserAccountPage" />
       <recent name="D:\pro-worker\worker-front\src\styles" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\worker-front\src\styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -517,6 +520,27 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15399061" />
+      <window_info id="Structure" order="1" weight="0.24968314" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.34385383" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3151184" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -579,7 +603,7 @@
         <state relative-caret-position="277">
           <caret line="105" column="30" lean-forward="true" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
           <folding>
-            <element signature="e#0#26#0" expanded="false" />
+            <element signature="e#0#26#0" />
           </folding>
         </state>
       </provider>

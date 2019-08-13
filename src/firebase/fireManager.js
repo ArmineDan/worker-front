@@ -1,4 +1,4 @@
-import {db} from "../fire";
+import {db} from "./fire";
 
 export function getActiveCategories() {
     return new Promise((resolve, reject)=>{
@@ -6,7 +6,7 @@ export function getActiveCategories() {
             const data = [];
 
             snapshot.docs.forEach(doc=>{
-                const obj={...doc.data(),id:doc.id}
+                const obj={...doc.data(),id:doc.id};
                 data.push(obj);
               // id.push(doc.id);
                // console.log(doc.data())

@@ -7,6 +7,8 @@ import PrimarySearchAppBar from './Components/header/header';
 import Footer from './Components/Footer/Footer';
 //import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
+import firebase from 'firebase'
+//import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
 
 
 
@@ -32,6 +34,10 @@ class App extends React.Component{
        //console.log(elem,"data-App")
 
     };
+    handleChange=(e)=>{
+        let file = e.target.files[0];
+        firebase.storage().ref(`image/${file.name}`).put(file)
+    };
 
 render(){
      const {open_users_list,users}=this.state;
@@ -42,7 +48,7 @@ render(){
     }):(<div className="no-masters col-lg-12"><h4>Unfortunately we do not have masters registered in this profession yet</h4></div>)
     return (
         <div className="App">
-                    <header className="App-header">
+             <header className="App-header">
                 <PrimarySearchAppBar/>
                 <Categories showUsers_Lists={this.showUsers}/>
                 {open_users_list?

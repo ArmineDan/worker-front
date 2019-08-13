@@ -13,7 +13,11 @@ import {photos}  from "./photos";
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {myclass: ''};
+        this.state = {
+            myclass: '',
+            user:this.props.data
+
+        };
     };
     /*toggleButton = () => {
         const{show} = this.state;
@@ -31,33 +35,42 @@ class Profile extends React.Component {
         })
        }
       }
+      componentDidMount(){
+          this.setState({
+              user: this.props.data
+          })
+      }
     render () {
+        const {user}=this.state;
+        const {close}=this.props;
+
         return (
-            <div className="container">
+            <div className="container-info">
                 <div className = "centerProf">
-                    <div className ='imgDiv'>
-                        <img className='img' src={varpet1}/>
+                    <div className ='imgDiv' style={{backgroundImage:`url(${user.avatar})`}}>
+                        {/*<img className='img' src={user.avatar} />*/}
                     </div>
+                    <button title="Close" type="button" className="mfp-close" onClick={close}>×</button>
                     <div className='name'>
-                        <p className='pProf'>Name Surname</p>
+                        <p className='pProf'>{user.firstName}&nbsp;{user.lastName}</p>
                     </div>
                     <div id="skillDiv" className={this.state.myclass}></div>
                     <div className ='dark'>
                         <div className='iconDiv'>
                             <Icon style ={{fontSize: '25px'}} className='icon'>phone</Icon>
-                            <span className='spanProf'>+374 99 99 99 99</span>
+                            <span className='spanProf'>{user.mobile}</span>
                         </div>
                         <div className='iconDiv'>
                             <Icon style ={{fontSize: '25px'}} className='icon'>mail</Icon>
-                            <span className='spanProf'>anun.azganun@gmail.com</span>
+                            <span className='spanProf'>{user.email}</span>
                         </div>
                         <div className='iconDiv'>
                             <Icon style ={{fontSize: '25px'}} className='icon'>home</Icon>
-                            <span className='spanProf'>Province</span>
+                            <span className='spanProf'>{user.address}</span>
                         </div>
                         <div className='textDiv'>
                             <h5 className='heading'>About</h5>
-                            <textarea className='text'>Hello, I'm William...Nothing to add</textarea>
+                            <textarea className='text' defaultValue={`Hello, I'm ${user.firstName} and I'm ready to help you!`}/>
                         </div>
                         <div className='buttonDiv'>
                             <button onClick ={this.toggleButton} className='buttonProfile'>

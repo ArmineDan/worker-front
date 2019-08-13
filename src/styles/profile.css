@@ -16,7 +16,6 @@
     margin: 0px auto;
     background-color: #f5f4f3;
     text-align: center;
-    box-shadow: 0 0 15px #FF9750;
     position: relative;
     border-radius: 20px;
     top: 200px;
@@ -52,6 +51,7 @@
 }
 
 .dark {
+margin-top: 20px;
 background-color: #25262A;
 padding-top: 20px;
 box-shadow: 0 0 25px #25262A;
@@ -183,4 +183,28 @@ textarea {
     top: 20px
 }
 
+   .lboxContainer {
+    max-width: 1000px;
+    margin: 0px auto;
+    background-color: #25262A;
+}
+
+.react-photo-gallery--gallery {
+    display: flex;
+    padding: 20px;
+    max-width: 1000px;
+    border: 2px solid #fff;
+}
+
+
+.lbHeading {
+    padding: 20px 0;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.react-photo-gallery--gallery img {
+    border: 1px solid #fff;
+}
 

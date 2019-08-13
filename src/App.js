@@ -13,6 +13,7 @@ import firebase from 'firebase'
 
 
 
+
 class App extends React.Component{
     constructor(){
         super();
@@ -76,7 +77,6 @@ componentDidUpdate(){
 }
 render(){
     const {open_users_list, users, show_user_details,current_user}=this.state;
-
     const draw_users=users.length?users.map((item,index)=>{
             return (
                 <MediaCard key={index} users_list={item} open_user_details={this.showUsers_Details}/>
@@ -102,6 +102,7 @@ render(){
                         </div>
                     </section>
                         :null}
+
                         {show_user_details?
                             <Profile data={current_user} close={this.close}/>
                         :null}

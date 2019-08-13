@@ -1,10 +1,12 @@
 import React from 'react';
+import { useState, useCallback } from "react";
+import Lightbox from './lightbox';
 import "../../styles/profile.css";
 import varpet1 from './img/varpet1.png';
 import Icon from '@material-ui/core/Icon';
-
-
-
+import Gallery from "react-photo-gallery";
+import Carousel, { Modal, ModalGateway } from "react-images";
+import {photos}  from "./photos";
 
 
 
@@ -78,10 +80,13 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Lightbox />
             </div>
         )
     }
 }
+
+
 /*class SkillDiv extends React.Component {
     render() {
       return (

@@ -420,7 +420,7 @@ button.mfp-close, button.mfp-arrow {
     box-shadow: none;
     touch-action: manipulation;
 }
-.row.edit{
+.row.brd{
     border: thin solid #ff980054;
     border-radius: 22px;
 }
@@ -440,4 +440,33 @@ button.mfp-close, button.mfp-arrow {
     top: 12px;
     cursor:pointer;
     opacity:1
+}
+.edit.on:after{
+    content:url("./yes.png")!important;
+    display: block;
+    width: 40px;
+    /*border-top: 2px solid #FF9800;*/
+    position: absolute;
+    left: 86%;
+    top: 12px;
+    cursor:pointer;
+    opacity:1
+}
+.no.on:after{
+    content:url("./no.png")!important;
+    display: block;
+    width: 40px;
+    /*border-top: 2px solid #FF9800;*/
+    position: absolute;
+    left: 92%;
+    top: 12px;
+    cursor:pointer;
+    opacity:1
+}
+input.edit {
+    outline: none!important;
+    border: 0;
+    background-color: rgba(255, 165, 0, 0.14);
+    padding: 2px;
+    margin: 2px;
 }

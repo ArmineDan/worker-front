@@ -4,6 +4,7 @@ import  Header from '../../header/header';
 import  UserInfo from './userInfo';
 import  HeaderSkillList from './skillistHeader';
 import  MySkills from './userSkilllist';
+import  Lightbox from '../../profile/lightbox';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '../../../firebase/fireManager';
 
@@ -41,8 +42,9 @@ class MyAccountMain extends React.Component{
 }
 
     componentDidMount(){
-        getUserData('Q1tIr2QtPrcOG67AY9fGmLL4jxx1').then((data)=>{
-            //console.log(data);
+        getUserData('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
+           // console.log(data);
+           // Q1tIr2QtPrcOG67AY9fGmLL4jxx1
             this.setState({
                 user:data
             })
@@ -56,6 +58,15 @@ class MyAccountMain extends React.Component{
 
     }
 
+    get_sub=(e)=>{
+        const {skils_id}=this.state
+        const arr=skils_id;
+        arr.push(e)
+        this.setState({
+            skils_id:arr
+        })
+        //console.log(e,"fromtaa")
+    }
 
     makeData=(e)=>{
         // console.log(e,"skizb")
@@ -71,7 +82,7 @@ class MyAccountMain extends React.Component{
             for(let i=0; i<values.length; i++){
                 data.push(values[i][0][0]);
             }
-          //  console.log(data,"datadatadata")
+          console.log(data,"datadatadata")
             this.setState({
                 skils_id:data
             })
@@ -96,12 +107,13 @@ class MyAccountMain extends React.Component{
                             <div className="col-md-6">
                                 <UserInfo data={user}/>
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
+                                <Lightbox />
                             </div>
 
                             <div className="col-md-6">
-
                                 <div className="col-md-12">
-                                    <SkillList/>
+                                    <SkillList get_sub={this.get_sub}/>
+
                                 </div>
 
                             </div>

@@ -41,13 +41,13 @@ class MyAccountMain extends React.Component{
 }
 
     componentDidMount(){
-        getUserData('Q1tIr2QtPrcOG67AY9fGmLL4jxx1').then((data)=>{
-            //console.log(data);
+        getUserData('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
+            console.log(data);
             this.setState({
                 user:data
             })
         }).catch((e) => {
-            console.log(e,"getUserData")})
+            console.log(e,"getUserData")});
         getUserSkills('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
             //console.log(data,'data')
             this.makeData(data)
@@ -101,7 +101,7 @@ class MyAccountMain extends React.Component{
                             <div className="col-md-6">
 
                                 <div className="col-md-12">
-                                    <SkillList/>
+                                    <SkillList userId ={user.id}/>
                                 </div>
 
                             </div>

@@ -41,7 +41,8 @@ class MyAccountMain extends React.Component{
 }
 
     componentDidMount(){
-        getUserData('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
+        getUserData('Q1tIr2QtPrcOG67AY9fGmLL4jxx1').then((data)=>{
+            //console.log(data);
             this.setState({
                 user:data
             })

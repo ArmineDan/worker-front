@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import UploadAvatarImage from "../UploadAvatarImage";
 
 
 const useStyles = makeStyles({
@@ -35,7 +36,7 @@ export default function UserInfo(props) {
           <div className="row clearfix edit">
               <CardContent className={classes.col}  >
                   <Grid container justify="center" alignItems="center">
-                      <Avatar alt="Varpet Avatar" src='https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' className={classes.bigAvatar} />
+                      <UploadAvatarImage userId = {props.data.id} avatar ={props.data.avatar} editable ={false}/>
                   </Grid>
                  </CardContent>
                     <CardContent>

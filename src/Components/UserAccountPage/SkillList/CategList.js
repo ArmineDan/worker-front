@@ -96,7 +96,7 @@ export default function SkillList(props) {
                             </ListItem>
                             <Collapse in={openIds.indexOf(value.id) !== -1} timeout="auto" unmountOnExit>
                                 <List  component="div" disablePadding>
-                                     <CheckboxList   catId={value.id} userId ={props.userId}/>
+                                     <CheckboxList   catId={value.id} userId ={props.userId} get_sub={props.get_sub}/>
                                 </List>
                             </Collapse>
                         </List>

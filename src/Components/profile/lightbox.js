@@ -3,6 +3,7 @@ import { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import {photos}  from "./photos";
+import "../../styles/lightbox.css";
 
 function Lightbox() {
     const [currentImage, setCurrentImage] = useState(0);
@@ -20,8 +21,7 @@ function Lightbox() {
   
     return (
         
-      <div className='lboxContainer'>
-          <h5 className='lbHeading'>works done</h5>
+      <div>
         <Gallery photos={photos} onClick={openLightbox} />
         <ModalGateway>
           {viewerIsOpen ? (

@@ -3,125 +3,187 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .container.prof {
     width: 100%;
     height: 100vh;
-    padding-top: 100px;
 }
 
 .centerProf {
-    max-width: 1000px;
-    margin: 0px auto;
-    background-color: #f5f4f3;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #FFC000;
+    box-shadow: 0 0 20px #FFC000;
     text-align: center;
     position: relative;
-    border-radius: 20px;
-    top: 200px;
+    padding: 40px 10px 10px;
+}
+
+.imgFlex {
+    display: flex;
+    align-items: center;
+    padding: 0 30px 40px;
+    border-bottom: 2px solid #fff;
+}
+
+.info {
+    max-width: 800px;
+    text-align: start;
+    padding-left: 80px;
 }
 
 .imgDiv {
-    max-width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    border: 4px solid #fff;
     border-radius: 50%;
-    position: relative;
-    left: 50%;
-    top: -75px;
-    transform: translateX(-50%);
-    border: 5px solid #25262A;
-    background: no-repeat center;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .img {
     width: 100%;
+    height: 100%;
     display: block;
     border-radius: 50%;
 }
 
-.name {
-    background-color: #FF9750;
-    margin-top: -50px;
+.flexIcon {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .pProf {
-    background-color: #FF9750;
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.dark {
-margin-top: 20px;
-background-color: #25262A;
-padding-top: 20px;
-box-shadow: 0 0 25px #25262A;
-position: relative;
-font-size: 14px;
+.pAbout {
+    font-size: 14px;
+    color: #25262A;
+    margin-top: 20px;
+    line-height: 30px;
 }
 
 .iconDiv {
-    background-color: #25262A;
     max-width: 300px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    margin: 10px;
+    margin-top: 15px;
 }
 
 .icon {
-    color: #FA9A4D;
+    color: #FEA610;
     background-color: #fff;
     box-shadow: 0 0 10px #FF6741;
     border-radius: 5px;
 }
 
 .spanProf {
-    background-color: #25262A;
-    color: #FA9A4D;
-    margin-left: 15px;
-}
-
-textarea {
-    width: 500px;
-}
-
-.heading {
-    color: #FA9A4D;
-    background-color: #25262A;
-  }
-  
-  .text {
-    width: 250px;
-    padding: 20px;
-    font-size: 14px;
-    height: 100px;
-    background-color: #fff;
-    border: none;
-    outline: none;
     color: #25262A;
-    box-shadow: 10px 10px #e77817;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-  .textDiv {
-      background-color: #25262A;
-  }
+.skillLightbox {
+background-color: #ffffff;
+padding: 40px;
+position: relative;
+font-size: 14px;
+margin-top: 40px;
+position: relative;
+border-radius: 20px;
+}
 
-  .buttonDiv {
-      background-color: #25262A;
-      padding: 40px 0;
-  }
+.absolute {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #FFCD33;
+    position: relative;
+}
 
-  .buttonProfile {
+.flexSkill {
+    flex-basis: 37%;
+    padding: 10px 40px 10px 20px;
+    background-color: #fff;
+}
+
+.flexLightbox {
+    flex-basis: 60%;
+    background-color: #fff;
+    padding: 10px 0;
+}
+
+
+.box {
+    width: 0;
+    height: 0;
+    border-right: 15px solid #fff;
+    border-left: 15px solid #fff;
+    border-bottom: 15px solid #FFCD33;
+    border-top: 15px solid #fff;
+    position: absolute;
+    top: -30px;
+    left: 50px;
+}
+
+
+.listSkill {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 15px;
+    color: #25262A;
+    padding-top: 20px;
+    text-align: start;
+    line-height: 30px;
+}
+
+.listSkill li {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 20px;
+    list-style-type: none;
+    box-shadow: 0 0 10px #FFC000;
+}
+
+.headingSkill {
+    text-transform: uppercase;
+    text-align: start;
+    font-weight: bold;
+    color: #25262A;
+    letter-spacing: 4px;
+}
+
+.headingLbox {
+    text-transform: uppercase;
+    text-align: start;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #25262A;
+    padding-left: 20px;
+}
+
+.container-info {
+    position: absolute;
+    z-index: 1200;
+}
+  
+
+  /* .buttonProfile {
     padding: 4px 5px;
     cursor: pointer;
     outline: 0;
     color: #e77817;
     border-top: 4px solid #e77817;
     border-left: 4px solid #e77817;
-    /*//#FF6741;*/
+    /*
     border-bottom: none;
     border-right: none;
     text-transform: uppercase;
@@ -138,7 +200,7 @@ textarea {
   .button:active {
     transform: translateY(2px);
     box-shadow: 4px 4px 0px #FF6741;
-  }
+  } */
   
   /*.childDiv {
     width: 100%;
@@ -152,7 +214,7 @@ textarea {
     padding: 40px;
   }*/
 
-  #skillDiv.skillClass{
+  /* #skillDiv.skillClass{
     opacity: .9;
     width: 60%;
     height: 285px;
@@ -175,36 +237,7 @@ textarea {
     top: 150px;
     left: 0;
     z-index: 1;
-   }
-.container-info{
-    width: 90%;
-    position: absolute;
-    z-index: 1200;
-    top: 20px
-}
+   } */
 
-   .lboxContainer {
-    max-width: 1000px;
-    margin: 0px auto;
-    background-color: #25262A;
-}
-
-.react-photo-gallery--gallery {
-    display: flex;
-    padding: 20px;
-    max-width: 1000px;
-    border: 2px solid #fff;
-}
-
-
-.lbHeading {
-    padding: 20px 0;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: 0 0 10px #fff;
-}
-
-.react-photo-gallery--gallery img {
-    border: 1px solid #fff;
-}
+   
 

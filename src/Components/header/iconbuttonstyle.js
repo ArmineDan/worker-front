@@ -6,6 +6,11 @@ export  const myStyles ={
         width: 'inherit',
 
     },
+    worker: {
+            height: '150px',
+            width: '150px',
+            margin: '50px auto',
+    },
     icon:{
         width:100,
         height: 100,

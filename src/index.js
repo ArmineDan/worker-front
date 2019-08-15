@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import {browserHistory} from "react-router";
 import login from "./Components/header/login";
 import register from "./Components/header/register";
+import MyAccountMain from "./Components/UserAccountPage/MyAccountMain/Main";
 
 
 const theme = createMuiTheme({
@@ -25,6 +26,7 @@ const route=(
     <Route exact path="/" component ={App}/>
     <Route path="/login/" component={login} marginRight='200px'/>
     <Route path="/register/" component={register}/>
+      <Route path="/my-account/" component={MyAccountMain}/>
   </Router>
 </MuiThemeProvider>
 

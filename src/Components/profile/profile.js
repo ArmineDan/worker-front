@@ -10,7 +10,11 @@ import Icon from '@material-ui/core/Icon';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {myclass: ''};
+        this.state = {
+            myclass: '',
+            user:this.props.data
+
+        };
     };
     /*toggleButton = () => {
         const{show} = this.state;
@@ -28,29 +32,39 @@ class Profile extends React.Component {
         })
        }
       }
+      componentDidMount(){
+          this.setState({
+              user: this.props.data
+          })
+      }
     render () {
+        const {user}=this.state;
+        const {close}=this.props;
+
         return (
-            <div className="container">
+            <div className="container-info">
                 <div className = "centerProf">
+                <button title="Close" type="button" className="mfp-close" onClick={close}>×</button>
+
                     <div className='imgFlex'>
-                        <div className ='imgDiv'>
-                            <img className='img' src={varpet}/>
+                        <div className ='imgDiv' style ={{backgroundImage:`url(${user.avatar})`} }>
+                           
                         </div>
                         <div className='info'>
-                            <p className='pProf'>Name Surname</p>
-                            <p className='pAbout'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <p className='pProf'>{user.firstName}&nbsp;{user.lastName}</p>
+                            <p className='pAbout'>Hello, I'm {user.firstName} and I'm ready to help you! </p>
                             <div className='flexIcon'>
                                 <div className='iconDiv'>
                                     <Icon style ={{fontSize: '25px'}} className='icon'>phone</Icon>
-                                    <span className='spanProf'>+374 99 99 99 99</span>
+                                    <span className='spanProf'>{user.mobile}</span>
                                 </div>
                                 <div className='iconDiv'>
                                     <Icon style ={{fontSize: '25px'}} className='icon'>mail</Icon>
-                                    <span className='spanProf'>anun.azganun@gmail.com</span>
+                                    <span className='spanProf'>{user.email}</span>
                                 </div>
                                 <div className='iconDiv'>
                                     <Icon style ={{fontSize: '25px'}} className='icon'>home</Icon>
-                                    <span className='spanProf'>Province</span>
+                                    <span className='spanProf'>{user.address}</span>
                                 </div>
                             </div>
                         </div>
@@ -58,9 +72,13 @@ class Profile extends React.Component {
                     <div id="skillDiv" className={this.state.myclass}></div>
                     <div className ='skillLightbox'>
                         {/* <div className='buttonDiv'>
-                            <button onClick ={this.toggleButton} className='buttonProfile'>
+
+                    <div className ='imgDiv' style={{backgroundImage:`url(${user.avatar})`}}>
+                        {/*<img className='img' src={user.avatar} />*/}
+                  
+                            {/* <button onClick ={this.toggleButton} className='buttonProfile'>
                                 Skills
-                            </button>
+                            </button> */}
                             {/*{this.state.show && <SkillDiv />}
                         </div> */}
                         <div className='absolute'>

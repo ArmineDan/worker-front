@@ -9,6 +9,7 @@ import "../../styles/login-register.css";
 import {fire} from '../../firebase/fire';
 import {myStyles} from './iconbuttonstyle';
 import Header from "./header";
+import workerImage from './worker.png'
 
 
 const theme = createMuiTheme({
@@ -56,7 +57,8 @@ class Login extends React.Component{
                <div>
                  <Header/>
                  <div className="loginDiv">
-                  <AccountCircle style = {myStyles.icon}/>
+                     <img src ={workerImage} alt ="worker.png" style={myStyles.worker}/>
+                  {/*<AccountCircle style = {myStyles.icon}/>*/}
                  <ThemeProvider theme={theme}>
                     <TextField color="red"
                         id="outlined-email-input"

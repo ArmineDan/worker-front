@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
 
+
     <list default="true" id="f7ce8733-676b-42af-a46a-43bad85c08c8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/category/edit.png" afterPath="$PROJECT_DIR$/src/styles/category/edit.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -11,6 +12,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/firebase/fireManager.js" afterPath="$PROJECT_DIR$/src/firebase/fireManager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/AvatarStyle.css" afterPath="$PROJECT_DIR$/src/styles/AvatarStyle.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/category/category-comp.css" afterPath="$PROJECT_DIR$/src/styles/category/category-comp.css" />
+
 
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -28,16 +30,19 @@
       <file leaf-file-name="Main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="527">
               <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="42" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
 
+
             </state>
           </provider>
         </entry>
       </file>
+
 
       <file leaf-file-name="lightbox.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/profile/lightbox.js">
@@ -45,6 +50,7 @@
             <state relative-caret-position="357">
               <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
 
+
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -52,6 +58,7 @@
           </provider>
         </entry>
       </file>
+
 
       <file leaf-file-name="photos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/profile/photos.js">
@@ -69,10 +76,12 @@
             <state relative-caret-position="306">
               <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
               <folding />
+
             </state>
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="fireManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,6 +100,7 @@
 
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
+
               </folding>
             </state>
           </provider>
@@ -110,6 +120,7 @@
       <file leaf-file-name="UploadAvatarImage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/UploadAvatarImage.js">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="-170">
               <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding />
@@ -124,6 +135,7 @@
 
             <state relative-caret-position="477">
               <caret line="59" column="79" lean-forward="false" selection-start-line="59" selection-start-column="79" selection-end-line="59" selection-end-column="79" />
+
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -186,7 +198,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="GT-WorkSkillList" />
       </map>
     </option>
   </component>
@@ -198,7 +210,6 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/fire.js" />
         <option value="$PROJECT_DIR$/src/styles/category/bootstrap.css" />
-        <option value="$PROJECT_DIR$/src/Components/header/login.js" />
         <option value="$PROJECT_DIR$/src/styles/workersStyle.css" />
         <option value="$PROJECT_DIR$/src/Components/workers.jsx" />
         <option value="$PROJECT_DIR$/src/Components/Footer/Footer.js" />
@@ -223,11 +234,14 @@
         <option value="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js" />
 
         <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" />
+        <option value="$PROJECT_DIR$/src/Components/header/login.js" />
+        <option value="$PROJECT_DIR$/src/Components/header/iconbuttonstyle.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
+    <option name="x" value="-10" />
+    <option name="y" value="7" />
     <option name="width" value="1080" />
     <option name="height" value="735" />
   </component>
@@ -358,9 +372,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-
     <property name="last_opened_file_path" value="D:/task1xtrends/Task" />
-
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -374,15 +386,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\worker-front\src\styles" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
 
 
       <recent name="D:\project\worker-front\src\Components\UserAccountPage\SkillList" />
       <recent name="D:\project\worker-front\src\Components\UserAccountPage" />
       <recent name="D:\pro-worker\worker-front\src\styles" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Tatevik\Desktop\worker-front\src\Components\header" />
+      <recent name="D:\project\worker-front\src\styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -429,23 +442,25 @@
       <workItem from="1565290421843" duration="24750000" />
       <workItem from="1565425592362" duration="1930000" />
       <workItem from="1565468427383" duration="25836000" />
-
       <workItem from="1565796780859" duration="15451000" />
-
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add others input and connect it with firebase, some css">
+      <created>1565816149060</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1565816149060</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-
     <option name="totallyTimeSpent" value="175066000" />
-
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17870723" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -464,6 +479,7 @@
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+
     </layout>
 
   </component>
@@ -472,7 +488,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changes UploadImage some functions, change register state" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes UploadImage some functions, change register state" />
+    <MESSAGE value="add others input and connect it with firebase, some css" />
+    <option name="LAST_COMMIT_MESSAGE" value="add others input and connect it with firebase, some css" />
   </component>
   <component name="editorHistoryManager">
 
@@ -501,7 +518,6 @@
     </entry>
 
     <entry file="file://$PROJECT_DIR$/src/styles/buttonicon.css" />
-    <entry file="file://$PROJECT_DIR$/src/Components/header/iconbuttonstyle.js" />
     <entry file="file://$USER_HOME$/Documents/elkar/demos/construction.css" />
     <entry file="file://$PROJECT_DIR$/src/styles/category-comp.css" />
     <entry file="file://$PROJECT_DIR$/public/index.html">
@@ -564,6 +580,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/Components/header/header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -573,6 +590,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -580,20 +598,6 @@
           <folding>
             <element signature="e#0#26#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/login-register.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/header/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -706,6 +710,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/styles/AvatarStyle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -717,6 +722,7 @@
     <entry file="file://$PROJECT_DIR$/src/styles/category/edit.png">
       <provider selected="true" editor-type-id="images">
         <state />
+
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/workersStyle.css">
@@ -763,7 +769,9 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userInfo.js">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="59" column="24" lean-forward="true" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
@@ -777,15 +785,18 @@
 
     <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="634">
           <caret line="116" column="16" lean-forward="false" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
           <folding />
 
+
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js">
       <provider selected="true" editor-type-id="text-editor">
+
 
         <state relative-caret-position="306">
           <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
@@ -808,12 +819,14 @@
         <state relative-caret-position="357">
           <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
 
+
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+
 
     <entry file="file://$PROJECT_DIR$/src/Components/profile/photos.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -821,18 +834,28 @@
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
           <folding />
 
+
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/login-register.css">
       <provider selected="true" editor-type-id="text-editor">
+
 
         <state relative-caret-position="527">
           <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="42" />
 
+
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/iconbuttonstyle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>

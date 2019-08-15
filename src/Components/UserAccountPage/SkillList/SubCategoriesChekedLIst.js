@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon/index';
 import ListItemText from '@material-ui/core/ListItemText/index';
 import Checkbox from '@material-ui/core/Checkbox/index';
 import {getsubCategories} from "../../../firebase/fireManager";
- import '../../../styles/subSkillStyle.css';
+import '../../../styles/subSkillStyle.css';
 import {db} from "../../../firebase/fire";
 
 const useStyles = makeStyles(theme => ({
@@ -42,6 +42,7 @@ export default function CheckboxList(props) {
             db.collection("Users-Skills").add(userSkillData)
                 .then(function(docRef) {
                    // console.log("Document written with ID: ", docRef.id);
+                    props.get_sub(skillData)
                 })
                 .catch(function(error) {
                      //console.error("Error adding document: ", error);

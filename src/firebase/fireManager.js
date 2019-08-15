@@ -114,7 +114,14 @@ export function getAllSkills(cat_id,skill_id) {
         }).catch(e=> reject(e));
     })
 }
+export function editUserInfo(user_id,obj) {
+    return new Promise((resolve, reject) => {
 
+        db.collection('users').doc(user_id).update(obj).then((data)=>{
+            resolve(data)
+        }).catch(e=> reject(e));
+    })
+}
 export function getSkillsData(skill_id) {
     return new Promise((resolve, reject) => {
         db.collection('Categories').get()

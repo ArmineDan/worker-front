@@ -139,7 +139,7 @@ export default function UserInfo(props) {
               <div id='yes' className="edit" title="Save" onClick={!editOn?edit:save}/> <div id="no" className="no" title="Cancel" onClick={editOn?cancel:null}/>
               <CardContent className={classes.col}>
                   <Grid container justify="center" alignItems="center">
-                      <UploadAvatarImage userId = {props.data.id} avatar ={props.data.avatar} editable ={false}/>
+                      <UploadAvatarImage userId = {props.data.id} avatar ={props.data.avatar} editable ={editOn}/>
                   </Grid>
                  </CardContent>
                     <CardContent className={classes.width}>

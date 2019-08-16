@@ -22,18 +22,9 @@ class MyAccountMain extends React.Component{
     }
    delete_skill=(e,index)=>{
        const {skils_id}=this.state;
-<<<<<<< HEAD
-    removeSkillFromUserList('R0x1ZhmoJ8qL9xKcpzPZ',e).then((data)=>{
-        if(data){
-            skils_id.splice(index,1)
-=======
-
-
     removeSkillFromUserList(this.props.location.state.userId,e).then((data)=>{
         if(data){
-
             skils_id.splice(index,1);
->>>>>>> 3e3a5639e24b992b40c8fe74518536d0f37bdb77
             this.setState({
                 skils_id
             })
@@ -41,8 +32,8 @@ class MyAccountMain extends React.Component{
     // console.log(data,"delete_skill")
  }).catch((e) => {
      console.log(e,"delete_skill")})
-<<<<<<< HEAD
-}
+
+};
     delete_skill_Toggle=(e)=>{
        // console.log(e,"togleeeeeeeeeeee")
         const {skils_id}=this.state;
@@ -57,26 +48,32 @@ class MyAccountMain extends React.Component{
             skils_id
         })
        // console.log(skils_id,"skils_id_togleeeeeeeeeeee")
-=======
-
 
 };
->>>>>>> 3e3a5639e24b992b40c8fe74518536d0f37bdb77
 
-    }
-    componentDidMount(){
-        getUserData(this.props.location.state.userId).then((data)=>{
-           // console.log(data);
-            this.setState({
-                user:data
-            })
-        }).catch((e) => {
-            console.log(e,"getUserData")});
-        getUserSkills(this.props.location.state.userId).then((data)=>{
-            //console.log(data,'data')
-            this.makeData(data)
-        }).catch((e) => {
-            console.log(e,"getUserSkills")})
+
+   componentDidMount(){
+
+       if(this.props.location.state){
+           getUserData(this.props.location.state.userId).then((data)=>{
+               // console.log(data);
+               this.setState({
+                   user:data
+               })
+           }).catch((e) => {
+               console.log(e,"getUserData")});
+           getUserSkills(this.props.location.state.userId).then((data)=>{
+               //console.log(data,'data')
+               this.makeData(data)
+           }).catch((e) => {
+               console.log(e,"getUserSkills")})
+       }
+       else{
+           this.props.history.push(
+                '/'
+           )
+       }
+
 
     }
 
@@ -130,14 +127,9 @@ class MyAccountMain extends React.Component{
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
                                 <Lightbox />
                             </div>
-
                             <div className="col-md-6">
                                 <div className="col-md-12">
-<<<<<<< HEAD
                                     <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />
-=======
-                                    <SkillList userId ={user.id} get_sub={this.get_sub} />
->>>>>>> 3e3a5639e24b992b40c8fe74518536d0f37bdb77
                                 </div>
                             </div>
                         </div>

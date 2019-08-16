@@ -13,21 +13,21 @@ import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '
 
 
 class MyAccountMain extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
         skils_id:[],
-            user:[]
+            user:[],
         };
     }
    delete_skill=(e,index)=>{
        const {skils_id}=this.state;
 
 
-    removeSkillFromUserList('R0x1ZhmoJ8qL9xKcpzPZ',e).then((data)=>{
+    removeSkillFromUserList(this.props.location.state.userId,e).then((data)=>{
         if(data){
 
-            skils_id.splice(index,1)
+            skils_id.splice(index,1);
             this.setState({
                 skils_id
             })
@@ -39,17 +39,17 @@ class MyAccountMain extends React.Component{
      console.log(e,"delete_skill")})
 
 
-}
+};
 
     componentDidMount(){
-        getUserData('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
+        getUserData(this.props.location.state.userId).then((data)=>{
            // console.log(data);
             this.setState({
                 user:data
             })
         }).catch((e) => {
             console.log(e,"getUserData")});
-        getUserSkills('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
+        getUserSkills(this.props.location.state.userId).then((data)=>{
             //console.log(data,'data')
             this.makeData(data)
         }).catch((e) => {
@@ -58,14 +58,14 @@ class MyAccountMain extends React.Component{
     }
 
     get_sub=(e)=>{
-        const {skils_id}=this.state
+        const {skils_id}=this.state;
         const arr=skils_id;
-        arr.push(e)
+        arr.push(e);
         this.setState({
             skils_id:arr
         })
         //console.log(e,"fromtaa")
-    }
+    };
 
     makeData=(e)=>{
         // console.log(e,"skizb")
@@ -73,26 +73,25 @@ class MyAccountMain extends React.Component{
         const promises=[];
         let i=0;
         while(i<e.length){
-            promises.push(getSkillsData(e[i]))
+            promises.push(getSkillsData(e[i]));
             i++;
         }
         Promise.all(promises).then(values => {
-            const data=[]
+            const data=[];
             for(let i=0; i<values.length; i++){
                 data.push(values[i][0][0]);
             }
-          console.log(data,"datadatadata")
+          console.log(data,"datadatadata");
             this.setState({
                 skils_id:data
             })
 
         }).catch((e) => {
             console.log(e,"value")})
-    }
+    };
 
     render(){
-
-        const {skils_id,user}=this.state
+        const {skils_id,user}=this.state;
         return (
             <div>
                 <Header/>
@@ -111,7 +110,7 @@ class MyAccountMain extends React.Component{
 
                             <div className="col-md-6">
                                 <div className="col-md-12">
-                                    <SkillList userId ={user.id} get_sub={this.get_sub}/>
+                                    <SkillList userId ={user.id} get_sub={this.get_sub} />
                                 </div>
                             </div>
                         </div>

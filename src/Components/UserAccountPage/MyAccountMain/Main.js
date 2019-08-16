@@ -50,7 +50,16 @@ class MyAccountMain extends React.Component{
        // console.log(skils_id,"skils_id_togleeeeeeeeeeee")
 
 };
+refresh_user_data=()=>{
+    getUserData(this.props.location.state.userId).then((data)=>{
+        // console.log(data);
+        this.setState({
+            user:data
+        })
+    }).catch((e) => {
+        console.log(e,"getUserSkills")})
 
+}
 
    componentDidMount(){
 
@@ -123,7 +132,7 @@ class MyAccountMain extends React.Component{
                                 <HeaderSkillList/>
                             </div>
                             <div className="col-md-6">
-                                <UserInfo data={user}/>
+                                <UserInfo data={user} refresh={this.refresh_user_data}/>
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
                                 <Lightbox />
                             </div>

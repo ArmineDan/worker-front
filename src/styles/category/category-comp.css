@@ -424,6 +424,14 @@ button.mfp-close, button.mfp-arrow {
     border: thin solid #ff980054;
     border-radius: 22px;
 }
+span.err{
+    color: #F44336;
+    text-shadow: 1px 2px 0px #ccc4c4ba;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 14px;
+    display: block;
+}
 .row.edit-sk{
     border: thin solid #ff980054;
     border-radius: 22px;

@@ -39,23 +39,78 @@ export default function UserInfo(props) {
     const [firstName,setFirstName]= useState();
     const [lastName,setLastName]= useState();
     const [address,setAddress]= useState();
-    const [email,setEmail]= useState();
     const [mobile,setMobile]= useState();
     const [age,setAge]= useState();
+    const [err,setErr]= useState('');
     const [obj,setObj]= useState({});
 
 
     useEffect(()=>{
-
-        console.log(firstName,"fullNamefullName")
-    },[editOn,firstName,address,email,mobile,age,obj])
+    },[editOn,firstName,lastName,address,mobile,age,obj,err,props])
     const edit=(e)=>{
         e.target.classList.add('on')
         const el=document.getElementById('no');
         const focusOn=document.querySelectorAll('input')[0];
         el.classList.add('on')
         setEdit(!editOn)
+        setFirstName(props.data.firstName);
+        setLastName(props.data.lastName);
+        setAddress(props.data.address);
+        setMobile(props.data.mobile);
+        setAge(props.data.age);
         focusOn.focus()
+    }
+    const valid=(e,type)=>{
+        let value=e.target.value;
+        console.log(value,"value")
+        switch(type){
+            case 'age':
+                if(value<18 || value>=100 || isNaN(value)){
+                    setErr('Invalid Age Number, the age  should be greater then 18')
+                }
+                else{
+                    if(err){setErr('')}
+                }
+                break;
+            case 'mobile':
+             let data= value.substring(1)
+                 data=data.replace(/\s/g,'');
+                if(isNaN(data)|| data.length !== 11){
+                    setErr('Invalid mobile')
+                }
+                else{
+                    if(err){setErr('')}
+                }
+                break;
+            case 'address':
+                if(value.length<5){
+                    setErr('Invalid address')
+                }
+                else{
+                    if(err){setErr('')}
+                }
+                break;
+            case 'lastName':
+                if(value.length < 3){
+                    setErr('Invalid lastName')
+                }
+                else{
+                    if(err){setErr('')}
+                }
+                break;
+
+            case 'firstName':
+
+                if(value.length < 3){
+                    setErr('Invalid firstName')
+                }
+                else{
+                    if(err){setErr('')}
+                }
+                break;
+
+            default:
+        }
     }
     const getName=(e)=>{
         setFirstName(e.target.value)
@@ -80,13 +135,7 @@ export default function UserInfo(props) {
             address: e.target.value
         });
     }
-    const getEmail=(e)=>{
-        setEmail(e.target.value)
-        setObj({
-            ...obj,
-            email: e.target.value
-        });
-    }
+
     const getMobile=(e)=>{
         setMobile(e.target.value)
         setObj({
@@ -102,11 +151,16 @@ export default function UserInfo(props) {
         });
     }
     const save=()=>{
-
-        if(Object.keys(obj).length){
+        let mob = mobile?mobile.substring(1):'no';
+        mob=mob.replace(/\s/g,'');
+        if(Object.keys(obj).length && firstName.length > 3 && lastName.length >3 && !(isNaN(mob)|| mob.length !== 11) &&
+            !(age<18 || age>=100 || isNaN(age))&& !(address.length<5)
+        ){
            // console.log(obj,"objjjjjjjjjjjjjj")
             editUserInfo(props.data.id,obj).then(()=>{
-                setEdit(!editOn)
+                //cancel();
+                props.refresh();
+               setEdit(!editOn)
                 const el=document.getElementById('no');
                 const el1=document.getElementById('yes');
                 el.classList.remove('on')
@@ -116,6 +170,10 @@ export default function UserInfo(props) {
             })
         }
   else{
+            if(Object.keys(obj).length){
+                setErr("We can't save , because some data are missing or wrong!")
+            }
+
             console.log("obj is emptyyyy save")
         }
 
@@ -130,9 +188,9 @@ export default function UserInfo(props) {
         setFirstName('');
         setLastName('');
         setAddress('');
-        setEmail('');
         setMobile('');
         setAge('');
+        setErr("");
     }
     return (
           <div className="row clearfix  brd" >
@@ -143,42 +201,41 @@ export default function UserInfo(props) {
                   </Grid>
                  </CardContent>
                     <CardContent className={classes.width}>
+                        <span className="err">{err}</span>
                         <Typography className={classes.btBorder} gutterBottom variant="h5" component="h2">
                             My Profile
                         </Typography>
+
                         <Typography variant="body1" color="textSecondary" component="p" >
                             <span className={classes.color}>full name:</span>
-                            {!editOn?firstName?firstName:`${props.data.firstName } `:
-                                <input className="edit" size={firstName?firstName.length:`${(props.data.firstName ).length}`} value={firstName?firstName:`${props.data.firstName}`} onChange={getName} />
+                            {!editOn?`${props.data.firstName } `:
+                                <input className="edit" size={firstName.length} value={firstName} onChange={getName} onBlur={(e)=>valid(e,'firstName')} />
                             }
-                            {!editOn?lastName?lastName:` ${props.data.lastName}`:
-                                <input className="edit" value={lastName?lastName:`${props.data.lastName}`} onChange={getLastName} />
+                            {!editOn?` ${props.data.lastName}`:
+                                <input className="edit" value={lastName} onChange={getLastName} onBlur={(e)=>valid(e,'lastName')} />
                             }
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
                             <span className={classes.color}>address:</span>
-                            {!editOn?address?address:`${props.data.address}`:
-                                <input className="edit" value={address?address:`${props.data.address}`} onChange={getAddress} />
+                            {!editOn? props.data.address:
+                                <input className="edit" value={address} onChange={getAddress} onBlur={(e)=>valid(e,'address')} />
                             }
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
                             <span className={classes.color}>email:</span>
-                            {!editOn?email?email:`${props.data.email}`:
-                                <input className="edit" value={email?email:`${props.data.email}`} onChange={getEmail} />
-                            }
-
+                          {props.data.email}
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
                             <span className={classes.color}>mobile:</span>
-                            {!editOn?mobile?mobile:`${props.data.mobile}`:
-                                <input className="edit" value={mobile?mobile:`${props.data.mobile}`} onChange={getMobile} />
+                            {!editOn?props.data.mobile:
+                                <input className="edit" value={mobile} onChange={getMobile} onBlur={(e)=>valid(e,'mobile')}/>
                             }
 
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
                             <span className={classes.color}>age:</span>
-                            {!editOn?age?age:`${props.data.age}`:
-                                <input className="edit" value={age?age:`${props.data.age}`} onChange={getAge} />
+                            {!editOn?props.data.age:
+                                <input className="edit" value={age} onChange={getAge} onBlur={(e)=>valid(e,'age')} />
                             }
 
                         </Typography>

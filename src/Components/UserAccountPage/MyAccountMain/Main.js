@@ -22,25 +22,33 @@ class MyAccountMain extends React.Component{
     }
    delete_skill=(e,index)=>{
        const {skils_id}=this.state;
-
-
     removeSkillFromUserList('R0x1ZhmoJ8qL9xKcpzPZ',e).then((data)=>{
         if(data){
-
             skils_id.splice(index,1)
             this.setState({
                 skils_id
             })
-
         }
     // console.log(data,"delete_skill")
-
  }).catch((e) => {
      console.log(e,"delete_skill")})
-
-
 }
+    delete_skill_Toggle=(e)=>{
+       // console.log(e,"togleeeeeeeeeeee")
+        const {skils_id}=this.state;
+        let index=null;
+        for(let i=0; i < skils_id.length; i++){
+             if(skils_id[i]['id']=== e.id){
+                 index=i
+             }
+        }
+        skils_id.splice(index,1);
+        this.setState({
+            skils_id
+        })
+       // console.log(skils_id,"skils_id_togleeeeeeeeeeee")
 
+    }
     componentDidMount(){
         getUserData('R0x1ZhmoJ8qL9xKcpzPZ').then((data)=>{
            // console.log(data);
@@ -111,7 +119,7 @@ class MyAccountMain extends React.Component{
 
                             <div className="col-md-6">
                                 <div className="col-md-12">
-                                    <SkillList userId ={user.id} get_sub={this.get_sub}/>
+                                    <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />
                                 </div>
                             </div>
                         </div>

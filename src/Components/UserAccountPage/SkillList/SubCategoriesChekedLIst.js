@@ -47,10 +47,15 @@ export default function CheckboxList(props) {
                 .catch(function(error) {
                      //console.error("Error adding document: ", error);
                 });
-            console.log(userSkillData)
+           // console.log(userSkillData)
            // console.log(skillData)
         } else {
             newChecked.splice(currentIndex, 1);
+            const skillData = {
+                'id':value.id,
+                name:value.name
+            };
+            props.delete_skill_Toggle(skillData)
         }
 
         setChecked(newChecked);

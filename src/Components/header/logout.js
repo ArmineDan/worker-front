@@ -32,15 +32,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function Logout(props) {
   const logoutBtnClick =()=>{
-    fire.auth().signOut().then((user) =>{props.logout(false)
-console.log(user);console.log('sign out')}).catch(function(error) {
+    fire.auth().signOut().then((user) =>{
+        props.logout_user(user);
+        console.log(user);
+        console.log('sign out')}).catch(function(error) {
     // Handle Errors here.
     //const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorMessage);
-    props.logout(false)
 
-    // ...
     });
   };
 
@@ -53,7 +53,7 @@ console.log(user);console.log('sign out')}).catch(function(error) {
             <div className={classes.linkStyle}>
             <div className={classes.row}>
                <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignInImage} alt="Varpet Logo"/>
-               <Link onClick={logoutBtnClick} title="Logout">Logout</Link>
+               <Link to={'/'} onClick={logoutBtnClick} title="Logout">Logout</Link>
             </div>
             </div>
 

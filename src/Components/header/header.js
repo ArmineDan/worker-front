@@ -88,9 +88,11 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
     const classes = useStyles();
-    const  [logInOut,setLogInOut]=useState(true);
+    const  [is_user_logged_in,setLogInOut]=useState(props.user_status);
+
+
     const logout=(e)=>{
       console.log("click");
        setLogInOut(e)
@@ -98,7 +100,11 @@ export default function PrimarySearchAppBar() {
 
    }
    useEffect(() => {
-            }, [logInOut]);
+//       console.log(is_user_logged_in,"is_user_logged_in")
+      //console.log(props.user_status,"props.user_status")
+
+       setLogInOut(props.user_status)
+            }, [is_user_logged_in,props.user_status]);
     return (
 
             <div className={classes.grow}>
@@ -125,16 +131,11 @@ export default function PrimarySearchAppBar() {
 
 
                         <div className={classes.grow}/>
-                        {logInOut?
-
-
+                        {!is_user_logged_in?
                           <div>
-                        <Logout  logout={logout}/>
                         <div className={classes.row}>
                         <div className={classes.linkStyle}>
                         <div className={classes.row}>
-
-
                            <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignInImage} alt="Varpet Logo"/>
                             <Link to="/Login" title="Login">Login</Link>
                         </div>
@@ -149,8 +150,14 @@ export default function PrimarySearchAppBar() {
                         </div>
                       </div>
                       </div> :
-                      <Logout  logout={logout}/>
+                            <>
+                       <Link to={{
+                       pathname: '/my-account',
+                       state:{'userId':is_user_logged_in.uid}
+                       }} title="My Account">My Account</Link>
+                      <Logout  logout_user={logout}/>
 
+                        </>
 }
 
                         {/*    <div className={classes.sectionDesktop}>

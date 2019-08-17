@@ -62,7 +62,7 @@ export default function UserInfo(props) {
     }
     const valid=(e,type)=>{
         let value=e.target.value;
-        console.log(value,"value")
+       // console.log(value,"value")
         switch(type){
             case 'age':
                 if(value<18 || value>=100 || isNaN(value)){
@@ -174,10 +174,10 @@ export default function UserInfo(props) {
                 setErr("We can't save , because some data are missing or wrong!")
             }
 
-            console.log("obj is emptyyyy save")
+           // console.log("obj is emptyyyy save")
         }
 
-       console.log(props.data.id,"save")
+      // console.log(props.data.id,"save")
     }
     const cancel=()=>{
         const el=document.getElementById('no');

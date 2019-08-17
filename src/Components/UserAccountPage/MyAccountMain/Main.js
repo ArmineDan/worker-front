@@ -7,6 +7,7 @@ import  MySkills from './userSkilllist';
 import  Lightbox from '../../profile/lightbox';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '../../../firebase/fireManager';
+import Footer from "../../Footer/Footer";
 
 
 
@@ -95,6 +96,10 @@ refresh_user_data=()=>{
         })
         //console.log(e,"fromtaa")
     };
+    goTop=()=>{
+        window.scroll(0,0);
+        this.anim(0,"gotoTop")
+    };
 
     makeData=(e)=>{
         // console.log(e,"skizb")
@@ -110,7 +115,7 @@ refresh_user_data=()=>{
             for(let i=0; i<values.length; i++){
                 data.push(values[i][0][0]);
             }
-          console.log(data,"datadatadata");
+         // console.log(data,"datadatadata");
             this.setState({
                 skils_id:data
             })
@@ -123,7 +128,7 @@ refresh_user_data=()=>{
         const {skils_id,user}=this.state;
         return (
             <div>
-                <Header/>
+                <Header user_status={user.id}  />
             <section id="my-accont" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
                     <div className="container clearfix">
@@ -134,7 +139,7 @@ refresh_user_data=()=>{
                             <div className="col-md-6">
                                 <UserInfo data={user} refresh={this.refresh_user_data}/>
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
-                                <Lightbox />
+                                {/*<Lightbox />*/}
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
@@ -145,6 +150,12 @@ refresh_user_data=()=>{
                     </div>
                 </div>
             </section>
+                <div id="gotoTop" onClick={this.goTop}>
+                    <i className="material-icons" style={{top: '6px', position: 'relative'}}>
+                        keyboard_arrow_up
+                    </i>
+                </div>
+                <Footer/>
             </div>
         );
     }

@@ -73,7 +73,7 @@ class Categories extends React.Component{
     const promises=[];
     let i=0;
     while(i<e.length){
-        promises.push(getUserData(e[i]))
+        promises.push(getUserData(e[i]));
     i++;
     }
      Promise.all(promises).then(values => {

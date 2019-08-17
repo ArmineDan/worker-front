@@ -26,7 +26,7 @@ const route=(
     <Route exact path="/" component ={App}/>
     <Route path="/login/" component={login} marginRight='200px'/>
     <Route path="/register/" component={register}/>
-      <Route path="/my-account/" component={MyAccountMain}/>
+      <Route path="/my-account" component={MyAccountMain}/>
   </Router>
 </MuiThemeProvider>
 

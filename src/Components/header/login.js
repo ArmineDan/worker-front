@@ -45,14 +45,14 @@ class Login extends React.Component{
             loginBtnClick =()=>{
                 fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                     .then((user)=>{
-                        console.log(user.user.uid);
+                       // console.log(user.user.uid);
                         console.log('sign in');
                         this.setState({
                             userId : user.user.uid,
                             signIn : true,
                             linkName:'/my-account'
                         });
-                        console.log(this.state.linkName);
+                       // console.log(this.state.linkName);
                         this.props.history.push({
                             pathname: '/my-account',
                             state:{'userId':this.state.userId}

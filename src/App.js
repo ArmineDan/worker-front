@@ -23,6 +23,7 @@ class App extends React.Component{
             users:[],
             show_user_details:false,
             current_user:[],
+            user_status:null
 
 
         };
@@ -74,20 +75,24 @@ class App extends React.Component{
 componentDidUpdate(){
     window.addEventListener("scroll",()=>{
         window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
-        fire.auth().onAuthStateChanged((user) => {
-           if (user) {
-               console.log(user,"user")
-           } else {
-               console.log(user,"elsee")
-           }
-   })
-      })
+             })
+    fire.auth().onAuthStateChanged((user) => {
+        if (user) {
+            console.log(user,"user")
+        } else {
+            console.log(user,"elsee")
+        }
+    })
 
     };
+
 
     componentDidMount(){
        fire.auth().onAuthStateChanged((user) => {
            if (user) {
+               this.setState({
+                   user_status:user
+               })
                console.log(user,"user")
            } else {
                console.log(user,"elsee")
@@ -96,7 +101,7 @@ componentDidUpdate(){
    }
 
 render(){
-    const {open_users_list, users, show_user_details,current_user}=this.state;
+    const {open_users_list, users, show_user_details,current_user,user_status}=this.state;
     const draw_users=users.length?users.map((item,index)=>{
             return (
                 <MediaCard key={index} users_list={item} open_user_details={this.showUsers_Details}/>
@@ -105,7 +110,7 @@ render(){
     return (
         <div className="App">
              <header className="App-header">
-                <PrimarySearchAppBar/>
+                <PrimarySearchAppBar  user_status={user_status} />
                 <Categories showUsers_Lists={this.showUsers}/>
                 {open_users_list?
                     <section id="masters" style={{marginBottom: '0px'}}>

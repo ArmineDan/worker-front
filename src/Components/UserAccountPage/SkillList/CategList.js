@@ -71,7 +71,7 @@ export default function SkillList(props) {
         // code to run on component mount
         getActiveCategories().then(data => {
             let newData = data.splice(-1,1);
-            console.log(newData );
+          //  console.log(newData );
                 setData(data);
                 setLoading(true);
            // console.log(data,'cattttttttttttt')

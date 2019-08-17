@@ -7,7 +7,8 @@ import PrimarySearchAppBar from './Components/header/header';
 import Footer from './Components/Footer/Footer';
 import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
-import firebase from 'firebase'
+import {fire} from './firebase/fire';
+
 //import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
 
 
@@ -73,8 +74,27 @@ class App extends React.Component{
 componentDidUpdate(){
     window.addEventListener("scroll",()=>{
         window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+        fire.auth().onAuthStateChanged((user) => {
+           if (user) {
+               console.log(user,"user")
+           } else {
+               console.log(user,"elsee")
+           }
+   })
       })
-}
+
+    };
+
+    componentDidMount(){
+       fire.auth().onAuthStateChanged((user) => {
+           if (user) {
+               console.log(user,"user")
+           } else {
+               console.log(user,"elsee")
+           }
+   })
+   }
+
 render(){
     const {open_users_list, users, show_user_details,current_user}=this.state;
     const draw_users=users.length?users.map((item,index)=>{

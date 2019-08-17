@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,6 +8,7 @@ import image from './logo-var.png';
 import SignInImage from "./SignInImage.svg"
 import SignUpImage from "./SignUp.svg"
 import {Link} from "react-router-dom";
+import Logout from "./logout"
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -89,7 +90,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
+    const  [logInOut,setLogInOut]=useState(true);
+    const logout=(e)=>{
+      console.log("click");
+       setLogInOut(e)
+       console.log("click");
 
+   }
+   useEffect(() => {
+            }, [logInOut]);
     return (
 
             <div className={classes.grow}>
@@ -116,6 +125,12 @@ export default function PrimarySearchAppBar() {
 
 
                         <div className={classes.grow}/>
+                        {logInOut?
+
+
+                          <div>
+                        <Logout  logout={logout}/>
+                        <div className={classes.row}>
                         <div className={classes.linkStyle}>
                         <div className={classes.row}>
 
@@ -125,13 +140,18 @@ export default function PrimarySearchAppBar() {
                         </div>
                           </div>
 
-                        <span style={{color: '#d46402'}}>|</span>
+                        <span style={{color: '#d46402', paddingTop: '15px'}}>|</span>
                         <div className={classes.linkStyle}>
                           <div className={classes.row}>
                            <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignUpImage} alt="Varpet Logo"/>
                             <Link to="/register" title="Register">Register</Link>
                         </div>
                         </div>
+                      </div>
+                      </div> :
+                      <Logout  logout={logout}/>
+
+}
 
                         {/*    <div className={classes.sectionDesktop}>
 

@@ -10,6 +10,8 @@ import {fire} from '../../firebase/fire';
 import {myStyles} from './iconbuttonstyle';
 import Header from "./header";
 import workerImage from './worker.png'
+import {connect} from 'react-redux';
+
 
 
 
@@ -39,20 +41,26 @@ class Login extends React.Component{
                     linkName:'/login'
                 }
             }
+
             handleChange = (e) =>{
                 this.setState({[e.target.name]: e.target.value});
             };
             loginBtnClick =()=>{
+                const self=this;
                 fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                     .then((user)=>{
                        // console.log(user.user.uid);
+                        self.props.set_user_status(user)
+
                         console.log('sign in');
                         this.setState({
                             userId : user.user.uid,
                             signIn : true,
                             linkName:'/my-account'
                         });
+
                        // console.log(this.state.linkName);
+
                         this.props.history.push({
                             pathname: '/my-account',
                             state:{'userId':this.state.userId}
@@ -72,6 +80,7 @@ class Login extends React.Component{
             render() {
              return(
                <div>
+
                    <Header/>
                        < div className = "loginDiv" >
                        < img src ={workerImage} alt ="worker.png" style={myStyles.worker}/>
@@ -108,6 +117,18 @@ class Login extends React.Component{
 
         }
 
+const store = store => ({
 
-export default Login;
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(Login)
+
+
 

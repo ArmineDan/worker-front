@@ -1,10 +1,9 @@
-import React, {useState,useEffect} from 'react';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import React, {useEffect} from 'react';
 import {fire} from '../../firebase/fire';
-import Header from "./header";
 import SignInImage from "./SignInImage.svg"
 import {Link} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
+import {connect} from 'react-redux';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,17 +28,16 @@ const useStyles = makeStyles(theme => ({
 
 
 
-
-export default function Logout(props) {
+ function Logout(props) {
   const logoutBtnClick =()=>{
+
     fire.auth().signOut().then((user) =>{
-        props.logout_user(user);
-        console.log(user);
-        console.log('sign out')}).catch(function(error) {
-    // Handle Errors here.
-    //const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage);
+        props.set_user_status(false)
+        //console.log(user);
+        //console.log('sign out')
+    }).catch(function(error) {
+   // const errorMessage = error.message;
+    //console.log(errorMessage);
 
     });
   };
@@ -59,3 +57,17 @@ export default function Logout(props) {
 
           );
       }
+
+
+const store = store => ({
+
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(Logout)

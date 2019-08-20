@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7ce8733-676b-42af-a46a-43bad85c08c8" name="Default" comment="">
+    <list default="true" id="f7ce8733-676b-42af-a46a-43bad85c08c8" name="Default" comment="create component for portfolio,works with others categories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/uploadUsersWorksImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/uploadUsersWorksImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/header/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/skillListStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/skillListStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/SubCategoriesChekedLIst.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/SubCategoriesChekedLIst.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,10 +22,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="142" column="91" selection-start-line="142" selection-start-column="91" selection-end-line="142" selection-end-column="91" />
+            <state relative-caret-position="3176">
+              <caret line="144" column="165" selection-start-line="144" selection-start-column="165" selection-end-line="144" selection-end-column="165" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/skillistHeader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-73">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,14 +64,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="79" column="14" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+            <state relative-caret-position="79">
+              <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/SubCategoriesChekedLIst.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -76,6 +106,15 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -159,20 +198,21 @@
         <option value="$PROJECT_DIR$/src/Components/profile/profile.js" />
         <option value="$PROJECT_DIR$/src/styles/my-Account/style.css" />
         <option value="$PROJECT_DIR$/src/styles/AvatarStyle.css" />
-        <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js" />
-        <option value="$PROJECT_DIR$/src/firebase/fireManager.js" />
         <option value="$PROJECT_DIR$/src/Components/header/login.js" />
         <option value="$PROJECT_DIR$/src/Components/header/iconbuttonstyle.js" />
         <option value="$PROJECT_DIR$/src/styles/category/category-comp.css" />
         <option value="$PROJECT_DIR$/src/Components/header/register.js" />
-        <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" />
         <option value="$PROJECT_DIR$/src/styles/skillListStyle.css" />
         <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userInfo.js" />
         <option value="$PROJECT_DIR$/src/Components/header/header.js" />
         <option value="$PROJECT_DIR$/src/Components/UserAccountPage/uploadUsersWorksImage.js" />
         <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/imgZoom.js" />
         <option value="$PROJECT_DIR$/src/styles/my-Account/imageStyles/worksImageStyle.css" />
+        <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js" />
+        <option value="$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js" />
         <option value="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js" />
+        <option value="$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/SubCategoriesChekedLIst.js" />
+        <option value="$PROJECT_DIR$/src/firebase/fireManager.js" />
       </list>
     </option>
   </component>
@@ -217,7 +257,21 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
               <item name="UserAccountPage" type="462c0819:PsiDirectoryNode" />
+              <item name="MyAccountMain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="worker-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="worker-front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="UserAccountPage" type="462c0819:PsiDirectoryNode" />
               <item name="SkillList" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="worker-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="worker-front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="firebase" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="worker-front" type="b2602c69:ProjectViewProjectNode" />
@@ -321,7 +375,7 @@
       <workItem from="1565425592362" duration="1930000" />
       <workItem from="1565468427383" duration="25836000" />
       <workItem from="1565796780859" duration="15451000" />
-      <workItem from="1566139807547" duration="59037000" />
+      <workItem from="1566139807547" duration="63668000" />
     </task>
     <task id="LOCAL-00002" summary="add others input and connect it with firebase, some css">
       <created>1565816149060</created>
@@ -330,20 +384,27 @@
       <option name="project" value="LOCAL" />
       <updated>1565816149060</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="create component for portfolio,works with others categories">
+      <created>1566292199252</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566292199252</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258884000" />
+    <option name="totallyTimeSpent" value="263515000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" weight="0.24968314" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2157738" />
+      <window_info content_ui="combo" id="Project" order="3" weight="0.2157738" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -364,12 +425,12 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" weight="0.24968314" />
-      <window_info content_ui="combo" id="Project" order="3" weight="0.29605263" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2157738" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" visible="true" weight="0.05464481" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.05464481" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
       <window_info anchor="bottom" id="Run" order="7" />
@@ -388,7 +449,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changes UploadImage some functions, change register state" />
     <MESSAGE value="add others input and connect it with firebase, some css" />
-    <option name="LAST_COMMIT_MESSAGE" value="add others input and connect it with firebase, some css" />
+    <MESSAGE value="create component for portfolio,works with others categories" />
+    <option name="LAST_COMMIT_MESSAGE" value="create component for portfolio,works with others categories" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Documents/elkar/demos/construction.css" />
@@ -483,16 +545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/skillistHeader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/my-Account/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -524,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
-          <caret line="117" column="17" selection-start-line="116" selection-end-line="123" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-photo-gallery/dist/react-photo-gallery.umd.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -559,13 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/SubCategoriesChekedLIst.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -606,16 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -652,16 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="142" column="91" selection-start-line="142" selection-start-column="91" selection-end-line="142" selection-end-column="91" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -730,13 +748,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/skillistHeader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-73">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/userSkilllist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/CategList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="79" column="14" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+        <state relative-caret-position="79">
+          <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/SkillList/SubCategoriesChekedLIst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/UserAccountPage/MyAccountMain/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3176">
+          <caret line="144" column="165" selection-start-line="144" selection-start-column="165" selection-end-line="144" selection-end-column="165" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/firebase/fireManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
         </state>
       </provider>
     </entry>

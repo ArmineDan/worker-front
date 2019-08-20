@@ -4,13 +4,10 @@ import  Header from '../../header/header';
 import  UserInfo from './userInfo';
 import  HeaderSkillList from './skillistHeader';
 import  MySkills from './userSkilllist';
-import  Lightbox from '../../profile/lightbox';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '../../../firebase/fireManager';
 import Footer from "../../Footer/Footer";
 import UploadWorksImage from "../uploadUsersWorksImage";
-
-
 
 
 
@@ -61,7 +58,7 @@ refresh_user_data=()=>{
     }).catch((e) => {
         console.log(e,"getUserSkills")})
 
-}
+};
 
    componentDidMount(){
 
@@ -145,7 +142,7 @@ refresh_user_data=()=>{
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
-                                    <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />
+                                    { user.id ? <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />:<span> </span>}
                                 </div>
                             </div>
                         </div>

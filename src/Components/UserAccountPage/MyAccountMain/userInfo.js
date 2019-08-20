@@ -46,20 +46,20 @@ export default function UserInfo(props) {
 
 
     useEffect(()=>{
-    },[editOn,firstName,lastName,address,mobile,age,obj,err,props])
+    },[editOn,firstName,lastName,address,mobile,age,obj,err,props]);
     const edit=(e)=>{
-        e.target.classList.add('on')
+        e.target.classList.add('on');
         const el=document.getElementById('no');
         const focusOn=document.querySelectorAll('input')[0];
-        el.classList.add('on')
-        setEdit(!editOn)
+        el.classList.add('on');
+        setEdit(!editOn);
         setFirstName(props.data.firstName);
         setLastName(props.data.lastName);
         setAddress(props.data.address);
         setMobile(props.data.mobile);
         setAge(props.data.age);
         focusOn.focus()
-    }
+    };
     const valid=(e,type)=>{
         let value=e.target.value;
        // console.log(value,"value")
@@ -73,7 +73,7 @@ export default function UserInfo(props) {
                 }
                 break;
             case 'mobile':
-             let data= value.substring(1)
+             let data= value.substring(1);
                  data=data.replace(/\s/g,'');
                 if(isNaN(data)|| data.length !== 11){
                     setErr('Invalid mobile')
@@ -111,45 +111,45 @@ export default function UserInfo(props) {
 
             default:
         }
-    }
+    };
     const getName=(e)=>{
-        setFirstName(e.target.value)
+        setFirstName(e.target.value);
 
         setObj({
             ...obj,
             firstName: e.target.value
         });
-    }
+    };
     const getLastName=(e)=>{
-        setLastName(e.target.value)
+        setLastName(e.target.value);
 
         setObj({
             ...obj,
             lastName: e.target.value
         });
-    }
+    };
     const getAddress=(e)=>{
-        setAddress(e.target.value)
+        setAddress(e.target.value);
         setObj({
             ...obj,
             address: e.target.value
         });
-    }
+    };
 
     const getMobile=(e)=>{
-        setMobile(e.target.value)
+        setMobile(e.target.value);
         setObj({
             ...obj,
             mobile: e.target.value
         });
-    }
+    };
     const getAge=(e)=>{
-        setAge(e.target.value)
+        setAge(e.target.value);
         setObj({
             ...obj,
             age: e.target.value
         });
-    }
+    };
     const save=()=>{
         let mob = mobile?mobile.substring(1):'no';
         mob=mob.replace(/\s/g,'');
@@ -160,10 +160,10 @@ export default function UserInfo(props) {
             editUserInfo(props.data.id,obj).then(()=>{
                 //cancel();
                 props.refresh();
-               setEdit(!editOn)
+               setEdit(!editOn);
                 const el=document.getElementById('no');
                 const el1=document.getElementById('yes');
-                el.classList.remove('on')
+                el.classList.remove('on');
                 el1.classList.remove('on')
             }).catch((e)=>{
                 console.log(e,"edit-error")
@@ -178,20 +178,20 @@ export default function UserInfo(props) {
         }
 
       // console.log(props.data.id,"save")
-    }
+    };
     const cancel=()=>{
         const el=document.getElementById('no');
         const el1=document.getElementById('yes');
-        el.classList.remove('on')
-        el1.classList.remove('on')
-        setEdit(!editOn)
+        el.classList.remove('on');
+        el1.classList.remove('on');
+        setEdit(!editOn);
         setFirstName('');
         setLastName('');
         setAddress('');
         setMobile('');
         setAge('');
         setErr("");
-    }
+    };
     return (
           <div className="row clearfix  brd" >
               <div id='yes' className="edit" title="Save" onClick={!editOn?edit:save}/> <div id="no" className="no" title="Cancel" onClick={editOn?cancel:null}/>

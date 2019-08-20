@@ -95,10 +95,10 @@ export default function PrimarySearchAppBar(props) {
 
     const logout=(e)=>{
       console.log("click");
-       setLogInOut(e)
+       setLogInOut(e);
        console.log("click");
 
-   }
+   };
    useEffect(() => {
 //       console.log(is_user_logged_in,"is_user_logged_in")
       //console.log(props.user_status,"props.user_status")

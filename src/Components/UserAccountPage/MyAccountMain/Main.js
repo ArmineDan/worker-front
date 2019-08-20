@@ -8,6 +8,7 @@ import  Lightbox from '../../profile/lightbox';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '../../../firebase/fireManager';
 import Footer from "../../Footer/Footer";
+import UploadWorksImage from "../uploadUsersWorksImage";
 
 
 
@@ -139,7 +140,8 @@ refresh_user_data=()=>{
                             <div className="col-md-6">
                                 <UserInfo data={user} refresh={this.refresh_user_data}/>
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
-                                {/*<Lightbox />*/}
+                                {user.id? <UploadWorksImage userId ={user.id} url={user.url}/>:<span> </span>}
+
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
@@ -149,6 +151,7 @@ refresh_user_data=()=>{
                         </div>
                     </div>
                 </div>
+
             </section>
                 <div id="gotoTop" onClick={this.goTop}>
                     <i className="material-icons" style={{top: '6px', position: 'relative'}}>

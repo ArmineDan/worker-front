@@ -70,7 +70,14 @@ export default function SkillList(props) {
     useEffect(() => {
         // code to run on component mount
         getActiveCategories().then(data => {
-            let newData = data.splice(-1,1);
+            debugger;
+            data.map( (value , index ) => {
+                if(value.id === '8.Others'){
+                    data.splice(index,1);
+                }
+                            } );
+            console.log(data);
+            //let newData = data.splice(-1,1);
           //  console.log(newData );
                 setData(data);
                 setLoading(true);

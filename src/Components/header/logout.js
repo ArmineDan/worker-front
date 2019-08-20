@@ -3,13 +3,17 @@ import {fire} from '../../firebase/fire';
 import SignInImage from "./SignInImage.svg"
 import {Link} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
+import LogoutImg from "./Logout.svg";
 import {connect} from 'react-redux';
+
 
 
 const useStyles = makeStyles(theme => ({
   linkStyle: {
       fontSize: "18px!important",
-      margin: "16px!important",
+      margin: "8px!important",
+      color: "white!important",
+      textShadow: "0px 3px 5px #0e090096",
   },
 
   grow: {
@@ -22,7 +26,21 @@ const useStyles = makeStyles(theme => ({
   {
       display: "flex",
       flexDirection: "row",
+  },
+
+  headerIcon:
+  {
+    width: "26px",
+    display: "block",
+    marginRight: '5px'
+  },
+
+  headerLink:
+  {
+    color: "white!important",
+    textShadow: "0px 3px 5px #0e090096",
   }
+
 
   }));
 
@@ -50,8 +68,8 @@ const useStyles = makeStyles(theme => ({
 
             <div className={classes.linkStyle}>
             <div className={classes.row}>
-               <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignInImage} alt="Varpet Logo"/>
-               <Link to={'/'} onClick={logoutBtnClick} title="Logout">Logout</Link>
+               <img style={{width: "26px", display: "block", marginRight: '5px'}} src={LogoutImg} alt="Logout icon"/>
+               <Link className={classes.linkStyle} to={'/'} onClick={logoutBtnClick} title="Logout">Logout</Link>
             </div>
             </div>
 

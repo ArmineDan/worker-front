@@ -4,15 +4,24 @@ export function getActiveCategories() {
     return new Promise((resolve, reject)=>{
         db.collection('Categories').where("status", "==", true).get().then((snapshot)=>{
             const data = [];
-
+            let others=null;
             snapshot.docs.forEach(doc=>{
-                const obj={...doc.data(),id:doc.id};
-                data.push(obj);
+
+
+                if (doc.id !=='8.Others'){
+                    const obj={...doc.data(),id:doc.id};
+                    data.push(obj);
+                }
+                else{
+                    others={...doc.data(),id:doc.id};
+                }
+
               // id.push(doc.id);
                // console.log(doc.data())
             });
-           resolve(data)
 
+            data.push(others);
+            resolve(data);
         }).catch(e=> reject(e));
     })
 }
@@ -41,6 +50,7 @@ export function getUsers_IdBySkills(skill_id) {
             snapshot.docs.forEach(doc => {
                 data.push(doc.data()['user-id'])
             });
+
 
             resolve(data)
 
@@ -136,7 +146,10 @@ export function getSkillsData(skill_id) {
             const promises=[];
             let i=0;
             while(i<data.length){
-                promises.push(getAllSkills(data[i],skill_id))
+
+                    promises.push(getAllSkills(data[i],skill_id))
+
+
                 i++;
             }
             Promise.all(promises).then(values => {

@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,9 +8,9 @@ import image from './logo-var.png';
 import SignInImage from "./SignInImage.svg"
 import SignUpImage from "./SignUp.svg"
 import {Link} from "react-router-dom";
-import Logout from "./logout"
+import Logout from "./logout";
+import {connect} from 'react-redux';
 import AccountImg from "./Account.svg"
-
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
         width: "200px",
         minWidth: '120px',
         [theme.breakpoints.up('md')]: {
-             width:'176px'
+             width:'200px'
 },
     },
 
@@ -103,26 +103,15 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function PrimarySearchAppBar(props) {
+function PrimarySearchAppBar(props) {
     const classes = useStyles();
-    const  [is_user_logged_in,setLogInOut]=useState(props.user_status);
+    useEffect(() => {
 
-
-    const logout=(e)=>{
-      console.log("click");
-       setLogInOut(e)
-       console.log("click");
-
-   }
-   useEffect(() => {
-//       console.log(is_user_logged_in,"is_user_logged_in")
-      //console.log(props.user_status,"props.user_status")
-
-       setLogInOut(props.user_status)
-            }, [is_user_logged_in,props.user_status]);
+            }, [props.user_status]);
     return (
 
             <div className={classes.grow}>
+
                 <AppBar position="static">
                     <Toolbar className={classes.padding}>
                         <div className={classes.imgDiv}>
@@ -146,7 +135,7 @@ export default function PrimarySearchAppBar(props) {
 
 
                         <div className={classes.grow}/>
-                        {!is_user_logged_in?
+                        {!props.is_login?
                           <div>
                         <div className={classes.row}>
                         <div className={classes.linkStyle}>
@@ -166,6 +155,7 @@ export default function PrimarySearchAppBar(props) {
                       </div>
                       </div> :
                             <>
+
                       <div className={classes.linkStyle}>
                           <div className={classes.row}>
                              <img style={{height: "23px"}}className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
@@ -179,6 +169,7 @@ export default function PrimarySearchAppBar(props) {
 
                       <Logout logout_user={logout}/>
 
+
                         </>
 }
 
@@ -188,3 +179,16 @@ export default function PrimarySearchAppBar(props) {
 
     );
 }
+
+const store = store => ({
+    is_login: store.user_status,
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(PrimarySearchAppBar)

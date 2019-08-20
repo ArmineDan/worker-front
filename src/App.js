@@ -8,6 +8,7 @@ import Footer from './Components/Footer/Footer';
 import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
 import {fire} from './firebase/fire';
+import {connect} from 'react-redux';
 
 //import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
 
@@ -74,10 +75,11 @@ class App extends React.Component{
 
 componentDidUpdate(){
     window.addEventListener("scroll",()=>{
-        window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+        window.pageYOffset>150? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
              })
     fire.auth().onAuthStateChanged((user) => {
         if (user) {
+            this.props.set_user_status(user)
             console.log(user,"user")
         } else {
             console.log(user,"elsee")
@@ -90,10 +92,8 @@ componentDidUpdate(){
     componentDidMount(){
        fire.auth().onAuthStateChanged((user) => {
            if (user) {
-               this.setState({
-                   user_status:user
-               })
-               console.log(user,"user")
+               this.props.set_user_status(user)
+            //console.log(user,"user")
            } else {
                console.log(user,"elsee")
            }
@@ -144,4 +144,16 @@ render(){
 }
 }
 
-export default App;
+const store = store => ({
+
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(App)
+

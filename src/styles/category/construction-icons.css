@@ -477,4 +477,7 @@
 .icon-others:before {
 	content: "...";
 }
+.icon-email2:before {
+	content: "\e662";
+}
 

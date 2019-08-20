@@ -29,9 +29,9 @@ class Categories extends React.Component{
                let key= data[i].id;
                 nav[key]=data[i].name
             }
-           // console.log(nav," navvv");
+         //console.log(nav," navvv");
             this.setState({items:data});
-           // console.log(data,"datadatadata")
+         //console.log(data,"datadatadata")
         });
     }
 
@@ -85,10 +85,20 @@ class Categories extends React.Component{
      }
 
 
-
+    others=(e)=>{
+        e.stopPropagation();
+      //  this.showUsers('8.Others')
+        getUsers_IdBySkills('8.Others').then((data)=>{
+            console.log(data,"others_data")
+            this.makeData(data)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
 
     openSubCategories=(e,id)=>{
        e.stopPropagation();
+       this.props.showUsers_Lists(false, [])
         let cat_id;
         cat_id=e.target.getAttribute('data-id')
        // console.log(cat_id,"cat_id")
@@ -125,11 +135,11 @@ class Categories extends React.Component{
             return(
                     <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div  data-id={item.id} className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder cat"
-                             onClick={(e)=>{this.openSubCategories(e)}}>
-                            <div className="fbox-icon" data-id={item.id}  onClick={(e)=>{this.openSubCategories(e)}}>
-                                <i className={item.icon_class} data-id={item.id} onClick={(e)=>{this.openSubCategories(e)}} />
+                             onClick={item.id !== '8.Others'?(e)=>{ this.openSubCategories(e)}:this.others}>
+                            <div className="fbox-icon" data-id={item.id}  onClick={item.id !== '8.Others'?(e)=>{ this.openSubCategories(e)}:this.others}>
+                                <i className={item.icon_class} data-id={item.id} onClick={item.id !== '8.Others'?(e)=>{ this.openSubCategories(e)}:this.others} />
                             </div>
-                            <span className="pointer" data-id={item.id}  onClick={(e)=>{this.openSubCategories(e)}}><h3 data-id={item.id}  onClick={(e)=>{this.openSubCategories(e)}}>{item.name}</h3></span>
+                            <span className="pointer" data-id={item.id}  onClick={item.id !== '8.Others'?(e)=>{ this.openSubCategories(e)}:this.others}><h3 data-id={item.id}  onClick={item.id !== '8.Others'?(e)=>{ this.openSubCategories(e)}:this.others}>{item.name}</h3></span>
                         </div>
                     </div>
             )

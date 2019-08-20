@@ -10,7 +10,7 @@ import Done from '@material-ui/icons/Done';
 import '../../../styles/skillListStyle.css';
 import CheckboxList from './SubCategoriesChekedLIst';
 import {useState, useEffect} from 'react';
-import {getActiveCategories} from "../../../firebase/fireManager";
+import {getActiveCategories,getUserSkills} from "../../../firebase/fireManager";
 import {db} from "../../../firebase/fire";
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,6 +30,7 @@ export default function SkillList(props) {
     const [openIds, setOpen] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [otherSkillName, setOtherSkill] = useState();
+    const [skills, setSkills] = useState();
     const addOtherSkill = (e)=>{
         //console.log(e.target.value);
         setInputValue(e.target.value);
@@ -70,8 +71,16 @@ export default function SkillList(props) {
     useEffect(() => {
         // code to run on component mount
         getActiveCategories().then(data => {
-            let newData = data.splice(-1,1);
-          //  console.log(newData );
+            data.map( (value , index ) => {
+                if(value.id === '8.Others'){
+                    data.splice(index,1);
+                }
+                            } );
+            console.log(props.userId,"iiiiiiiiiiddddddddddd");
+            getUserSkills(props.userId).then(skill=> {
+                    setSkills(skill);
+                }
+            );
                 setData(data);
                 setLoading(true);
            // console.log(data,'cattttttttttttt')
@@ -96,7 +105,7 @@ export default function SkillList(props) {
                             </ListItem>
                             <Collapse in={openIds.indexOf(value.id) !== -1} timeout="auto" unmountOnExit>
                                 <List  component="div" disablePadding>
-                                     <CheckboxList   catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
+                                     <CheckboxList   skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
                                 </List>
                             </Collapse>
                         </List>

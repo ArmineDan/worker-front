@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,7 +8,9 @@ import image from './logo-var.png';
 import SignInImage from "./SignInImage.svg"
 import SignUpImage from "./SignUp.svg"
 import {Link} from "react-router-dom";
-import Logout from "./logout"
+import Logout from "./logout";
+import {connect} from 'react-redux';
+import AccountImg from "./Account.svg"
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -57,7 +59,7 @@ const useStyles = makeStyles(theme => ({
           width:'38vw'
         },
         [theme.breakpoints.up('lg')]: {
-            width:'850px',
+            width:'750px',
 
         },
     },
@@ -66,7 +68,7 @@ const useStyles = makeStyles(theme => ({
         width: "200px",
         minWidth: '120px',
         [theme.breakpoints.up('md')]: {
-             width:'176px'
+             width:'200px'
 },
     },
 
@@ -84,30 +86,32 @@ const useStyles = makeStyles(theme => ({
     {
         display: "flex",
         flexDirection: "row",
-    }
+    },
+
+  headerIcon:
+  {
+    width: "26px",
+    display: "block",
+    marginRight: '5px'
+  },
+
+  headerLink:
+  {
+    color: "white!important",
+    textShadow: "0px 3px 5px #0e090096",
+  }
 
 }));
 
-export default function PrimarySearchAppBar(props) {
+function PrimarySearchAppBar(props) {
     const classes = useStyles();
-    const  [is_user_logged_in,setLogInOut]=useState(props.user_status);
+    useEffect(() => {
+            }, [props.user_status]);
 
-
-    const logout=(e)=>{
-      console.log("click");
-       setLogInOut(e)
-       console.log("click");
-
-   }
-   useEffect(() => {
-//       console.log(is_user_logged_in,"is_user_logged_in")
-      //console.log(props.user_status,"props.user_status")
-
-       setLogInOut(props.user_status)
-            }, [is_user_logged_in,props.user_status]);
     return (
 
             <div className={classes.grow}>
+
                 <AppBar position="static">
                     <Toolbar className={classes.padding}>
                         <div className={classes.imgDiv}>
@@ -131,64 +135,60 @@ export default function PrimarySearchAppBar(props) {
 
 
                         <div className={classes.grow}/>
-                        {!is_user_logged_in?
+                        {!props.is_login?
                           <div>
                         <div className={classes.row}>
                         <div className={classes.linkStyle}>
                         <div className={classes.row}>
-                           <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignInImage} alt="Varpet Logo"/>
-                            <Link to="/Login" title="Login">Login</Link>
+                           <img className={classes.headerIcon} src={SignInImage} alt="Login Icon"/>
+                        <Link className={classes.headerLink} to="/Login" title="Login">Login</Link>
                         </div>
                           </div>
 
                         <span style={{color: '#d46402', paddingTop: '15px'}}>|</span>
                         <div className={classes.linkStyle}>
                           <div className={classes.row}>
-                           <img style={{width: "26px", display: "block", marginRight: '5px'}} src={SignUpImage} alt="Varpet Logo"/>
-                            <Link to="/register" title="Register">Register</Link>
+                           <img className={classes.headerIcon} src={SignUpImage} alt="Register Icon"/>
+                            <Link className={classes.headerLink} to="/register" title="Register">Register</Link>
                         </div>
                         </div>
                       </div>
                       </div> :
                             <>
-                       <Link to={{
-                       pathname: '/my-account',
-                       state:{'userId':is_user_logged_in.uid}
-                       }} title="My Account">My Account</Link>
-                      <Logout  logout_user={logout}/>
+
+                      <div className={classes.linkStyle}>
+                          <div className={classes.row}>
+                             <img style={{height: "23px"}}className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
+                             <Link className={classes.headerLink} to={{
+                             pathname: '/my-account',
+                             state:{'userId':is_user_logged_in.uid}
+                             }} title="My Account">My Account</Link>
+                          </div>
+                        </div>
+                        <span style={{color: '#d46402'}}>|</span>
+
+                      <Logout logout_user={logout}/>
+
 
                         </>
 }
 
-                        {/*    <div className={classes.sectionDesktop}>
-
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-*/}
                     </Toolbar>
                 </AppBar>
             </div>
 
     );
 }
+
+const store = store => ({
+    is_login: store.user_status,
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(PrimarySearchAppBar)

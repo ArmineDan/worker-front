@@ -7,7 +7,12 @@ import  MySkills from './userSkilllist';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '../../../firebase/fireManager';
 import Footer from "../../Footer/Footer";
+import {fire} from '../../../firebase/fire';
+import Loader from '../../../loader';
+import {connect} from 'react-redux';
 import UploadWorksImage from "../uploadUsersWorksImage";
+
+
 
 
 
@@ -16,7 +21,8 @@ class MyAccountMain extends React.Component{
         super(props);
         this.state = {
         skils_id:[],
-            user:[],
+        user:[],
+        show_loading:false
         };
     }
    delete_skill=(e,index)=>{
@@ -61,6 +67,15 @@ refresh_user_data=()=>{
 };
 
    componentDidMount(){
+       fire.auth().onAuthStateChanged((user) => {
+           if (user) {
+               this.props.set_user_status(user);
+
+           } else {
+               console.log(user,"elsee")
+           }
+       })
+
 
        if(this.props.location.state){
            getUserData(this.props.location.state.userId).then((data)=>{
@@ -70,9 +85,17 @@ refresh_user_data=()=>{
                })
            }).catch((e) => {
                console.log(e,"getUserData")});
+
            getUserSkills(this.props.location.state.userId).then((data)=>{
-               //console.log(data,'data')
-               this.makeData(data)
+                if(data.includes('8.Others')){
+                    const data_filter=data.filter((el)=>el!=='8.Others')
+                    this.makeData(data_filter,'8.Others')
+                }
+                else{
+                    this.makeData(data)
+               }
+           //console.log(data,'data-getUserSkills')
+
            }).catch((e) => {
                console.log(e,"getUserSkills")})
        }
@@ -98,10 +121,15 @@ refresh_user_data=()=>{
         window.scroll(0,0);
         this.anim(0,"gotoTop")
     };
-
-    makeData=(e)=>{
+    anim=(type, id )=>{
+        const elem = document.getElementById(id);
+        elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
+        elem.style.opacity=type;
+        elem.style.zIndex=type?1190:-1;
+    }
+    makeData=(e,d)=>{
         // console.log(e,"skizb")
-
+          const have_others_skill=d;
         const promises=[];
         let i=0;
         while(i<e.length){
@@ -114,18 +142,40 @@ refresh_user_data=()=>{
                 data.push(values[i][0][0]);
             }
          // console.log(data,"datadatadata");
+            if(have_others_skill){
+                data.push({name:'Others',id:'8.Others'});
+            }
+
             this.setState({
-                skils_id:data
+                skils_id:data,
+
             })
+            setTimeout(()=>{
+
+                this.setState({
+                    show_loading:true
+                })
+            },0)
 
         }).catch((e) => {
             console.log(e,"value")})
     };
 
+    componentDidUpdate(){
+        window.addEventListener("scroll",()=>{
+            window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+        })
+
+
+
+    };
+
+
     render(){
-        const {skils_id,user}=this.state;
+        const {skils_id,user,show_loading}=this.state;
         return (
             <div>
+                {!show_loading?<Loader/>:<>
                 <Header user_status={user.id}  />
             <section id="my-accont" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
@@ -155,10 +205,25 @@ refresh_user_data=()=>{
                         keyboard_arrow_up
                     </i>
                 </div>
-                <Footer/>
+                <Footer/></>
+                }
             </div>
         );
     }
 }
 
-export default MyAccountMain;
+const store = store => ({
+    is_login: store.user_status,
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(MyAccountMain)
+
+
+

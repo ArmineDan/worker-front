@@ -4,13 +4,13 @@ import  Header from '../../header/header';
 import  UserInfo from './userInfo';
 import  HeaderSkillList from './skillistHeader';
 import  MySkills from './userSkilllist';
-//import  Lightbox from '../../profile/lightbox';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList} from  '../../../firebase/fireManager';
 import Footer from "../../Footer/Footer";
 import {fire} from '../../../firebase/fire';
 import Loader from '../../../loader';
 import {connect} from 'react-redux';
+import UploadWorksImage from "../uploadUsersWorksImage";
 
 
 
@@ -64,7 +64,7 @@ refresh_user_data=()=>{
     }).catch((e) => {
         console.log(e,"getUserSkills")})
 
-}
+};
 
    componentDidMount(){
        fire.auth().onAuthStateChanged((user) => {
@@ -187,16 +187,18 @@ refresh_user_data=()=>{
                             <div className="col-md-6">
                                 <UserInfo data={user} refresh={this.refresh_user_data}/>
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
-                                {/*<Lightbox />*/}
+                                {user.id? <UploadWorksImage userId ={user.id} url={user.url}/>:<span> </span>}
+
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
-                                    <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />
+                                    { user.id ? <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />:<span> </span>}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
                 <div id="gotoTop" onClick={this.goTop}>
                     <i className="material-icons" style={{top: '6px', position: 'relative'}}>

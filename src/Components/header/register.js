@@ -25,8 +25,13 @@ import Header from "./header";
                  avatar:"https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2FDefaultAvatar.PNG?alt=media&token=d32bbf2a-c0b5-4593-8394-fd771001beda",
                  mobile:'+374 XX XXX XXX',
                  email:values.email,
+                 url:['https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9',
+                    ' https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9',
+                    'https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9',
+                    'https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9'],
                  status:true,
                  })
+
          }).catch(function (error) {
              // Handle Errors here."
              //const errorCode = error.code;

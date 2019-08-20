@@ -38,7 +38,8 @@ class Login extends React.Component{
                     password:'',
                     signIn: false,
                     userId:'',
-                    linkName:'/login'
+                    linkName:'/login',
+                    errorShow:false,
                 }
             }
 
@@ -65,11 +66,15 @@ class Login extends React.Component{
                             pathname: '/my-account',
                             state:{'userId':this.state.userId}
                         })
-                    }).catch(function(error) {
+                    }).catch(error => {
+                    this.setState({
+                        errorShow:true,
+                        errorMessage:error.message
+                    });
                     // Handle Errors here.
                     //const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorMessage);
+                    //const errorMessage = error.message;
+                    console.log(this.state.errorMessage);
                     // ...
                 });
             };
@@ -78,6 +83,7 @@ class Login extends React.Component{
                this.props.history.push("/register")
                             };
             render() {
+                const {errorShow, errorMessage} = this.state;
              return(
                <div>
 
@@ -106,6 +112,7 @@ class Login extends React.Component{
                        variant="outlined"
                        onChange={this.handleChange}
                        />
+                           {errorShow ?<span style={{color:'red'}}>{errorMessage}</span>:null}
                        <Button  className='logRegStile' onClick={this.loginBtnClick} variant="contained" color="primary" >Login</Button>
                        <h6 className="regLine"> Are you new Varpet ? </h6>
                        <Button variant="contained" color="primary"  onClick={this.regBtnClick} className='logRegStile'>Register</Button>

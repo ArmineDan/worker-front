@@ -6,7 +6,7 @@
     margin: 10px auto;
     text-align: center;
     flex-direction: column;
-    width: 50vh;
+    max-width: 350px;
     padding: 10px;
     border-radius: 5px;
 }

@@ -106,8 +106,8 @@ const useStyles = makeStyles(theme => ({
 function PrimarySearchAppBar(props) {
     const classes = useStyles();
     useEffect(() => {
-
             }, [props.user_status]);
+
     return (
 
             <div className={classes.grow}>

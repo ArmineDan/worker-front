@@ -30,16 +30,16 @@ const useStyles = makeStyles({
 
 export default function MySkills(props) {
     const classes = useStyles();
-    const [skills,setSkills]=useState([])
+    const [skills,setSkills]=useState([]);
         useEffect(()=>{
             setSkills(props.skills)
-        },[props,skills])
+        },[props,skills]);
 
     const delete_skill=(e)=>{
 
         //console.log(e.target.parentNode.getAttribute('data-id'),"delete_skills")
       props.delete(e.target.id,e.target.parentNode.getAttribute('data-id'))
-    }
+    };
     return (
         <>
         <CardContent className={classes.btBorder} >

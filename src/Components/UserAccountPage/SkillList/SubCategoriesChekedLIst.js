@@ -55,7 +55,15 @@ export default function CheckboxList(props) {
                 'id':value.id,
                 name:value.name
             };
-            props.delete_skill_Toggle(skillData)
+            props.delete_skill_Toggle(skillData);
+            db.collection("Users-Skills").get()
+                .then(data => console.log(data.docs))
+
+
+                .catch(function(error) {
+                    //console.error("Error adding document: ", error);
+                });
+
         }
 
         setChecked(newChecked);
@@ -65,8 +73,10 @@ export default function CheckboxList(props) {
     useEffect(()=> {
         getsubCategories(catId).then(subData => {            
             setSubData(subData);
+            setChecked(props.skills);
             setLoading(true);
-                //console.log(subData);
+             //console.log(subData);
+
               });
         
     },[]);

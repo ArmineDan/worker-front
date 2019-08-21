@@ -2,16 +2,17 @@ import React from 'react';
 import './styles/App.css';
 import Categories from './Components/Categories';
 import PrimarySearchAppBar from './Components/header/header';
-//import Login from './Components/header/login';
-//import Register from'./Components/header/register';
+import Login from './Components/header/login';
+import Register from'./Components/header/register';
 import Footer from './Components/Footer/Footer';
 import Steps from './Components/Steps/steps';
 import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
 import {fire} from './firebase/fire';
 import {connect} from 'react-redux';
-
+//import firebase from 'firebase';
 //import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
+
 
 
 
@@ -134,7 +135,7 @@ render(){
                         {show_user_details?
                             <Profile data={current_user} close={this.close}/>
                         :null}
-                        <div id="black" className="mfp-bg mfp-no-margins mfp-fade mfp-ready" onClick={show_user_details?this.close:null}/>
+                        <div id="black"  onClick={show_user_details?this.close:null}/>
             </header>
             <div id="gotoTop" onClick={this.goTop}>
                 <i className="material-icons" style={{top: '6px', position: 'relative'}}>

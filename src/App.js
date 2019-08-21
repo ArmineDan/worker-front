@@ -5,10 +5,14 @@ import PrimarySearchAppBar from './Components/header/header';
 import Login from './Components/header/login';
 import Register from'./Components/header/register';
 import Footer from './Components/Footer/Footer';
+import Steps from './Components/Steps/steps';
 import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
-import firebase from 'firebase'
-import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
+import {fire} from './firebase/fire';
+import {connect} from 'react-redux';
+//import firebase from 'firebase';
+//import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
+
 
 
 
@@ -22,6 +26,7 @@ class App extends React.Component{
             users:[],
             show_user_details:false,
             current_user:[],
+            user_status:null
 
 
         };
@@ -72,20 +77,44 @@ class App extends React.Component{
 
 componentDidUpdate(){
     window.addEventListener("scroll",()=>{
-        window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
-      })
-}
+        window.pageYOffset>150? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+             })
+    fire.auth().onAuthStateChanged((user) => {
+        if (user) {
+            this.props.set_user_status(user)
+            console.log(user,"user")
+        } else {
+            console.log(user,"elsee")
+        }
+    })
+
+    };
+
+
+    componentDidMount(){
+       fire.auth().onAuthStateChanged((user) => {
+           if (user) {
+               this.props.set_user_status(user)
+            //console.log(user,"user")
+           } else {
+               console.log(user,"elsee")
+           }
+   })
+   }
+
 render(){
-    const {open_users_list, users, show_user_details,current_user}=this.state;
+    const {open_users_list, users, show_user_details,current_user,user_status}=this.state;
     const draw_users=users.length?users.map((item,index)=>{
             return (
                 <MediaCard key={index} users_list={item} open_user_details={this.showUsers_Details}/>
             )
     }):(<div className="no-masters col-lg-12"><h4>Unfortunately we do not have masters registered in this profession yet</h4></div>)
+
     return (
         <div className="App">
              <header className="App-header">
-                <PrimarySearchAppBar/>
+                <PrimarySearchAppBar  user_status={user_status} />
+                 {/*<Steps/>*/}
                 <Categories showUsers_Lists={this.showUsers}/>
                 {open_users_list?
                     <section id="masters" style={{marginBottom: '0px'}}>
@@ -119,4 +148,16 @@ render(){
 }
 }
 
-export default App;
+const store = store => ({
+
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(App)
+

@@ -30,16 +30,16 @@ const useStyles = makeStyles({
 
 export default function MySkills(props) {
     const classes = useStyles();
-    const [skills,setSkills]=useState([])
+    const [skills,setSkills]=useState([]);
         useEffect(()=>{
             setSkills(props.skills)
-        },[props,skills])
+        },[props,skills]);
 
     const delete_skill=(e)=>{
 
         //console.log(e.target.parentNode.getAttribute('data-id'),"delete_skills")
       props.delete(e.target.id,e.target.parentNode.getAttribute('data-id'))
-    }
+    };
     return (
         <>
         <CardContent className={classes.btBorder} >
@@ -50,14 +50,14 @@ export default function MySkills(props) {
         <div className="row clearfix edit-sk">
             <span>
                 <ul className="select2-selection__rendered">
-                    {
+                    {skills.length?
                         skills.map((item,index)=>{
                             return(
                                 <li key={index} data-id={index} className="select2-selection__choice" title={item.name} data-select2-id="36">
                                     <span id={item.id} className="select2-selection__choice__remove" role="presentation" onClick={delete_skill}>×</span>{item.name}</li>
                             )
 
-                        })
+                        }):<span className={classes.color}>No skills to display</span>
 
                     }
 

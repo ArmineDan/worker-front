@@ -1,6 +1,15 @@
 .center .heading-block:after, .heading-block.center:after, .heading-block.title-center:after {
     margin: 30px auto 0;
 }
+.heading-block.title-center-own:after {
+    margin: 10px auto 0;
+}
+.own1{
+    margin:70px 0 20px
+}
+.own{
+    margin:0 0 20px
+}
 .heading-block:after {
     content: '';
     display: block;
@@ -24,6 +33,7 @@
     position: relative;
     overflow: hidden;
     background-color: #fff;
+    min-height: 600px!important
 }
 
 #my-account{
@@ -140,7 +150,7 @@
 .feature-box h3 {
     font-size: 16px;
     font-weight: 700;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     letter-spacing: 1px;
     margin-bottom: 0;
     color: #333
@@ -420,9 +430,17 @@ button.mfp-close, button.mfp-arrow {
     box-shadow: none;
     touch-action: manipulation;
 }
-.row.edit{
+.row.brd{
     border: thin solid #ff980054;
     border-radius: 22px;
+}
+span.err{
+    color: #F44336;
+    text-shadow: 1px 2px 0px #ccc4c4ba;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 14px;
+    display: block;
 }
 .row.edit-sk{
     border: thin solid #ff980054;
@@ -440,4 +458,46 @@ button.mfp-close, button.mfp-arrow {
     top: 12px;
     cursor:pointer;
     opacity:1
+}
+input.edit.not-valid{
+    border: thin solid rgba(255, 40, 93, 0.33);
+    background-color: rgba(255, 40, 93, 0.14);
+}
+.edit.on:after{
+    content:url("./yes.png")!important;
+    display: block;
+    width: 40px;
+    /*border-top: 2px solid #FF9800;*/
+    position: absolute;
+    left: 86%;
+    top: 12px;
+    cursor:pointer;
+    opacity:1
+}
+.no.on:after{
+    content:url("./no.png")!important;
+    display: block;
+    width: 40px;
+    /*border-top: 2px solid #FF9800;*/
+    position: absolute;
+    left: 92%;
+    top: 12px;
+    cursor:pointer;
+    opacity:1
+}
+input.edit {
+    outline: none!important;
+    border: 0;
+    background-color: rgba(255, 165, 0, 0.14);
+    padding: 2px;
+    margin: 2px;
+}
+.err-subscribe{
+    color:red;
+    font-size: small;
+    position: absolute;
+    bottom: 43px;
+    width: 100%;
+    right: 0;
+
 }

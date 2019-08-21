@@ -6,10 +6,12 @@ import ListItemText from '@material-ui/core/ListItemText/index';
 import Collapse from '@material-ui/core/Collapse/index';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Done from '@material-ui/icons/Done';
 import '../../../styles/skillListStyle.css';
 import CheckboxList from './SubCategoriesChekedLIst';
 import {useState, useEffect} from 'react';
-import {getActiveCategories} from "../../../firebase/fireManager";
+import {getActiveCategories,getUserSkills} from "../../../firebase/fireManager";
+import {db} from "../../../firebase/fire";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
@@ -21,16 +23,43 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SkillList() {
-   const[catData,setData] = useState([]);
-    const[subData,setSubData] = useState([]);
+export default function SkillList(props) {
+    const[catData,setData] = useState([]);
     const[loading,setLoading]= useState(false);
     const classes = useStyles();
     const [openIds, setOpen] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const [otherSkillName, setOtherSkill] = useState();
+    const [skills, setSkills] = useState();
+    const addOtherSkill = (e)=>{
+        //console.log(e.target.value);
+        setInputValue(e.target.value);
+        setOtherSkill(e.target.value);
+    };
+    const doneHandleClick = ()=>{
+        const otherData = {
+            id :'8.Others',
+            name:otherSkillName
+        };
+        const userSkillData ={
+            'skill-id':'8.Others',
+            'user-id':props.userId
+        };
+        console.log(otherData);
+        console.log(userSkillData);
+        db.collection("Users-Skills").add(userSkillData)
+            .then(function(docRef) {
+                //console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+               // console.error("Error adding document: ", error);
+            });
+         setInputValue('');
+    };
     const handleClick = catId =>()=> {
-        console.log(catId);
+         // console.log(catId);
        const currentIndex = openIds.indexOf(catId);
-      const newOpenIds = [...openIds];
+       const newOpenIds = [...openIds];
           if (currentIndex === -1) {
              newOpenIds.push(catId);
          } else {
@@ -42,6 +71,16 @@ export default function SkillList() {
     useEffect(() => {
         // code to run on component mount
         getActiveCategories().then(data => {
+            data.map( (value , index ) => {
+                if(value.id === '8.Others'){
+                    data.splice(index,1);
+                }
+                            } );
+            console.log(props.userId,"iiiiiiiiiiddddddddddd");
+            getUserSkills(props.userId).then(skill=> {
+                    setSkills(skill);
+                }
+            );
                 setData(data);
                 setLoading(true);
            // console.log(data,'cattttttttttttt')
@@ -60,21 +99,25 @@ export default function SkillList() {
                             aria-labelledby="nested-list-subheader"
                            className={classes.root}
                         >
-                            <ListItem key = {value.id} onClick={handleClick(value.id)}>
-                                <ListItemText primary={value.name}/>
-                                {openIds.indexOf(value.id) !== -1 ? <ExpandLess/> : <ExpandMore/>}
+                            <ListItem key = {value.id} style={{backgroundColor: 'beige'}} onClick={handleClick(value.id)}>
+                                <ListItemText primary={value.name} />
+                                {openIds.indexOf(value.id) !== -1  ? <ExpandLess/> : <ExpandMore/>}
                             </ListItem>
                             <Collapse in={openIds.indexOf(value.id) !== -1} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
-                                    <CheckboxList catId={value.id}/>
+                                <List  component="div" disablePadding>
+                                     <CheckboxList   skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
                                 </List>
                             </Collapse>
                         </List>
                     )
-
                 }
-            )
+              )
             }
-        </div>
+            <p>Input Other skills: </p>
+            <div>
+            <input type='text' onChange={addOtherSkill} value ={inputValue}/>
+            <Done onClick={doneHandleClick} style={{fill:"orange",backgroundColor:'#6c757d', marginTop:'0.6px', position:"absolute",height:'1.1em'}}/>
+            </div>
+           </div>
             );
 }

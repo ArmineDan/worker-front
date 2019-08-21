@@ -1,0 +1,95 @@
+
+@-webkit-keyframes ball-scale-multiple {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+    5% {
+        opacity: 1
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+@keyframes ball-scale-multiple {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+    5% {
+        opacity: 1
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+.css3-spinner>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: 13px;
+    width: 18px;
+    height: 18px;
+    background-color: #ddd;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.css3-spinner>.css3-spinner-ball-scale-multiple {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    background-color: #d63c3c00!important;
+    -webkit-animation: none;
+    animation: none;
+}
+.css3-spinner-ball-scale-multiple>div {
+    background-color: #FF9800;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: ball-scale-multiple 1.25s 0s linear infinite;
+    animation: ball-scale-multiple 1.25s 0s linear infinite;
+}
+
+.css3-spinner-ball-scale-multiple>div:nth-child(2) {
+    -webkit-animation-delay: -.4s;
+    animation-delay: -.4s;
+}
+
+.css3-spinner {
+    position: absolute;
+    z-index: auto;
+    background-color: transparent;
+}
+.css3-spinner, .page-transition-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    text-align: center;
+    background-color: rgba(27, 27, 27, 0.4);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-perspective: 1000;
+}

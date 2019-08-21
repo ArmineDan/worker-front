@@ -6,9 +6,27 @@
     box-sizing: border-box;
 }
 
-.container.prof {
+.containerProf {
     width: 100%;
     height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.transperentDiv {
+    width: 100%;
+    height: 200%;
+    background-color: #25262A;
+    opacity: .6;
+}
+
+.container-info {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .centerProf {
@@ -170,10 +188,9 @@ border-radius: 20px;
     padding-left: 20px;
 }
 
-.container-info {
-    position: absolute;
-    z-index: 1200;
-}
+
+
+
   
 
   /* .buttonProfile {

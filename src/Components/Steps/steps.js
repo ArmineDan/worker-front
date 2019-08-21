@@ -68,7 +68,9 @@ export default function Steps() {
                             </div>
                             <img style={{height: "170px"}} src={img1} alt="Step1"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
-                                A master registers and creates his profile.</p>
+                                Register your profile in our website.
+                                {/*A master registers and creates his profile.*/}
+                            </p>
                     </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own2">
                             <div className="heading-block title-center-own counter counter-large t300 ">
@@ -76,7 +78,9 @@ export default function Steps() {
                             </div>
                             <img style={{height: "170px"}} src={img2} alt="Step2"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
-                                Client seeks his master throughout  our web site.</p>
+                                Potential clients will search you in our site based on your skills.
+                                {/*Client seeks his master throughout  our web site.*/}
+                            </p>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own1" >
                             <div className="heading-block title-center-own counter counter-large t300 ">
@@ -84,7 +88,9 @@ export default function Steps() {
                             </div>
                             <img style={{height: "170px"}} src={img3} alt="Step3"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
-                                Client finds the master in just 2 seconds and contacts him.</p>
+                                If your skills match to client's needs you will got a call shortly.
+                                {/*Client finds the master in just 2 seconds and contacts him.*/}
+                            </p>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12  own2">
                             <div className="heading-block title-center-own counter counter-large t300 ">
@@ -95,7 +101,10 @@ export default function Steps() {
                             <img style={{height: "160px"}}  src={img5} alt="Step4"/>
                             </div>
                             <p className="text-muted mb-0 pb-5 border-bottom">
-                                Both sides are satisfied and happy.</p>
+                                Hurraaay!!! After client is satisfied with your job, it's a paytime.
+                                {/*Both sides are satisfied and happy.*/}
+
+                            </p>
                         </div>
              </div>
             </div>

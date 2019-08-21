@@ -29,13 +29,13 @@ export default function HeaderSkillList() {
 
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Why should I add my skills in my skills List?
+                  Why should I add my skills?
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p" >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Laudantium harum ea quo! Nulla fugiat earum, sed corporis amet iste non,
-                    id facilis dolorum, suscipit, deleniti ea. Nobis, temporibus magnam doloribus.
-                    Reprehenderit necessitatibus esse dolor tempora ea unde, itaque odit. Quos.
+                    Adding skills will help you boost your profile and appear in
+                    search results. Add all the skills that you are confident about.
+                    Please don't overload adding skills to have satisfied clients.
+
                 </Typography>
 
             </CardContent>

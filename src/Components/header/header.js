@@ -161,13 +161,13 @@ function PrimarySearchAppBar(props) {
                              <img style={{height: "23px"}}className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
                              <Link className={classes.headerLink} to={{
                              pathname: '/my-account',
-                             state:{'userId':is_user_logged_in.uid}
+                             state:{'userId':props.is_login.uid}
                              }} title="My Account">My Account</Link>
                           </div>
                         </div>
                         <span style={{color: '#d46402'}}>|</span>
 
-                      <Logout logout_user={logout}/>
+                      <Logout/>
 
 
                         </>

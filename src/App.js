@@ -5,6 +5,7 @@ import PrimarySearchAppBar from './Components/header/header';
 //import Login from './Components/header/login';
 //import Register from'./Components/header/register';
 import Footer from './Components/Footer/Footer';
+import Steps from './Components/Steps/steps';
 import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
 import {fire} from './firebase/fire';
@@ -107,31 +108,33 @@ render(){
                 <MediaCard key={index} users_list={item} open_user_details={this.showUsers_Details}/>
             )
     }):(<div className="no-masters col-lg-12"><h4>Unfortunately we do not have masters registered in this profession yet</h4></div>)
+
     return (
         <div className="App">
              <header className="App-header">
                 <PrimarySearchAppBar  user_status={user_status} />
-                <Categories showUsers_Lists={this.showUsers}/>
-                {open_users_list?
-                    <section id="masters" style={{marginBottom: '0px'}}>
-                        <div className="container clearfix">
-                            <div className="row clearfix center divcenter" >
-                                <div className="col-lg-12">
-                                <div className="heading-block center">
-                                    <h3>Our Masters</h3>
-                                    <span>Trust your works to our masters.</span>
-                                </div>
-                                </div>
-                        {draw_users}
-                            </div>
-                        </div>
-                    </section>
-                        :null}
+                 <Steps/>
+                {/*<Categories showUsers_Lists={this.showUsers}/>*/}
+                {/*{open_users_list?*/}
+                    {/*<section id="masters" style={{marginBottom: '0px'}}>*/}
+                        {/*<div className="container clearfix">*/}
+                            {/*<div className="row clearfix center divcenter" >*/}
+                                {/*<div className="col-lg-12">*/}
+                                {/*<div className="heading-block center">*/}
+                                    {/*<h3>Our Masters</h3>*/}
+                                    {/*<span>Trust your works to our masters.</span>*/}
+                                {/*</div>*/}
+                                {/*</div>*/}
+                        {/*{draw_users}*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</section>*/}
+                        {/*:null}*/}
 
-                        {show_user_details?
-                            <Profile data={current_user} close={this.close}/>
-                        :null}
-                        <div id="black" className="mfp-bg mfp-no-margins mfp-fade mfp-ready" onClick={show_user_details?this.close:null}/>
+                        {/*{show_user_details?*/}
+                            {/*<Profile data={current_user} close={this.close}/>*/}
+                        {/*:null}*/}
+                        {/*<div id="black" className="mfp-bg mfp-no-margins mfp-fade mfp-ready" onClick={show_user_details?this.close:null}/>*/}
             </header>
             <div id="gotoTop" onClick={this.goTop}>
                 <i className="material-icons" style={{top: '6px', position: 'relative'}}>

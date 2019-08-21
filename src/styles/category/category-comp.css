@@ -1,6 +1,15 @@
 .center .heading-block:after, .heading-block.center:after, .heading-block.title-center:after {
     margin: 30px auto 0;
 }
+.heading-block.title-center-own:after {
+    margin: 10px auto 0;
+}
+.own1{
+    margin:70px 0 20px
+}
+.own{
+    margin:0 0 20px
+}
 .heading-block:after {
     content: '';
     display: block;
@@ -482,4 +491,13 @@ input.edit {
     background-color: rgba(255, 165, 0, 0.14);
     padding: 2px;
     margin: 2px;
+}
+.err-subscribe{
+    color:red;
+    font-size: small;
+    position: absolute;
+    bottom: 43px;
+    width: 100%;
+    right: 0;
+
 }

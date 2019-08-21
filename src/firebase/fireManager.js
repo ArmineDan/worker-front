@@ -163,18 +163,26 @@ export function getSkillsData(skill_id) {
                 resolve(data);
 
             }).catch(e => reject(e));
-
-
-
         })
 
     })
 }
- function deleteDoc(coll,row) {
-     db.collection(coll).doc(row).delete().then(function() {
-            return true;
-        }).catch(function() {
-           return false
-        });
 
+export function subscribeUser(email) {
+    return new Promise((resolve, reject) => {
+        const emailDef = db.collection('subscribe').where("email", "==", email);
+        emailDef.get().then((data)=>{
+            if(data.empty){
+                db.collection('subscribe').add({
+                    email:email
+                }).then((data)=>{
+                    resolve(data);
+                }).catch(e=> reject(e))
+            }
+            else{
+                reject({err_mess:'You have already Subscribed!'});
+            }
+        }).catch(e=> reject(e))
+
+    })
 }

@@ -113,7 +113,7 @@ render(){
         <div className="App">
              <header className="App-header">
                 <PrimarySearchAppBar  user_status={user_status} />
-                 {/*<Steps/>*/}
+                 <Steps/>
                 <Categories showUsers_Lists={this.showUsers}/>
                 {open_users_list?
                     <section id="masters" style={{marginBottom: '0px'}}>

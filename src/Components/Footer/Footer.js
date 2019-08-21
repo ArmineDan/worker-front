@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 //import image from './favicon.ico';
-import image from '../header/logo-var.png';
+import image from '../header/logo-footer.png';
+import {subscribeUser} from  '../../firebase/fireManager';
 
 
+let setTime=null;
 const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
@@ -43,6 +45,44 @@ const useStyles = makeStyles(theme => ({
 
 export default function Footer() {
     const classes = useStyles();
+    const [email,setEmail]= useState('');
+    const [err_m,setErr_m]= useState('');
+    useEffect(() => {
+        return()=>{clearTimeout(setTime)}
+    }, [email]);
+   const getInput=(e)=>{
+
+       setErr_m('')
+       setEmail(e.target.value)
+    }
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    const subscribe=()=>{
+       validateEmail(email)?
+        subscribeUser(email).then((data)=>{
+
+            setEmail('');
+            setErr_m('Thank you for Subscribing!')
+            setTime=setTimeout(()=>{
+                setErr_m('');
+                setEmail('');
+
+            }, 1400)
+       }).catch((e)=> {
+            if(e.hasOwnProperty('err_mess')){
+                setErr_m(e.err_mess);
+                setTime=setTimeout(()=>{
+                    setErr_m('');
+                    setEmail('');
+
+                }, 1400)
+            }
+
+        }):
+           setErr_m('Please input valid email address')
+    }
 
   return (
 <div id="footer" className={ classes.footerBackground}>
@@ -50,7 +90,7 @@ export default function Footer() {
       <div className="row">
 
                 <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                <img style={{width: "100%",marginRight: "20px"}}src={image} alt="Varpet Logo"/>
+                <img style={{width: "65px",margin: "8px"}}src={image} alt="Varpet Logo"/>
                 </div>
                 <div className="col-lg-6 col-md-10 col-sm-10 col-xs-12">
                 <p style={{marginTop:"15px"}}>
@@ -59,12 +99,15 @@ export default function Footer() {
 
                 </div>
                 <div  className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" className="nobottommargin" noValidate="novalidate">
+                <form id="widget-subscribe-form"  role="form" method="post" className="nobottommargin" noValidate="validate">
+
                     <div className="input-group divcenter">
 
-                        <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" className="form-control required email" placeholder="Enter your Email" />
+                        <input id="widget-subscribe-form-email" name="widget-subscribe-form-email" value={email}
+                               className="form-control required email" placeholder="Enter your Email" required  onChange={getInput}/>
                             <div className="input-group-append">
-                                <button className="btn btn-success" type="button">Subscribe</button>
+                                <button className="btn btn-success" type="button" onClick={subscribe} >Subscribe</button>
+                                {err_m?<div className="err-subscribe">{err_m}</div>:null}
                             </div>
                     </div>
                 </form>

@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "row",
       marginLeft: "50px",
       paddingTop: "50px",
+
     },
     subscr:{
         marginTop: '10px',
@@ -90,10 +91,10 @@ export default function Footer() {
       <div className="row">
 
                 <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                <img style={{width: "65px",margin: "8px"}}src={image} alt="Varpet Logo"/>
+                <img style={{width: "60px",margin: "8px", align: "left"}}src={image} alt="Varpet Logo"/>
                 </div>
                 <div className="col-lg-6 col-md-10 col-sm-10 col-xs-12">
-                <p style={{marginTop:"15px"}}>
+                <p style={{marginTop:"15px", textAlign: "left"}}>
                   Copyright 2019 - HiVarpet.am Incorporated. All rights reserved.
                 </p>
 

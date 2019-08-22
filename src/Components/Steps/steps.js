@@ -55,16 +55,18 @@ export default function Steps() {
             <div className="container clearfix">
                 <div className="row">
                     <div className="col-lg-12">
-                    <div className="heading-block center">
+                    <div className="heading-block title-center-own center">
                         <h3>We exist to connect master and client !</h3>
                         <span>How it works:</span>
                     </div>
+
                     </div>
                 </div>
                     <div className="row">
                     <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own1" >
-                            <div className="heading-block title-center-own counter counter-large t300 ">
-                                <h3>Step 1</h3>
+                            <div className="title-center-own counter counter-large t300 form-style-5">
+                                <legend>Step <span class="number">1</span>  </legend>
+
                             </div>
                             <img style={{height: "170px"}} src={img1} alt="Step1"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
@@ -73,8 +75,8 @@ export default function Steps() {
                             </p>
                     </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own2">
-                            <div className="heading-block title-center-own counter counter-large t300 ">
-                                <h3>Step 2</h3>
+                            <div className="title-center-own counter counter-large t300 form-style-5">
+                                <legend> Step <span class="number">2</span> </legend>
                             </div>
                             <img style={{height: "170px"}} src={img2} alt="Step2"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
@@ -83,8 +85,8 @@ export default function Steps() {
                             </p>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own1" >
-                            <div className="heading-block title-center-own counter counter-large t300 ">
-                                <h3>Step 3</h3>
+                            <div className="title-center-own counter counter-large t300 form-style-5">
+                                <legend>Step <span class="number">3</span>  </legend>
                             </div>
                             <img style={{height: "170px"}} src={img3} alt="Step3"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
@@ -97,8 +99,8 @@ export default function Steps() {
                                 <h3>Finnally</h3>
                             </div>
                             <div  style={{display: "flex"}} >
-                            <img style={{height: "170px"}}  src={img4} alt="Step4"/>
-                            <img style={{height: "160px"}}  src={img5} alt="Step4"/>
+                            <img style={{height: "153px"}}  src={img4} alt="Step4"/>
+                            <img style={{height: "100px"}}  src={img5} alt="Step4"/>
                             </div>
                             <p className="text-muted mb-0 pb-5 border-bottom">
                                 Hurraaay!!! After client is satisfied with your job, it's a paytime.

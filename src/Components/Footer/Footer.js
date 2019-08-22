@@ -60,28 +60,34 @@ export default function Footer() {
         return re.test(String(email).toLowerCase());
     }
     const subscribe=()=>{
-       validateEmail(email)?
-        subscribeUser(email).then((data)=>{
+        if(email.length) {
+            validateEmail(email) ?
+                subscribeUser(email).then(() => {
 
-            setEmail('');
-            setErr_m('Thank you for Subscribing!')
-            setTime=setTimeout(()=>{
+                    setEmail('');
+                    setErr_m('Thank you for Subscribing!')
+                    setTime = setTimeout(() => {
+                        setErr_m('');
+                        setEmail('');
+
+                    }, 1400)
+                }).catch((e) => {
+                    if (e.hasOwnProperty('err_mess')) {
+                        setErr_m(e.err_mess);
+                        setTime = setTimeout(() => {
+                            setErr_m('');
+                            setEmail('');
+
+                        }, 1400)
+                    }
+
+                }) : setErr_m('Please input valid email address')
+            setTime = setTimeout(() => {
                 setErr_m('');
                 setEmail('');
 
-            }, 1400)
-       }).catch((e)=> {
-            if(e.hasOwnProperty('err_mess')){
-                setErr_m(e.err_mess);
-                setTime=setTimeout(()=>{
-                    setErr_m('');
-                    setEmail('');
-
-                }, 1400)
-            }
-
-        }):
-           setErr_m('Please input valid email address')
+            }, 2000)
+        }
     }
 
   return (

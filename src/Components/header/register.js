@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, {useEffect} from 'react';
 import {useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -11,13 +11,16 @@ import {Link} from "react-router-dom";
 import Header from "./header";
 import {connect} from "react-redux";
 
- function Register() {
+ function Register(props) {
     const classes = useStyles();
     const [values, setValues] = useState({});
     const [errMessage, setErrMessage] = useState();
     const [showError, setShowError]=useState(false);
      const[userId, setUserId]=useState();
-     const[linkName,setLinkName]=useState('/register');
+     const[linkName,setLinkName]=useState();
+
+     useEffect(() => {
+     }, [linkName,userId,errMessage]);
 
      const registerBtnClick = ()=>{
 
@@ -46,26 +49,24 @@ import {connect} from "react-redux";
            values.firstName = firstName;
            values.lastName=lastName;
             console.log(values,'vvvvvvaaaaaaaaalllllll');
-            debugger;
+            //debugger;
 
                  fire.auth().createUserWithEmailAndPassword(values.email, values.password).then((cred) => {
                      setNewUser(cred.user.uid,values).then(data => {
                          if (data){
                              fire.auth().signInWithEmailAndPassword(values.email, values.password)
                                  .then((user)=>{
-                                    const self = this;
-                                     console.log(user);
-                                     console.log(data);
-                                     console.log("user create");
-                                    // self.props.set_user_status(user);
-                                     //console.log('sign in');
-                                     setUserId(cred.user.uid);
-                                     setLinkName('/my-account');
-                                     console.log(linkName);
-                                     self.props.set_user_status(user);
+
+                                     props.history.push(
+                                     {       pathname: '/my-account',
+                                             state:{'userId':cred.user.uid}
+                                     }
+                                     )
                                      // console.log(this.state.linkName);
                                  }).catch(error => {
                                   });
+
+
                      setShowError(false);
                  }})}).catch(function (error) {
                      // Handle Errors here."
@@ -136,10 +137,8 @@ import {connect} from "react-redux";
                 onChange={handleChange}
             />
             {showError ? <p style={{color:'red', fontSize:'12px', marginBottom:'8px',textAlign:'left', marginLeft:'13px'}}> {errMessage}</p>: null}
-             <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick}> <Link className={classes.headerLink} to={{
-                 pathname: linkName,
-                 state:{'userId':userId}
-             }} title="My Account">Register</Link>
+             <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick}>
+                Register
              </Button>
         </form>
       </div>

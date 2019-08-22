@@ -51,7 +51,7 @@ export default function SkillList(props) {
         //console.log(userSkillData);
         db.collection("Users-Skills").add(userSkillData)
             .then(function(docRef) {
-                props.get_sub(otherData)
+               // props.get_sub(otherData)
                 //console.log("Document written with ID: ", docRef.id);
             })
             .catch(function(error) {

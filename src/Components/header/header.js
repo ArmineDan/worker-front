@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
           width:'38vw'
         },
         [theme.breakpoints.up('lg')]: {
-            width:'650px',
+            width:'600px',
 
         },
     },

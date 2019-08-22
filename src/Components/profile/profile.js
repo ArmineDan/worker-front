@@ -40,7 +40,7 @@ class Profile extends React.Component {
     render () {
         const {user}=this.state;
         const {close}=this.props;
-
+console.log(user,"user----")
         return (
             <div className='containerProf'>
                 <div className='transperentDiv'></div>

@@ -5,7 +5,7 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import {photos}  from "./photos";
 import "../../styles/lightbox.css";
 
-function Lightbox() {
+function Lightbox(props) {
     const [currentImage, setCurrentImage] = useState(0);
     const [viewerIsOpen, setViewerIsOpen] = useState(false);
   

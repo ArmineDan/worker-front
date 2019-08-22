@@ -23,7 +23,8 @@
 }
 .MuiCardContent-root {
     padding: 16px;
-    margin-block-start: 28px;
+    margin-block-start: 0px;
+    cursor: auto
 }
 
 .MuiTypography-gutterBottom {
@@ -33,4 +34,10 @@
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
+}
+.MuiGrid-justify-xs-center {
+    cursor: auto;
+}
+.makeStyles-media-85 {
+    cursor: auto; 
 }

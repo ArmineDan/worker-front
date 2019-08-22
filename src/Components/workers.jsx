@@ -46,17 +46,22 @@ export default function MediaCard(props) {
   return (
       <>{users?
 
+
     <Card className={classes.card}>
 
-      <CardActionArea>
+      <CardActionArea >
         <CardMedia
           className={classes.media}
         />
         <ImageAvatars img={users.avatar}/>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-              {users['firstName']}&nbsp;{users['lastName']}
-          </Typography>
+        <CardContent >
+        <CardActions>
+        <Button id={users.id} size="small" color="black" margin= "center" onClick={(e)=>moreAboutUser(e)}>
+        {users['firstName']}&nbsp;{users['lastName']}
+        </Button>
+       
+        </CardActions>
+          
           <Typography variant="body2" color="textSecondary" component="p">
             Yerevan, Masiv, Gayi ave.
           </Typography>

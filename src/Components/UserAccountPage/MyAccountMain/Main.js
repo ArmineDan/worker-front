@@ -74,7 +74,7 @@ refresh_user_data=()=>{
            } else {
                console.log(user,"elsee")
            }
-       })
+       });
 
 
        if(this.props.location.state){
@@ -88,7 +88,7 @@ refresh_user_data=()=>{
 
            getUserSkills(this.props.location.state.userId).then((data)=>{
                 if(data.includes('8.Others')){
-                    const data_filter=data.filter((el)=>el!=='8.Others')
+                    const data_filter=data.filter((el)=>el!=='8.Others');
                     this.makeData(data_filter,'8.Others')
                 }
                 else{
@@ -126,7 +126,7 @@ refresh_user_data=()=>{
         elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
         elem.style.opacity=type;
         elem.style.zIndex=type?1190:-1;
-    }
+    };
     makeData=(e,d)=>{
         // console.log(e,"skizb")
           const have_others_skill=d;
@@ -149,7 +149,7 @@ refresh_user_data=()=>{
             this.setState({
                 skils_id:data,
 
-            })
+            });
             setTimeout(()=>{
 
                 this.setState({
@@ -163,7 +163,7 @@ refresh_user_data=()=>{
 
     componentDidUpdate(){
         window.addEventListener("scroll",()=>{
-           // window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+          // window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
         })
 
 

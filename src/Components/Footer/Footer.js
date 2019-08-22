@@ -89,20 +89,16 @@ export default function Footer() {
   <div className="container clearfix">
       <div className="row">
 
-                <div className="col-sm-6">
-                    <div className="row">
-                <img style={{width: "65px",margin: "8px"}}src={image} alt="Varpet Logo"/>
-
-
-                <p style={{marginTop:"15px"}}>
+              <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                 <img style={{width: "60px",margin: "8px", align: "left"}}src={image} alt="Varpet Logo"/>
+                 </div>
+                 <div className="col-lg-6 col-md-10 col-sm-10 col-xs-12">
+                 <p style={{marginTop:"15px", textAlign: "left"}}>
                   Copyright 2019 - HiVarpet.am Incorporated. All rights reserved.
                 </p>
                 </div>
-                </div>
-                  <div className="col-sm-2">
-                        </div>
+                <div  className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
-                <div  className="col-sm-4">
                 <form id="widget-subscribe-form"  role="form" method="post" className="nobottommargin" noValidate="validate">
 
                     <div className="input-group divcenter">

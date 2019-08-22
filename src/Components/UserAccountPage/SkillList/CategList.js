@@ -38,17 +38,20 @@ export default function SkillList(props) {
     };
     const doneHandleClick = ()=>{
         const otherData = {
-            id :'8.Others',
-            name:otherSkillName
+            'skill-id' :'8.Others',
+            'skill-name':otherSkillName,
+            'user-id': props.userId
+
         };
         const userSkillData ={
             'skill-id':'8.Others',
             'user-id':props.userId
         };
-        console.log(otherData);
-        console.log(userSkillData);
+        //console.log(otherData);
+        //console.log(userSkillData);
         db.collection("Users-Skills").add(userSkillData)
             .then(function(docRef) {
+                props.get_sub(otherData)
                 //console.log("Document written with ID: ", docRef.id);
             })
             .catch(function(error) {

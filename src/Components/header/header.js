@@ -172,7 +172,7 @@ function PrimarySearchAppBar(props) {
 
                       <div className={classes.linkStyle}>
                           <div className={classes.row}>
-                             <img style={{height: "23px"}}className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
+                             <img style={{height: "23px"}} className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
                              <Link className={classes.headerLink} to={{
                              pathname: '/my-account',
                              state:{'userId':props.is_login.uid}

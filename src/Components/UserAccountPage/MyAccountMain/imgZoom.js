@@ -12,19 +12,20 @@ class ImgZoomIn extends React.Component{
 
         }
     }
-    handleChange = (e) =>{
-        this.setState({[e.target.name]: e.target.value});
-    };
 
     render() {
         return(
             <div className='zoomInMainDiv'>
             <div className= 'preview__header'>
                 <img className='logoStyle'  src={image} alt="Varpet Logo"/>
-                <HighlightOff   className= 'imgDelete' onClick={this.props.close}/></div>
+                <button className = 'closeButton' onClick={this.props.close}>x</button>
+               {/*<HighlightOff   className= 'imgDelete' onClick={this.props.close}/>*/}
+            </div>
             <div className='zoomInDiv'>
             </div>
+            <div className='zoomInDiv1'>
                 <img className='imgZoom' src = {this.props.imgUrl}/>
+            </div>
             </div>
         )
     }

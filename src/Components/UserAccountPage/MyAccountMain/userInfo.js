@@ -127,7 +127,7 @@ export default function UserInfo(props) {
 
             case 'firstName':
                 const reg = /\d/g;
-                const f=reg.test(value)
+                const f=reg.test(value);
                 if(value.length < 3 || f ){
                     setErr_fn('Invalid firstName');
                     elem.classList.add('not-valid')

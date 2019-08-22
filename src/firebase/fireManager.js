@@ -33,7 +33,7 @@ export function getsubCategories(id) {
             const data = [];
             //debugger;
             snapshot.docs.forEach(doc=>{
-                const obj={...doc.data(),id:doc.id}
+                const obj={...doc.data(),id:doc.id};
                 data.push(obj);
             });
             resolve(data)
@@ -147,13 +147,13 @@ export function getSkillsData(skill_id) {
             let i=0;
             while(i<data.length){
 
-                    promises.push(getAllSkills(data[i],skill_id))
+                    promises.push(getAllSkills(data[i],skill_id));
 
 
                 i++;
             }
             Promise.all(promises).then(values => {
-                const data=[]
+                const data=[];
                 for(let i=0; i<values.length; i++){
                     if (values[i].length){
                         data.push(values[i]);
@@ -178,3 +178,23 @@ export function getSkillsData(skill_id) {
         });
 
 }
+export function setNewUser(id,values) {
+    return new Promise((resolve,reject)=>{
+          db.collection('users').doc(id).set({
+           firstName: values.firstName,
+           lastName: values.lastName,
+           age: "_",
+           address: 'city/street',
+           avatar: "https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2FDefaultAvatar.PNG?alt=media&token=d32bbf2a-c0b5-4593-8394-fd771001beda",
+           mobile: '+374 XX XXX XXX',
+           email: values.email,
+           url: ["https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Images%2FCapture1.PNG?alt=media&token=475f002c-4b52-4ed8-b7e2-08dc74b63d99",
+               "https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Images%2FCapture1.PNG?alt=media&token=475f002c-4b52-4ed8-b7e2-08dc74b63d99",
+               "https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Images%2FCapture1.PNG?alt=media&token=475f002c-4b52-4ed8-b7e2-08dc74b63d99",
+               "https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Images%2FCapture1.PNG?alt=media&token=475f002c-4b52-4ed8-b7e2-08dc74b63d99"],
+           status: true,
+       }).then(()=> { resolve(true)})
+       .catch(error => reject(error))
+    })
+}
+

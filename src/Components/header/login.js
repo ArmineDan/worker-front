@@ -51,7 +51,7 @@ class Login extends React.Component{
                 fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                     .then((user)=>{
                        // console.log(user.user.uid);
-                        self.props.set_user_status(user)
+                        self.props.set_user_status(user);
 
                         console.log('sign in');
                         this.setState({

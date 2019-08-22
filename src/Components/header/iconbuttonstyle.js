@@ -9,7 +9,7 @@ export  const myStyles ={
     worker: {
             height: '150px',
             width: '150px',
-            margin: '40px auto',
+            margin: '0px auto',
     },
     icon:{
         width:100,

@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem/index';
 import ListItemIcon from '@material-ui/core/ListItemIcon/index';
 import ListItemText from '@material-ui/core/ListItemText/index';
 import Checkbox from '@material-ui/core/Checkbox/index';
-import {getsubCategories} from "../../../firebase/fireManager";
+import {getsubCategories, removeSkillFromUserList} from "../../../firebase/fireManager";
 import '../../../styles/subSkillStyle.css';
 import {db} from "../../../firebase/fire";
 
@@ -55,6 +55,7 @@ export default function CheckboxList(props) {
                 'id':value.id,
                 name:value.name
             };
+            removeSkillFromUserList(props.userId,value.id);
             props.delete_skill_Toggle(skillData);
             db.collection("Users-Skills").get()
                 .then(data => console.log(data.docs))

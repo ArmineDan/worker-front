@@ -11,6 +11,8 @@ import {Link} from "react-router-dom";
 import Logout from "./logout";
 import {connect} from 'react-redux';
 import AccountImg from "./Account.svg"
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -59,7 +61,7 @@ const useStyles = makeStyles(theme => ({
           width:'38vw'
         },
         [theme.breakpoints.up('lg')]: {
-            width:'750px',
+            width:'600px',
 
         },
     },
@@ -99,7 +101,16 @@ const useStyles = makeStyles(theme => ({
   {
     color: "white!important",
     textShadow: "0px 3px 5px #0e090096",
-  }
+  },
+
+  button:
+{
+    margin: theme.spacing(1),
+    color: "white!important",
+    fontSize: "13px",
+
+
+ },
 
 }));
 
@@ -132,6 +143,9 @@ function PrimarySearchAppBar(props) {
                                 inputProps={{'aria-label': 'search'}}
                             />
                         </div>
+                        <Button variant="outlined" className={classes.button}>
+                           How It Works
+                        </Button>
 
 
                         <div className={classes.grow}/>
@@ -167,7 +181,7 @@ function PrimarySearchAppBar(props) {
                         </div>
                         <span style={{color: '#d46402'}}>|</span>
 
-                      <Logout />
+                      <Logout/>
 
 
                         </>

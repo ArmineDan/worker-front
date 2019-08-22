@@ -42,9 +42,11 @@ class Profile extends React.Component {
         const {close}=this.props;
 
         return (
-            <div className="container-info">
+            <div className='containerProf'>
+                <div className='transperentDiv'></div>
+                <div className="container-info">
                 <div className = "centerProf">
-                <button title="Close" type="button" className="mfp-close" onClick={close}>×</button>
+                    <button title="Close" type="button" className="mfp-close" onClick={close}>×</button>
 
                     <div className='imgFlex'>
                         <div className ='imgDiv' style ={{backgroundImage:`url(${user.avatar})`} }>
@@ -102,6 +104,7 @@ class Profile extends React.Component {
 
                     </div>
                 </div>
+            </div>
             </div>
         )
     }

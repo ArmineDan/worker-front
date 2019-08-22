@@ -79,7 +79,7 @@ export default function SkillList(props) {
                     data.splice(index,1);
                 }
                             } );
-            console.log(props.userId,"iiiiiiiiiiddddddddddd");
+
             getUserSkills(props.userId).then(skill=> {
                     setSkills(skill);
                 }

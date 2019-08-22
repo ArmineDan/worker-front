@@ -121,11 +121,17 @@ refresh_user_data=()=>{
         window.scroll(0,0);
         this.anim(0,"gotoTop")
     };
+    goHome=(e)=>{
+       this.props.set_show_info(e)
+        this.props.history.push('/')
+    };
     anim=(type, id )=>{
         const elem = document.getElementById(id);
-        elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
-        elem.style.opacity=type;
-        elem.style.zIndex=type?1190:-1;
+        if(elem){
+            elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
+            elem.style.opacity=type;
+            elem.style.zIndex=type?0:-1;
+        }
     };
     makeData=(e,d)=>{
         // console.log(e,"skizb")
@@ -176,7 +182,7 @@ refresh_user_data=()=>{
         return (
             <div>
                 {!show_loading?<Loader/>:<>
-                <Header user_status={user.id}  />
+                <Header user_status={user.id}  data="account"  goHome={this.goHome}/>
             <section id="my-accont" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
                     <div className="container clearfix">
@@ -218,6 +224,7 @@ const store = store => ({
 
 const dispatch = dispatch => ({
     set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+    set_show_info:list => dispatch({type:'SHOW_HOW_IT_WORKS', payload:list}),
 });
 
 export default connect(

@@ -10,11 +10,12 @@ import {browserHistory} from "react-router";
 import login from "./Components/header/login";
 import register from "./Components/header/register";
 import MyAccountMain from "./Components/UserAccountPage/MyAccountMain/Main";
+import Steps from "./Components/Steps/steps";
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 //import { composeWithDevTools } from 'redux-devtools-extension';
 //import { routerMiddleware} from 'react-router-redux';
-import {user_status} from './reducers/reducers';
+import {user_status,showInfo} from './reducers/reducers';
 
 
 const theme = createMuiTheme({
@@ -28,6 +29,7 @@ const theme = createMuiTheme({
 const store = createStore(
     combineReducers({
         user_status:user_status,
+        showInfo:showInfo
     }),
     window.devToolsExtension && window.devToolsExtension()
     // composeWithDevTools(applyMiddleware(routerMiddleware))
@@ -41,6 +43,7 @@ const route=(
     <Route path="/login/" component={login} marginRight='200px'/>
     <Route path="/register/" component={register}/>
       <Route path="/my-account" component={MyAccountMain}/>
+
   </Router>
 </MuiThemeProvider>
     </Provider>

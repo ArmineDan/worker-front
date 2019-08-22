@@ -43,7 +43,7 @@ class Profile extends React.Component {
 console.log(user,"user----")
         return (
             <div className='containerProf'>
-                <div className='transperentDiv'></div>
+                <div className='transperentDiv'/>
                 <div className="container-info">
                 <div className = "centerProf">
                     <button title="Close" type="button" className="mfp-close" onClick={close}>×</button>

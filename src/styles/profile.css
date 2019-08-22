@@ -16,9 +16,10 @@
 
 .transperentDiv {
     width: 100%;
-    height: 200%;
+    height: 100vh;
     background-color: #25262A;
     opacity: .6;
+    position: fixed;
 }
 
 .container-info {

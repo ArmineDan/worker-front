@@ -37,14 +37,7 @@ class App extends React.Component {
         }
 
     }
-    close = (e) => {
-        this.anim(0, "black")
-        this.setState({
-            show_user_details: false
-        })
-        const elem = document.getElementById("masters") && document.getElementById("masters").offsetTop;
-        window.scroll(0, elem)
-    }
+
 
     showUsers = (e, data) => {
         this.setState({
@@ -52,7 +45,6 @@ class App extends React.Component {
             users: data,
         });
         const elem = document.getElementById("masters") && document.getElementById("masters").offsetTop;
-
         window.scroll(0, elem);
         this.anim(1, "gotoTop")
 
@@ -60,16 +52,7 @@ class App extends React.Component {
 
     };
 
-    showUsers_Details = (e, data) => {
-        //  console.log("dddddddddd")
-        this.setState({
-            show_user_details: e,
-            current_user: data,
-        });
 
-
-        this.anim(1, "black")
-    };
     goTop = () => {
         window.scroll(0, 0);
         this.anim(0, "gotoTop")
@@ -111,10 +94,10 @@ class App extends React.Component {
     }
 
     render() {
-        const {open_users_list, users, show_user_details, current_user, user_status} = this.state;
+        const {open_users_list, users, user_status} = this.state;
         const draw_users = users.length ? users.map((item, index) => {
             return (
-                <MediaCard key={index} users_list={item} open_user_details={this.showUsers_Details}/>
+                <MediaCard key={index} users_list={item} />
             )
         }) : (
             <div className="no-masters col-lg-12"><h4>Unfortunately we do not have masters registered in this profession
@@ -142,11 +125,6 @@ class App extends React.Component {
                             </div>
                         </section>
                         : null}
-
-                    {show_user_details ?
-                        <Profile data={current_user} close={this.close}/>
-                        : null}
-                    <div id="black" onClick={show_user_details ? this.close : null}/>
                 </header>
                 <div id="gotoTop" onClick={this.goTop}>
                     <i className="material-icons" style={{top: '6px', position: 'relative'}}>

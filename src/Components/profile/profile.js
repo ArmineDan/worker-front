@@ -3,7 +3,7 @@ import Lightbox from './lightbox';
 import "../../styles/profile.css";
 import varpet from './img/varpet.jpg'
 import Icon from '@material-ui/core/Icon';
-import {getUserSkills} from "../../firebase/fireManager";
+import {getUserSkills,getUserData} from "../../firebase/fireManager";
 
 
 class Profile extends React.Component {
@@ -13,64 +13,66 @@ class Profile extends React.Component {
             myclass: '',
             user:this.props.data,
             photosUrl:'',
-            userSkills:''
+            userSkills:'',
+            user_id_route:this.props.match.params.handle
         };
+        console.log(this.props.match.params.handle,"this.props.match.params.handle")
     };
-    /*toggleButton = () => {
-        const{show} = this.state;
-        this.setState({show: !show})
-      }*/
-      toggleButton =()=> {
-        if (this.state.myclass === '') {
-         this.setState({
-          myclass: 'skillClass'
-         })
-        }
-       else {
-        this.setState({
-          myclass: '',
-        })
-       }
-      };
+
       componentDidMount() {
           const photos = [];
-          this.props.data.url.map(src => {
-              let obj = {
-                  'src': src,
-                  'width': 4,
-                  'height': 3
-              };
-              photos.push(obj);
-          });
+         let current_user=null;
+          getUserData(this.state.user_id_route).then((d)=>{
+              current_user=d
+            console.log(d,"getUserData")
+            d.url.map(src => {
+                  let obj = {
+                      'src': src,
+                      'width': 4,
+                      'height': 3
+                  };
+                  photos.push(obj);
+              });
 
-          getUserSkills(this.props.data.id).then(data => {
+              getUserSkills(d.id).then(data => {
 
+                  this.setState({
+                      userSkills:data
+                  })
+
+              });
               this.setState({
-                  userSkills:data
-              })
+                  user: current_user,
+                  photosUrl: photos
+              });
+          }).catch((e)=>{
+              this.props.history.push('/')
+          })
 
-          });
-          this.setState({
-              user: this.props.data,
-              photosUrl: photos
-          });
+
+
       }
+    close = () => {
+        this.props.history.push('/')
+    }
 
     render () {
 
         const {user,photosUrl,userSkills}=this.state;
-        const {close}=this.props;
-console.log(userSkills,"user----");
+
+
         return (
+
             <div className='containerProf'>
+                {user?<>
                 <div className='transperentDiv'/>
                 <div className="container-info">
                 <div className = "centerProf">
-                    <button title="Close" type="button" className="mfp-close" onClick={close}>×</button>
+                    <button title="Close" type="button" className="mfp-close" onClick={this.close}>×</button>
 
                     <div className='imgFlex'>
                         <div className ='imgDiv' style ={{backgroundImage:`url(${user.avatar})`} }>
-                           
+
                         </div>
                         <div className='info'>
                             <p className='pProf'>{user.firstName}&nbsp;{user.lastName}</p>
@@ -91,20 +93,11 @@ console.log(userSkills,"user----");
                             </div>
                         </div>
                     </div>
-                    <div id="skillDiv" className={this.state.myclass}></div>
+                    <div id="skillDiv" className={this.state.myclass}/>
                     <div className ='skillLightbox'>
-                        {/* <div className='buttonDiv'>
 
-                    <div className ='imgDiv' style={{backgroundImage:`url(${user.avatar})`}}>
-                        {/*<img className='img' src={user.avatar} />*/}
-                  
-                            {/* <button onClick ={this.toggleButton} className='buttonProfile'>
-                                Skills
-                            </button> */}
-                            {/*{this.state.show && <SkillDiv />}
-                        </div> */}
                         <div className='absolute'>
-                            <div className='box'></div>
+                            <div className='box'/>
                             <div className='flexSkill'>
                                 <div className='skills'>
                                     <h3 className='headingSkill'>skills</h3>
@@ -128,21 +121,21 @@ console.log(userSkills,"user----");
                     </div>
                 </div>
             </div>
+                   </> :''}
             </div>
         )
     }
 }
+{/* <div className='buttonDiv'>
 
+ <div className ='imgDiv' style={{backgroundImage:`url(${user.avatar})`}}>
+ {/*<img className='img' src={user.avatar} />*/}
 
-/*class SkillDiv extends React.Component {
-    render() {
-      return (
-          <div className = 'childDiv'></div>    
-      )
-    }
-  }*/
+{/* <button onClick ={this.toggleButton} className='buttonProfile'>
+ Skills
+ </button> */}
+{/*{this.state.show && <SkillDiv />}
+ </div> */}
   
 
 export default Profile;
-
-

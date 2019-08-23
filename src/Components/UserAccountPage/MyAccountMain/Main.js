@@ -169,7 +169,7 @@ refresh_user_data=()=>{
 
     componentDidUpdate(){
         window.addEventListener("scroll",()=>{
-          // window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+           window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
         })
 
 

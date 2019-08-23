@@ -13,7 +13,7 @@ class Profile extends React.Component {
             myclass: '',
             user:this.props.data,
             photosUrl:'',
-            userSkills:[]
+            userSkills:''
         };
     };
     /*toggleButton = () => {
@@ -42,11 +42,13 @@ class Profile extends React.Component {
               };
               photos.push(obj);
           });
-          getUserSkills(this.props.data.id).then(data => {
-              //console.log(data, 'iiiihihihihih');
-              this.state.userSkills.push(data);
 
-             // console.log(this.state.userSkills, 'uuuuuuuuuuu');
+          getUserSkills(this.props.data.id).then(data => {
+
+              this.setState({
+                  userSkills:data
+              })
+
           });
           this.setState({
               user: this.props.data,
@@ -56,9 +58,9 @@ class Profile extends React.Component {
 
     render () {
 
-        const {user,photosUrl}=this.state;
+        const {user,photosUrl,userSkills}=this.state;
         const {close}=this.props;
-//console.log(user,"user----");
+console.log(userSkills,"user----");
         return (
             <div className='containerProf'>
                 <div className='transperentDiv'/>
@@ -107,8 +109,12 @@ class Profile extends React.Component {
                                 <div className='skills'>
                                     <h3 className='headingSkill'>skills</h3>
                                     <ul className='listSkill'>
-                                        <li>drinking</li>
-                                        <li>smoking</li>
+                                       {userSkills.length?userSkills.map((item, index)=>{
+                                        return(
+                                            <li key = {index}>{item}</li>
+                                        )
+                                    }):'No skills added yet'}
+
                                     </ul>
                                 </div>
                             </div>

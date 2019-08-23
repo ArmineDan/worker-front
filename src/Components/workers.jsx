@@ -63,7 +63,7 @@ export default function MediaCard(props) {
         </CardActions>
           
           <Typography variant="body2" color="textSecondary" component="p">
-            Yerevan, Masiv, Gayi ave.
+              {users['address']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Age: {users['age']}

@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
-import {useState} from 'react'
+import {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import "../../styles/login-register.css"
+import "../../styles/login-register.css";
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import {myStyles,useStyles} from './iconbuttonstyle'
-import {fire} from '../../firebase/fire'
-import {setNewUser} from '../../firebase/fireManager'
-import {Link} from "react-router-dom";
+import {myStyles,useStyles} from './iconbuttonstyle';
+import {fire} from '../../firebase/fire';
+import {setNewUser} from '../../firebase/fireManager';
 import Header from "./header";
 import {connect} from "react-redux";
 
@@ -21,6 +20,12 @@ import {connect} from "react-redux";
 
      useEffect(() => {
      }, [linkName,userId,errMessage]);
+    const  handleKeyPress=(e)=>{
+         if (e.which == 13) {
+             registerBtnClick();
+             //console.log(e,'keyyy')
+         }
+     };
 
      const registerBtnClick = ()=>{
 
@@ -101,6 +106,7 @@ import {connect} from "react-redux";
                 variant="outlined"
                 type='text'
                 name='firstName'
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             <TextField
@@ -112,6 +118,7 @@ import {connect} from "react-redux";
                 variant="outlined"
                 type='text'
                 name='lastName'
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             <TextField
@@ -123,6 +130,7 @@ import {connect} from "react-redux";
                /* autoComplete="email"*/
                 margin="normal"
                 variant="outlined"
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             <TextField
@@ -134,6 +142,7 @@ import {connect} from "react-redux";
                /* autoComplete="current-password"*/
                 margin="normal"
                 variant="outlined"
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             {showError ? <p style={{color:'red', fontSize:'12px', marginBottom:'8px',textAlign:'left', marginLeft:'13px'}}> {errMessage}</p>: null}

@@ -3,8 +3,7 @@ import Lightbox from './lightbox';
 import "../../styles/profile.css";
 import varpet from './img/varpet.jpg'
 import Icon from '@material-ui/core/Icon';
-
-
+import {getUserSkills} from "../../firebase/fireManager";
 
 
 class Profile extends React.Component {
@@ -12,8 +11,9 @@ class Profile extends React.Component {
         super(props);
         this.state = {
             myclass: '',
-            user:this.props.data
-
+            user:this.props.data,
+            photosUrl:'',
+            userSkills:[]
         };
     };
     /*toggleButton = () => {
@@ -31,16 +31,34 @@ class Profile extends React.Component {
           myclass: '',
         })
        }
-      }
-      componentDidMount(){
+      };
+      componentDidMount() {
+          const photos = [];
+          this.props.data.url.map(src => {
+              let obj = {
+                  'src': src,
+                  'width': 4,
+                  'height': 3
+              };
+              photos.push(obj);
+          });
+          getUserSkills(this.props.data.id).then(data => {
+              //console.log(data, 'iiiihihihihih');
+              this.state.userSkills.push(data);
+
+             // console.log(this.state.userSkills, 'uuuuuuuuuuu');
+          });
           this.setState({
-              user: this.props.data
-          })
+              user: this.props.data,
+              photosUrl: photos
+          });
       }
+
     render () {
-        const {user}=this.state;
+
+        const {user,photosUrl}=this.state;
         const {close}=this.props;
-console.log(user,"user----")
+//console.log(user,"user----");
         return (
             <div className='containerProf'>
                 <div className='transperentDiv'/>
@@ -89,7 +107,6 @@ console.log(user,"user----")
                                 <div className='skills'>
                                     <h3 className='headingSkill'>skills</h3>
                                     <ul className='listSkill'>
-                                        <li>eating</li>
                                         <li>drinking</li>
                                         <li>smoking</li>
                                     </ul>
@@ -98,7 +115,7 @@ console.log(user,"user----")
 
                             <div className='flexLightbox'>
                                 <h3 className='headingLbox'>works done</h3>
-                                <Lightbox />
+                                <Lightbox photos = {photosUrl}/>
                             </div>
                         </div>
 

@@ -13,6 +13,7 @@ import MyAccountMain from "./Components/UserAccountPage/MyAccountMain/Main";
 import Profile from "./Components/profile/profile";
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
+import { Redirect } from 'react-router-dom';
 //import { composeWithDevTools } from 'redux-devtools-extension';
 //import { routerMiddleware} from 'react-router-redux';
 import {user_status,showInfo} from './reducers/reducers';
@@ -47,6 +48,7 @@ const route=(
     <Route exact path="/register" component={register}/>
       <Route path="/my-account" component={MyAccountMain}/>
       <Route  exact path='/profile/:handle' component={Profile}/>
+      <Route render={() => <Redirect to="/" />} />
 
   </Router>
 </MuiThemeProvider>

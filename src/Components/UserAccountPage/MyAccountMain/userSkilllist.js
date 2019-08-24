@@ -56,11 +56,8 @@ export default function MySkills(props) {
                                 <li key={index} data-id={index} className="select2-selection__choice" title={item.name} data-select2-id="36">
                                     <span id={item.id} className="select2-selection__choice__remove" role="presentation" onClick={delete_skill}>×</span>{item.name}</li>
                             )
-
                         }):<span className={classes.color}>No skills to display</span>
-
                     }
-
                 </ul>
             </span>
         </div>

@@ -75,7 +75,7 @@ export default function UserInfo(props) {
         switch(type){
             case 'age':
                 if(value<18 || value>=100 || isNaN(value)){
-                    setErr_a('Invalid Age Number, the age  should be greater then 18');
+                    setErr_a('The age  should be  18 - 100');
                     elem.classList.add('not-valid')
                                     }
                 else{
@@ -204,7 +204,7 @@ export default function UserInfo(props) {
         }
   else{
             if(Object.keys(obj).length){
-                setSave_check("We can't save , because some data are missing or wrong!")
+                setSave_check("The data is missing or wrong!")
             }
 
            // console.log("obj is emptyyyy save")

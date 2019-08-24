@@ -61,7 +61,7 @@ export default class UploadWorksImage extends React.Component {
                 () => {
                     storage.ref('Images').child(fileName).getDownloadURL()
                         .then(url => {
-                            // console.log(url);
+                             console.log(url,"urllllllllllll");
                             this.state.url[0].splice(id,1,url);
                             this.setState({'user':'' });
                             //console.log(this.state.url[0],'veeeeerj stateeee');

@@ -10,11 +10,13 @@ import {browserHistory} from "react-router";
 import login from "./Components/header/login";
 import register from "./Components/header/register";
 import MyAccountMain from "./Components/UserAccountPage/MyAccountMain/Main";
+import Profile from "./Components/profile/profile";
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { routerMiddleware} from 'react-router-redux';
-import {user_status} from './reducers/reducers';
+//import { composeWithDevTools } from 'redux-devtools-extension';
+//import { routerMiddleware} from 'react-router-redux';
+import {user_status,showInfo} from './reducers/reducers';
+
 
 
 const theme = createMuiTheme({
@@ -28,6 +30,7 @@ const theme = createMuiTheme({
 const store = createStore(
     combineReducers({
         user_status:user_status,
+        showInfo:showInfo
     }),
     window.devToolsExtension && window.devToolsExtension()
     // composeWithDevTools(applyMiddleware(routerMiddleware))
@@ -36,11 +39,15 @@ const store = createStore(
 const route=(
     <Provider store={store}>
 <MuiThemeProvider theme={theme}>
+
   <Router  history={browserHistory}>
+
     <Route exact path="/" component ={App}/>
-    <Route path="/login/" component={login} marginRight='200px'/>
-    <Route path="/register/" component={register}/>
+    <Route exact path="/login" component={login} marginRight='200px'/>
+    <Route exact path="/register" component={register}/>
       <Route path="/my-account" component={MyAccountMain}/>
+      <Route  exact path='/profile/:handle' component={Profile}/>
+
   </Router>
 </MuiThemeProvider>
     </Provider>

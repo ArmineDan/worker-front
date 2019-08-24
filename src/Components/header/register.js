@@ -1,48 +1,92 @@
-import React  from 'react';
-import {useState} from 'react'
+import React, {useEffect} from 'react';
+import {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import "../../styles/login-register.css"
+import "../../styles/login-register.css";
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import {myStyles,useStyles} from './iconbuttonstyle'
-import {fire,db} from '../../firebase/fire'
+import {myStyles,useStyles} from './iconbuttonstyle';
+import {fire} from '../../firebase/fire';
+import {setNewUser} from '../../firebase/fireManager';
 import Header from "./header";
+import {connect} from "react-redux";
 
-
-
- function Register() {
+ function Register(props) {
     const classes = useStyles();
-    const [values, setValues] = useState();
-     const registerBtnClick = ()=>{
-         fire.auth().createUserWithEmailAndPassword(values.email, values.password).then((cred) => {
-             console.log("user create");
-             console.log(cred);
-             return db.collection('users').doc(cred.user.uid).set({
-                 firstName:values.firstName,
-                 lastName:values.lastName,
-                 age:"_",
-                 address:'city/street',
-                 avatar:"https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2FDefaultAvatar.PNG?alt=media&token=d32bbf2a-c0b5-4593-8394-fd771001beda",
-                 mobile:'+374 XX XXX XXX',
-                 email:values.email,
-                 url:['https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9',
-                    ' https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9',
-                    'https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9',
-                    'https://firebasestorage.googleapis.com/v0/b/varpet-com.appspot.com/o/Avatars%2F0cSUbI6aOsXS79zvlVhWO1rNRlG2?alt=media&token=0cad06bc-0324-4e7a-8fbc-6c8e46c486b9'],
-                 status:true,
-                 })
+    const [values, setValues] = useState({});
+    const [errMessage, setErrMessage] = useState();
+    const [showError, setShowError]=useState(false);
+     const[userId, setUserId]=useState();
+     const[linkName,setLinkName]=useState();
+     const uuidv1 = require('uuid/v1');
 
-         }).catch(function (error) {
-             // Handle Errors here."
-             //const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage)
-             // ...
-         });
-       };
+     useEffect(() => {
+     }, [linkName,userId,errMessage]);
+    const  handleKeyPress=(e)=>{
+         if (e.which == 13) {
+             registerBtnClick();
+             //console.log(e,'keyyy')
+         }
+     };
+
+     const registerBtnClick = ()=>{
+
+         const reg = /\d/g;
+         const f = reg.test(values.firstName);
+         const r = reg.test(values.lastName);
+         if( values.firstName === '' || values.lastName === '' || values.firstName === undefined || values.lastName === undefined) {
+             setErrMessage('Empty First Name or Last Name');
+             setShowError(true);
+         } else if(values.firstName.length < 3 || f || r || values.lastName.length < 3){
+             /*const reg = /\d/g;
+             const f = reg.test(values.firstName);*/
+                 setErrMessage('First Name and Lat Name should be more than 3 characters \n and mustn\'t contain numbers');
+                 setShowError(true);
+             } else if( values.password === undefined || values.email === undefined || values.password === '' || values.email === '') {
+                 setErrMessage('Invalid email or password');
+                setShowError(true);
+             }else{
+            let name_first_letter = values.firstName[0].toUpperCase();
+            let surname_first_letter = values.lastName[0].toUpperCase();
+            let name_peace = values.firstName.slice(1);
+            let surname_peace = values.lastName.slice(1);
+            let firstName = name_first_letter + name_peace;
+            let lastName= surname_first_letter + surname_peace;
+            console.log(name_first_letter,surname_first_letter,name_peace,surname_peace);
+           values.firstName = firstName;
+           values.lastName=lastName;
+           values.uuid=uuidv1();
+            console.log(values,'vvvvvvaaaaaaaaalllllll');
+            //debugger;
+
+                 fire.auth().createUserWithEmailAndPassword(values.email, values.password).then((cred) => {
+                     setNewUser(cred.user.uid,values).then(data => {
+                         if (data){
+                             fire.auth().signInWithEmailAndPassword(values.email, values.password)
+                                 .then((user)=>{
+
+                                     props.history.push(
+                                     {       pathname: '/my-account',
+                                             state:{'userId':cred.user.uid}
+                                     }
+                                     )
+                                     // console.log(this.state.linkName);
+                                 }).catch(error => {
+                                  });
+
+
+                     setShowError(false);
+                 }})}).catch(function (error) {
+                     // Handle Errors here."
+                     //const errorCode = error.code;
+                     setErrMessage(error.message);
+                     setShowError(true);
+                     //console.log(error.message);
+                 });
+             }
+         };
       const handleChange = (e)=> {
         setValues({ ...values, [e.target.name]: e.target.value });
-        console.log(values)
+        //console.log(values);
     };
 
     return (
@@ -57,24 +101,26 @@ import Header from "./header";
 
             <TextField
                 id="outlined-with-placeholder"
-                label="firstName"
+                label="First Name"
                 placeholder="Your first name ..."
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
                 type='text'
                 name='firstName'
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             <TextField
                 id="outlined-with-placeholder"
-                label="lastName"
+                label="Last Name"
                 placeholder="Your last name ..."
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
                 type='text'
                 name='lastName'
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             <TextField
@@ -86,6 +132,7 @@ import Header from "./header";
                /* autoComplete="email"*/
                 margin="normal"
                 variant="outlined"
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
             <TextField
@@ -97,11 +144,27 @@ import Header from "./header";
                /* autoComplete="current-password"*/
                 margin="normal"
                 variant="outlined"
+                onKeyPress ={handleKeyPress}
                 onChange={handleChange}
             />
-             <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick}> Register </Button>
+            {showError ? <p style={{color:'red', fontSize:'12px', marginBottom:'8px',textAlign:'left', marginLeft:'13px'}}> {errMessage}</p>: null}
+             <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick}>
+                Register
+             </Button>
         </form>
       </div>
             )
         }
-        export default Register;
+const store = store => ({
+
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(Register)
+        //export default Register;

@@ -37,8 +37,8 @@ export default function MySkills(props) {
 
     const delete_skill=(e)=>{
 
-        //console.log(e.target.parentNode.getAttribute('data-id'),"delete_skills")
-      props.delete(e.target.id,e.target.parentNode.getAttribute('data-id'))
+        //console.log(e.target.id,"delete_skills")
+      props.delete(e.target.id,e.target.parentNode.getAttribute('data-id'),e.target.id)
     };
     return (
         <>

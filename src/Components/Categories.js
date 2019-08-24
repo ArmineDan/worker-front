@@ -7,8 +7,8 @@ import {getUsers_IdBySkills,getUserData} from '../firebase/fireManager';
 import '../styles/category/bootstrap.css';
 import {getActiveCategories,getsubCategories} from "../firebase/fireManager";
 
-const nav={};
-let nav_arr=['Home'];
+
+
 
 class Categories extends React.Component{
     constructor(){
@@ -20,6 +20,9 @@ class Categories extends React.Component{
             breadcrumb:[]
 
         };
+        this.click_counts=0;
+        this.nav={};
+      this.nav_arr=['Home'];
     }
 
 
@@ -27,7 +30,7 @@ class Categories extends React.Component{
         getActiveCategories().then(data => {
             for (let i=0; i<data.length; i++){
                let key= data[i].id;
-                nav[key]=data[i].name
+                this.nav[key]=data[i].name
             }
          //console.log(nav," navvv");
             this.setState({items:data});
@@ -36,11 +39,12 @@ class Categories extends React.Component{
     }
 
     GoHome=()=>{
-        nav_arr=[];
-        nav_arr.push('Home');
+        this.click_counts=0;
+        this.nav_arr=[];
+        this.nav_arr.push('Home');
         this.setState({
             show:false,
-            breadcrumb:nav_arr });
+            breadcrumb:this.nav_arr });
         this.props.showUsers_Lists(false, []);
         };
 
@@ -98,19 +102,23 @@ class Categories extends React.Component{
 
     openSubCategories=(e,id)=>{
        e.stopPropagation();
-       this.props.showUsers_Lists(false, [])
-        let cat_id;
-        cat_id=e.target.getAttribute('data-id')
-       // console.log(cat_id,"cat_id")
-       nav_arr.push(nav[cat_id]);
-       getsubCategories(cat_id).then(data =>{
-              // console.log(data,"data")
-               this.setState({
-                   sub_items: this.render_sub_Categories(data),
-                   show:true,
-                   breadcrumb:nav_arr
-               });
-       });
+        ++this.click_counts;
+        if(this.click_counts===1){
+            this.props.showUsers_Lists(false, [])
+            let cat_id;
+            cat_id=e.target.getAttribute('data-id')
+            // console.log(cat_id,"cat_id")
+            this.nav_arr.push(this.nav[cat_id]);
+            getsubCategories(cat_id).then(data =>{
+                // console.log(data,"data")
+                this.setState({
+                    sub_items: this.render_sub_Categories(data),
+                    show:true,
+                    breadcrumb:this.nav_arr
+                });
+            });
+        }
+
     };
 
     render_sub_Categories=(sub)=>{
@@ -146,7 +154,7 @@ class Categories extends React.Component{
         });
         const nav = breadcrumb.length===1?null: breadcrumb.map((item, index)=>{
             return(
-                    <li key={index} className={`breadcrumb-item ${item ==='Home'?'active':null}`} onClick={item ==='Home'?this.GoHome:null}><a href="#">{item}</a></li>
+                    <li key={index} className={`breadcrumb-item ${item ==='Home'?'active':null}`} onClick={item ==='Home'?this.GoHome:null}><a href="#" onClick={(e)=>{e.preventDefault();}}>{item}</a></li>
             )
        });
         return(
@@ -156,9 +164,9 @@ class Categories extends React.Component{
                         <div className="container clearfix">
                             <div className="row clearfix center divcenter" >
                                 <div className="col-lg-12">
-                                    <div className="heading-block center">
-                                        <h3>Construction Job Careers</h3>
-                                        <span>Browse Construction Job Descriptions By Job Titles</span>
+                                    <div className="heading-block title-center-own center">
+                                        <h3>Categories</h3>
+                                        <span>Browse Masters By Categories</span>
                                         <ol className="breadcrumb" >
                                             {nav}
                                         </ol>

@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ImageAvatars from './workersAvatar';
 import '../styles/workersStyle.css';
-import {getUserData} from '../firebase/fireManager';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
   card: {
@@ -24,6 +24,9 @@ const useStyles = makeStyles({
       backgroundColor:'#ff9800'
 
   },
+    auto:{
+      margin:'auto'
+    }
 });
 
 export default function MediaCard(props) {
@@ -33,32 +36,25 @@ export default function MediaCard(props) {
         setUsers(props.users_list)
     },[users,props]);
   const classes = useStyles();
-  const moreAboutUser=(e)=>{
 
-        getUserData(e.currentTarget.id).then((data)=>{
-            //console.log(data,"users")
-          props.open_user_details(true,data)
-          window.scroll(0,10)
-        }).catch((e)=>e)
-
-
-    }
   return (
       <>{users?
 
+
     <Card className={classes.card}>
 
-      <CardActionArea>
+      <CardActionArea >
         <CardMedia
           className={classes.media}
         />
         <ImageAvatars img={users.avatar}/>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-              {users['firstName']}&nbsp;{users['lastName']}
-          </Typography>
+        <CardContent >
+            <Typography gutterBottom variant="h5" component="h2">
+        {users['firstName']}&nbsp;{users['lastName']}
+            </Typography>
+          
           <Typography variant="body2" color="textSecondary" component="p">
-            Yerevan, Masiv, Gayi ave.
+              {users['address']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Age: {users['age']}
@@ -66,9 +62,10 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button id={users.id} size="small" color="primary" margin= "center" onClick={(e)=>moreAboutUser(e)}>
-          More
-        </Button>
+          <Link to={{ pathname:`/profile/${users.id}` }} className={classes.auto} target="_blank">
+        <Button  size="small" color="primary" margin= "center" >  More
+                   </Button>
+          </Link>
         </CardActions>
     </Card>
 

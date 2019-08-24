@@ -10,6 +10,24 @@
 .own{
     margin:0 0 20px
 }
+
+.form-style-5 legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.form-style-5 .number {
+    background: #ff9800;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: .8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 hsla(0,0%,100%,.2);
+    border-radius: 15px 15px 15px 0;
+}
 .heading-block:after {
     content: '';
     display: block;

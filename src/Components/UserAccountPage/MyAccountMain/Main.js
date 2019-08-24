@@ -22,16 +22,19 @@ class MyAccountMain extends React.Component{
         this.state = {
         skils_id:[],
         user:[],
-        show_loading:false
+        show_loading:false,
+        removed_skill_id:''
         };
     }
-   delete_skill=(e,index)=>{
+   delete_skill=(e,index,id)=>{
+
        const {skils_id}=this.state;
     removeSkillFromUserList(this.props.location.state.userId,e).then((data)=>{
         if(data){
             skils_id.splice(index,1);
             this.setState({
-                skils_id
+                skils_id,
+                removed_skill_id:id
             })
         }
     // console.log(data,"delete_skill")
@@ -74,7 +77,7 @@ refresh_user_data=()=>{
            } else {
                console.log(user,"elsee")
            }
-       })
+       });
 
 
        if(this.props.location.state){
@@ -88,7 +91,7 @@ refresh_user_data=()=>{
 
            getUserSkills(this.props.location.state.userId).then((data)=>{
                 if(data.includes('8.Others')){
-                    const data_filter=data.filter((el)=>el!=='8.Others')
+                    const data_filter=data.filter((el)=>el!=='8.Others');
                     this.makeData(data_filter,'8.Others')
                 }
                 else{
@@ -121,12 +124,18 @@ refresh_user_data=()=>{
         window.scroll(0,0);
         this.anim(0,"gotoTop")
     };
+    goHome=(e)=>{
+       this.props.set_show_info(e)
+        this.props.history.push('/')
+    };
     anim=(type, id )=>{
         const elem = document.getElementById(id);
-        elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
-        elem.style.opacity=type;
-        elem.style.zIndex=type?1190:-1;
-    }
+        if(elem){
+            elem.style.transition='opacity 0.4s  cubic-bezier(0.4, 0, 0.2, 1)';
+            elem.style.opacity=type;
+            elem.style.zIndex=type?0:-1;
+        }
+    };
     makeData=(e,d)=>{
         // console.log(e,"skizb")
           const have_others_skill=d;
@@ -149,7 +158,7 @@ refresh_user_data=()=>{
             this.setState({
                 skils_id:data,
 
-            })
+            });
             setTimeout(()=>{
 
                 this.setState({
@@ -163,20 +172,16 @@ refresh_user_data=()=>{
 
     componentDidUpdate(){
         window.addEventListener("scroll",()=>{
-            window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
+           window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
         })
-
-
-
     };
 
-
     render(){
-        const {skils_id,user,show_loading}=this.state;
+        const {skils_id,removed_skill_id,user,show_loading}=this.state;
         return (
             <div>
                 {!show_loading?<Loader/>:<>
-                <Header user_status={user.id}  />
+                <Header user_status={user.id}  data="account"  goHome={this.goHome}/>
             <section id="my-accont" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
                     <div className="container clearfix">
@@ -192,7 +197,7 @@ refresh_user_data=()=>{
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
-                                    { user.id ? <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />:<span> </span>}
+                                    { user.id ? <SkillList removed_skill_id={removed_skill_id} userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />:<span> </span>}
                                 </div>
                             </div>
                         </div>
@@ -218,6 +223,7 @@ const store = store => ({
 
 const dispatch = dispatch => ({
     set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+    set_show_info:list => dispatch({type:'SHOW_HOW_IT_WORKS', payload:list}),
 });
 
 export default connect(

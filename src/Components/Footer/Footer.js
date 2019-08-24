@@ -60,28 +60,34 @@ export default function Footer() {
         return re.test(String(email).toLowerCase());
     }
     const subscribe=()=>{
-       validateEmail(email)?
-        subscribeUser(email).then((data)=>{
+        if(email.length) {
+            validateEmail(email) ?
+                subscribeUser(email).then(() => {
 
-            setEmail('');
-            setErr_m('Thank you for Subscribing!')
-            setTime=setTimeout(()=>{
+                    setEmail('');
+                    setErr_m('Thank you for Subscribing!')
+                    setTime = setTimeout(() => {
+                        setErr_m('');
+                        setEmail('');
+
+                    }, 1400)
+                }).catch((e) => {
+                    if (e.hasOwnProperty('err_mess')) {
+                        setErr_m(e.err_mess);
+                        setTime = setTimeout(() => {
+                            setErr_m('');
+                            setEmail('');
+
+                        }, 1400)
+                    }
+
+                }) : setErr_m('Please input valid email address')
+            setTime = setTimeout(() => {
                 setErr_m('');
                 setEmail('');
 
-            }, 1400)
-       }).catch((e)=> {
-            if(e.hasOwnProperty('err_mess')){
-                setErr_m(e.err_mess);
-                setTime=setTimeout(()=>{
-                    setErr_m('');
-                    setEmail('');
-
-                }, 1400)
-            }
-
-        }):
-           setErr_m('Please input valid email address')
+            }, 2000)
+        }
     }
 
   return (
@@ -89,16 +95,16 @@ export default function Footer() {
   <div className="container clearfix">
       <div className="row">
 
-                <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                <img style={{width: "65px",margin: "8px"}}src={image} alt="Varpet Logo"/>
-                </div>
-                <div className="col-lg-6 col-md-10 col-sm-10 col-xs-12">
-                <p style={{marginTop:"15px"}}>
+              <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                 <img style={{width: "60px",margin: "8px", align: "left"}}src={image} alt="Varpet Logo"/>
+                 </div>
+                 <div className="col-lg-6 col-md-10 col-sm-10 col-xs-12">
+                 <p style={{marginTop:"15px", textAlign: "left"}}>
                   Copyright 2019 - HiVarpet.am Incorporated. All rights reserved.
                 </p>
-
                 </div>
                 <div  className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
                 <form id="widget-subscribe-form"  role="form" method="post" className="nobottommargin" noValidate="validate">
 
                     <div className="input-group divcenter">

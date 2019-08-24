@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,6 +11,8 @@ import {Link} from "react-router-dom";
 import Logout from "./logout";
 import {connect} from 'react-redux';
 import AccountImg from "./Account.svg"
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -59,7 +61,7 @@ const useStyles = makeStyles(theme => ({
           width:'38vw'
         },
         [theme.breakpoints.up('lg')]: {
-            width:'750px',
+            width:'600px',
 
         },
     },
@@ -99,14 +101,39 @@ const useStyles = makeStyles(theme => ({
   {
     color: "white!important",
     textShadow: "0px 3px 5px #0e090096",
-  }
+  },
+
+  button:
+{
+    margin: theme.spacing(1),
+    color: "white!important",
+    fontSize: "13px",
+
+
+ },
 
 }));
 
 function PrimarySearchAppBar(props) {
     const classes = useStyles();
+    const [show_info,setShow_info]= useState();
     useEffect(() => {
-            }, [props.user_status]);
+        setShow_info(props.show_info)
+            }, [props.user_status,props.show_info]);
+
+    const set_info_show=()=>{
+        if(show_info)props.set_show_info(false)
+    };
+ const opemHotItWorks=()=>{
+     if(props.data === 'App'){
+         props.set_show_info(true)
+         props.close_users_section()
+     }
+     else if(props.data === 'account'){
+         props.goHome(true)
+
+     }
+    };
 
     return (
 
@@ -116,7 +143,7 @@ function PrimarySearchAppBar(props) {
                     <Toolbar className={classes.padding}>
                         <div className={classes.imgDiv}>
                             <Link to="/" >
-                            <img style={{width: "100%", display: "block"}} src={image} alt="Varpet Logo"/>
+                            <img style={{width: "100%", display: "block"}} src={image} alt="Varpet Logo" onClick={set_info_show}/>
                             </Link>
                         </div>
                         <div className={classes.search}>
@@ -132,6 +159,9 @@ function PrimarySearchAppBar(props) {
                                 inputProps={{'aria-label': 'search'}}
                             />
                         </div>
+                        <Button variant="outlined" className={classes.button} onClick={opemHotItWorks}>
+                           How It Works
+                        </Button>
 
 
                         <div className={classes.grow}/>
@@ -158,7 +188,7 @@ function PrimarySearchAppBar(props) {
 
                       <div className={classes.linkStyle}>
                           <div className={classes.row}>
-                             <img style={{height: "23px"}}className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
+                             <img style={{height: "23px"}} className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
                              <Link className={classes.headerLink} to={{
                              pathname: '/my-account',
                              state:{'userId':props.is_login.uid}
@@ -182,10 +212,12 @@ function PrimarySearchAppBar(props) {
 
 const store = store => ({
     is_login: store.user_status,
+   show_info:store.showInfo
 });
 
 const dispatch = dispatch => ({
     set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+    set_show_info:list => dispatch({type:'SHOW_HOW_IT_WORKS', payload:list}),
 });
 
 export default connect(

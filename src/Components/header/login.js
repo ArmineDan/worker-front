@@ -40,43 +40,61 @@ class Login extends React.Component{
                     userId:'',
                     linkName:'/login',
                     errorShow:false,
+                    errorMessage:''
                 }
             }
 
             handleChange = (e) =>{
                 this.setState({[e.target.name]: e.target.value});
             };
-            loginBtnClick =()=>{
-                const self=this;
-                fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-                    .then((user)=>{
-                       // console.log(user.user.uid);
-                        self.props.set_user_status(user)
+            handleKeyPress=(e)=>{
+                if (e.which == 13) {
+                    this.loginBtnClick();
+                    //console.log(e,'keyyy')
+                }
+            };
+            loginBtnClick =()=> {
+                const {email, password,errorMessage} = this.state;
+                if (email && password) {
+                    const self = this;
+                    fire.auth().signInWithEmailAndPassword(email,password)
+                        .then((user) => {
+                            // console.log(user.user.uid);
+                            self.props.set_user_status(user);
 
-                        console.log('sign in');
+                            console.log('sign in');
+                            this.setState({
+                                errorShow: false,
+                                userId: user.user.uid,
+                                signIn: true,
+                                linkName: '/my-account'
+                            });
+
+                            // console.log(this.state.linkName);
+
+                            this.props.history.push({
+                                pathname: '/my-account',
+                                state: {'userId': this.state.userId}
+                            })
+                        }).catch(error => {
                         this.setState({
-                            userId : user.user.uid,
-                            signIn : true,
-                            linkName:'/my-account'
+                            errorShow: true,
+                            errorMessage: error.message
                         });
-
-                       // console.log(this.state.linkName);
-
-                        this.props.history.push({
-                            pathname: '/my-account',
-                            state:{'userId':this.state.userId}
-                        })
-                    }).catch(error => {
-                    this.setState({
-                        errorShow:true,
-                        errorMessage:error.message
+                        // Handle Errors here.
+                        //const errorCode = error.code;
+                        //const errorMessage = error.message;
+                        //console.log(errorMessage);
+                        // ...
                     });
-                    // Handle Errors here.
-                    //const errorCode = error.code;
-                    //const errorMessage = error.message;
-                    console.log(this.state.errorMessage);
-                    // ...
-                });
+                }else{
+                    this.setState({
+                        errorShow: true,
+                        errorMessage:'Invalid email or password'
+                    })
+                }
+
+
             };
             regBtnClick = ()=>{
               //  console.log("nhjhk");
@@ -100,6 +118,7 @@ class Login extends React.Component{
                        autoComplete="email"
                        margin="normal"
                        variant="outlined"
+                       onKeyPress={this.handleKeyPress}
                        onChange={this.handleChange}
                        />
                        <TextField
@@ -110,10 +129,11 @@ class Login extends React.Component{
                        autoComplete="current-password"
                        margin="normal"
                        variant="outlined"
+                       onKeyPress={this.handleKeyPress}
                        onChange={this.handleChange}
                        />
                            {errorShow ?<span style={{color:'red'}}>{errorMessage}</span>:null}
-                       <Button  className='logRegStile' onClick={this.loginBtnClick} variant="contained" color="primary" >Login</Button>
+                       <Button  className='logRegStile' onClick={this.loginBtnClick}  variant="contained" color="primary" >Login</Button>
                        <h6 className="regLine"> Are you new Varpet ? </h6>
                        <Button variant="contained" color="primary"  onClick={this.regBtnClick} className='logRegStile'>Register</Button>
                        </ThemeProvider>

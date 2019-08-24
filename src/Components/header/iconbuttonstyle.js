@@ -9,7 +9,7 @@ export  const myStyles ={
     worker: {
             height: '150px',
             width: '150px',
-            margin: '40px auto',
+            margin: '0px auto',
     },
     icon:{
         width:100,
@@ -44,7 +44,9 @@ export  const myStyles ={
         fontSize: 'small',
     },
     butStyle:{
-        margin:"16px 0"
+        display: 'inline-block!important',
+        margin:'0',
+        color:'white'
     },
     pErrorStyle:{
         textAlign: 'left',

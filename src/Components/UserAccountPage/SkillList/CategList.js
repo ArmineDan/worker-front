@@ -38,17 +38,20 @@ export default function SkillList(props) {
     };
     const doneHandleClick = ()=>{
         const otherData = {
-            id :'8.Others',
-            name:otherSkillName
+            'skill-id' :'8.Others',
+            'skill-name':otherSkillName,
+            'user-id': props.userId
+
         };
         const userSkillData ={
             'skill-id':'8.Others',
             'user-id':props.userId
         };
-        console.log(otherData);
-        console.log(userSkillData);
+        //console.log(otherData);
+        //console.log(userSkillData);
         db.collection("Users-Skills").add(userSkillData)
             .then(function(docRef) {
+               // props.get_sub(otherData)
                 //console.log("Document written with ID: ", docRef.id);
             })
             .catch(function(error) {
@@ -76,17 +79,10 @@ export default function SkillList(props) {
                     data.splice(index,1);
                 }
                             } );
-            console.log(props.userId,"iiiiiiiiiiddddddddddd");
-            getUserSkills(props.userId).then(skill=> {
-                    setSkills(skill);
-                }
-            );
-                setData(data);
-                setLoading(true);
-           // console.log(data,'cattttttttttttt')
-            }
-        );
+            setData(data);
+            setLoading(true)
 
+    });
     }, []);
 
     return (
@@ -105,7 +101,7 @@ export default function SkillList(props) {
                             </ListItem>
                             <Collapse in={openIds.indexOf(value.id) !== -1} timeout="auto" unmountOnExit>
                                 <List  component="div" disablePadding>
-                                     <CheckboxList   skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
+                                     <CheckboxList  removed_skill_id={props.removed_skill_id} skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
                                 </List>
                             </Collapse>
                         </List>

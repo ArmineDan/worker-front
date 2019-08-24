@@ -99,7 +99,7 @@ import {connect} from "react-redux";
 
             <TextField
                 id="outlined-with-placeholder"
-                label="firstName"
+                label="First Name"
                 placeholder="Your first name ..."
                 className={classes.textField}
                 margin="normal"
@@ -111,7 +111,7 @@ import {connect} from "react-redux";
             />
             <TextField
                 id="outlined-with-placeholder"
-                label="lastName"
+                label="Last Name"
                 placeholder="Your last name ..."
                 className={classes.textField}
                 margin="normal"

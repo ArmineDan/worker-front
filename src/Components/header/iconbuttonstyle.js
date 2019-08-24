@@ -44,7 +44,9 @@ export  const myStyles ={
         fontSize: 'small',
     },
     butStyle:{
-        margin:"16px 0"
+        display: 'inline-block!important',
+        margin:'0',
+        color:'white'
     },
     pErrorStyle:{
         textAlign: 'left',

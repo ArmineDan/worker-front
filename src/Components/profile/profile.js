@@ -22,9 +22,10 @@ class Profile extends React.Component {
       componentDidMount() {
           const photos = [];
          let current_user=null;
+
           getUserData(this.state.user_id_route).then((d)=>{
               current_user=d
-            console.log(d,"getUserData")
+          //  console.log(d,"getUserData")
             d.url.map(src => {
                   let obj = {
                       'src': src,

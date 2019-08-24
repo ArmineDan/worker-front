@@ -2,16 +2,12 @@ import React from 'react';
 import './styles/App.css';
 import Categories from './Components/Categories';
 import PrimarySearchAppBar from './Components/header/header';
-import Login from './Components/header/login';
-import Register from'./Components/header/register';
 import Footer from './Components/Footer/Footer';
 import Steps from './Components/Steps/steps';
-import Profile from './Components/profile/profile';
 import MediaCard from './Components/workers';
 import {fire} from './firebase/fire';
 import {connect} from 'react-redux';
-//import firebase from 'firebase';
-//import UploadAvatarImage from "./Components/UserAccountPage/UploadAvatarImage";
+
 
 
 class App extends React.Component {
@@ -83,6 +79,7 @@ class App extends React.Component {
 
 
     componentDidMount() {
+       
         fire.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.set_user_status(user)

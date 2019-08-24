@@ -22,16 +22,19 @@ class MyAccountMain extends React.Component{
         this.state = {
         skils_id:[],
         user:[],
-        show_loading:false
+        show_loading:false,
+        removed_skill_id:''
         };
     }
-   delete_skill=(e,index)=>{
+   delete_skill=(e,index,id)=>{
+
        const {skils_id}=this.state;
     removeSkillFromUserList(this.props.location.state.userId,e).then((data)=>{
         if(data){
             skils_id.splice(index,1);
             this.setState({
-                skils_id
+                skils_id,
+                removed_skill_id:id
             })
         }
     // console.log(data,"delete_skill")
@@ -171,14 +174,10 @@ refresh_user_data=()=>{
         window.addEventListener("scroll",()=>{
            window.pageYOffset>40? this.anim(1,"gotoTop"): this.anim(0,"gotoTop")
         })
-
-
-
     };
 
-
     render(){
-        const {skils_id,user,show_loading}=this.state;
+        const {skils_id,removed_skill_id,user,show_loading}=this.state;
         return (
             <div>
                 {!show_loading?<Loader/>:<>
@@ -198,7 +197,7 @@ refresh_user_data=()=>{
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">
-                                    { user.id ? <SkillList userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />:<span> </span>}
+                                    { user.id ? <SkillList removed_skill_id={removed_skill_id} userId ={user.id} get_sub={this.get_sub} delete_skill_Toggle={this.delete_skill_Toggle} />:<span> </span>}
                                 </div>
                             </div>
                         </div>

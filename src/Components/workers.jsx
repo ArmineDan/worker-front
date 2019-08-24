@@ -49,9 +49,9 @@ export default function MediaCard(props) {
         />
         <ImageAvatars img={users.avatar}/>
         <CardContent >
-        <CardActions>
+            <Typography gutterBottom variant="h5" component="h2">
         {users['firstName']}&nbsp;{users['lastName']}
-               </CardActions>
+            </Typography>
           
           <Typography variant="body2" color="textSecondary" component="p">
               {users['address']}
@@ -62,10 +62,8 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-          <Link to={{ pathname:users.id }} className={classes.auto} target="_blank">
-
-        <Button  size="small" color="primary" margin= "center" >
-          More
+          <Link to={{ pathname:`/profile/${users.id}` }} className={classes.auto} target="_blank">
+        <Button  size="small" color="primary" margin= "center" >  More
                    </Button>
           </Link>
         </CardActions>

@@ -82,16 +82,6 @@ export default function SkillList(props) {
             setData(data);
             setLoading(true)
 
-         /*   getUserSkills(props.userId).then(skill=> {
-                    setSkills(skill);
-                }
-            );
-                setData(data);
-                setLoading(true);
-           // console.log(data,'cattttttttttttt')
-            }
-        );*/
-
     });
     }, []);
 
@@ -111,7 +101,7 @@ export default function SkillList(props) {
                             </ListItem>
                             <Collapse in={openIds.indexOf(value.id) !== -1} timeout="auto" unmountOnExit>
                                 <List  component="div" disablePadding>
-                                     <CheckboxList   skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
+                                     <CheckboxList  removed_skill_id={props.removed_skill_id} skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
                                 </List>
                             </Collapse>
                         </List>

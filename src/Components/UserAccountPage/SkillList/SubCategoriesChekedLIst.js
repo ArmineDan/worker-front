@@ -77,7 +77,8 @@ export default function CheckboxList(props) {
 
     useEffect(() => {
         getUserSkills(props.userId).then(skill => {
-            debugger;
+           // debugger;
+            console.log(props.removed_skill_id,"removed_skill_id")
                 setChecked(skill);
             }
         );
@@ -90,7 +91,7 @@ export default function CheckboxList(props) {
 
     });
 
-    },[props.userId]);
+    },[props.userId,props.removed_skill_id]);
 
     return (
         <List className={classes.root} style={{display:loading?'block':'none'}} >

@@ -42,10 +42,10 @@ const route=(
   <Router  history={browserHistory}>
 
     <Route exact path="/" component ={App}/>
-    <Route exact path="/login/" component={login} marginRight='200px'/>
+    <Route exact path="/login" component={login} marginRight='200px'/>
     <Route exact path="/register" component={register}/>
       <Route path="/my-account" component={MyAccountMain}/>
-      <Route  exact path='/:handle' component={Profile}/>
+      <Route  exact path='/profile/:handle' component={Profile}/>
 
   </Router>
 </MuiThemeProvider>

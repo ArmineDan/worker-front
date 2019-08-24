@@ -79,8 +79,10 @@ export default function SkillList(props) {
                     data.splice(index,1);
                 }
                             } );
+            setData(data);
+            setLoading(true)
 
-            getUserSkills(props.userId).then(skill=> {
+         /*   getUserSkills(props.userId).then(skill=> {
                     setSkills(skill);
                 }
             );
@@ -88,8 +90,9 @@ export default function SkillList(props) {
                 setLoading(true);
            // console.log(data,'cattttttttttttt')
             }
-        );
+        );*/
 
+    });
     }, []);
 
     return (

@@ -127,7 +127,7 @@ border-radius: 20px;
 }
 
 .flexSkill {
-    flex-basis: 37%;
+    flex-basis: 38%;
     padding: 10px 40px 10px 20px;
     background-color: #fff;
 }
@@ -185,7 +185,7 @@ border-radius: 20px;
     font-weight: bold;
     letter-spacing: 4px;
     color: #25262A;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 

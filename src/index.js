@@ -12,8 +12,8 @@ import register from "./Components/header/register";
 import MyAccountMain from "./Components/UserAccountPage/MyAccountMain/Main";
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-//import { composeWithDevTools } from 'redux-devtools-extension';
-//import { routerMiddleware} from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware} from 'react-router-redux';
 import {user_status} from './reducers/reducers';
 
 

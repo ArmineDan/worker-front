@@ -2,14 +2,13 @@
 
 .react-photo-gallery--gallery {
     display: flex;
-    padding: 20px;    
+    padding: 10px;
 }
 
 
 .react-photo-gallery--gallery img {
-    border: 2px solid #fff;
-    max-width: 48%;
-    max-height: 150px;
+    max-width: 48.8%;
+    max-height: 140px;
 }
 
 

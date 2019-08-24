@@ -35,6 +35,7 @@ export default function HeaderSkillList() {
                     Adding skills will help you boost your profile and appear in
                     search results. Add all the skills that you are confident about.
                     Please don't overload adding skills to have satisfied clients.
+                    And also, please, add your mobile number, age and address.
 
                 </Typography>
 

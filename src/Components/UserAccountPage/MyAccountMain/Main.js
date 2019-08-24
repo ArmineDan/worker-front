@@ -193,7 +193,6 @@ refresh_user_data=()=>{
                                 <UserInfo data={user} refresh={this.refresh_user_data}/>
                                     <MySkills skills={skils_id} delete={this.delete_skill} />
                                 {user.id? <UploadWorksImage userId ={user.id} url={user.url}/>:<span> </span>}
-
                             </div>
                             <div className="col-md-6">
                                 <div className="col-md-12">

@@ -3,7 +3,8 @@ import Lightbox from './lightbox';
 import "../../styles/profile.css";
 import varpet from './img/varpet.jpg'
 import Icon from '@material-ui/core/Icon';
-import {getUserSkills,getUserData} from "../../firebase/fireManager";
+import {getUserSkills,getUserData, getSkillsData} from "../../firebase/fireManager";
+import Loader from '../../loader';
 
 
 class Profile extends React.Component {
@@ -14,7 +15,8 @@ class Profile extends React.Component {
             user:this.props.data,
             photosUrl:'',
             userSkills:'',
-            user_id_route:this.props.match.params.handle
+            user_id_route:this.props.match.params.handle,
+            show_loading:false
         };
         console.log(this.props.match.params.handle,"this.props.match.params.handle")
     };
@@ -36,44 +38,73 @@ class Profile extends React.Component {
               });
 
               getUserSkills(d.id).then(data => {
-
-                  this.setState({
-                      userSkills:data
-                  })
-
+                  console.log(data,"data-getUserSkills")
+                  this.makeData(data)
+                  // this.setState({
+                  //     userSkills:data
+                  // })
               });
+
               this.setState({
                   user: current_user,
                   photosUrl: photos
               });
+
           }).catch((e)=>{
               this.props.history.push('/')
           })
-
-
-
       }
     close = () => {
         this.props.history.push('/')
     }
 
+
+
+    makeData=(e,d)=>{
+        // console.log(e,"skizb")
+        const have_others_skill=d;
+        const promises=[];
+        let i=0;
+        while(i<e.length){
+            promises.push(getSkillsData(e[i]));
+            i++;
+        }
+        Promise.all(promises).then(values => {
+            const data=[];
+            for(let i=0; i<values.length; i++){
+                data.push(values[i][0][0]);
+            }
+            // console.log(data,"datadatadata");
+            if(have_others_skill){
+                data.push({name:'Others',id:'8.Others'});
+            }
+
+            this.setState({
+                userSkills:data,
+
+            });
+            setTimeout(()=>{
+
+                this.setState({
+                    show_loading:true
+                })
+            },0)
+
+        }).catch((e) => {
+            console.log(e,"value")})
+    };
+
     render () {
-
-        const {user,photosUrl,userSkills}=this.state;
-
-
+        const {user,photosUrl,userSkills, show_loading}=this.state;
         return (
-
             <div className='containerProf'>
-                {user?<>
+                {show_loading?<>
                 <div className='transperentDiv'/>
                 <div className="container-info">
                 <div className = "centerProf">
                     <button title="Close" type="button" className="mfp-close" onClick={this.close}>×</button>
-
                     <div className='imgFlex'>
                         <div className ='imgDiv' style ={{backgroundImage:`url(${user.avatar})`} }>
-
                         </div>
                         <div className='info'>
                             <p className='pProf'>{user.firstName}&nbsp;{user.lastName}</p>
@@ -96,7 +127,6 @@ class Profile extends React.Component {
                     </div>
                     <div id="skillDiv" className={this.state.myclass}/>
                     <div className ='skillLightbox'>
-
                         <div className='absolute'>
                             <div className='box'/>
                             <div className='flexSkill'>
@@ -105,38 +135,25 @@ class Profile extends React.Component {
                                     <ul className='listSkill'>
                                        {userSkills.length?userSkills.map((item, index)=>{
                                         return(
-                                            <li key = {index}>{item}</li>
+                                            <li key = {index}>{item.name}</li>
                                         )
                                     }):'No skills added yet'}
-
                                     </ul>
                                 </div>
                             </div>
-
                             <div className='flexLightbox'>
                                 <h3 className='headingLbox'>works done</h3>
                                 <Lightbox photos = {photosUrl}/>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-                   </> :''}
+                   </> :<Loader/>}
             </div>
         )
     }
 }
-{/* <div className='buttonDiv'>
 
- <div className ='imgDiv' style={{backgroundImage:`url(${user.avatar})`}}>
- {/*<img className='img' src={user.avatar} />*/}
-
-{/* <button onClick ={this.toggleButton} className='buttonProfile'>
- Skills
- </button> */}
-{/*{this.state.show && <SkillDiv />}
- </div> */}
-  
 
 export default Profile;

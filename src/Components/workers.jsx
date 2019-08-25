@@ -62,7 +62,7 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-          <Link to={{ pathname:`/profile/${users.id}` }} className={classes.auto} target="_blank">
+          <Link to={{ pathname:`/profile/${users.id}`}} className={classes.auto} target="_blank">
         <Button  size="small" color="primary" margin= "center" >  More
                    </Button>
           </Link>

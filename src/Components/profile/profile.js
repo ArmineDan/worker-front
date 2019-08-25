@@ -39,7 +39,14 @@ class Profile extends React.Component {
 
               getUserSkills(d.id).then(data => {
                   console.log(data,"data-getUserSkills")
-                  this.makeData(data)
+                  if(data.includes('8.Others')){
+                      const data_filter=data.filter((el)=>el!=='8.Others');
+                      this.makeData(data_filter,'8.Others')
+                  }
+                  else{
+                      this.makeData(data)
+                  }
+
                   // this.setState({
                   //     userSkills:data
                   // })
@@ -51,7 +58,7 @@ class Profile extends React.Component {
               });
 
           }).catch((e)=>{
-              this.props.history.push('/')
+              // this.props.history.push('/')
           })
       }
     close = () => {

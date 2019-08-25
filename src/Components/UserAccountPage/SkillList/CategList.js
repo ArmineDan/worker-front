@@ -49,9 +49,15 @@ export default function SkillList(props) {
         };
         //console.log(otherData);
         //console.log(userSkillData);
-        db.collection("Users-Skills").add(userSkillData)
+        db.collection("Users-Skills").add(otherData)
             .then(function(docRef) {
-               // props.get_sub(otherData)
+                const otherData = {
+                    id :'8.Others',
+                    name:otherSkillName,
+
+                };
+
+             props.get_sub(otherData)
                 //console.log("Document written with ID: ", docRef.id);
             })
             .catch(function(error) {

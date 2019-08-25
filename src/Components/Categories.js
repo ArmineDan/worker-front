@@ -93,7 +93,7 @@ class Categories extends React.Component{
         e.stopPropagation();
       //  this.showUsers('8.Others')
         getUsers_IdBySkills('8.Others').then((data)=>{
-            console.log(data,"others_data")
+           // console.log(data,"others_data")
             this.makeData(data)
         }).catch((err)=>{
             console.log(err)

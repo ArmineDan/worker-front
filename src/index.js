@@ -48,7 +48,7 @@ const route=(
     <Route exact path="/register" component={register}/>
       <Route path="/my-account" component={MyAccountMain}/>
       <Route  exact path='/profile/:handle' component={Profile}/>
-      <Route render={() => <Redirect to="/" />} />
+      {/*<Route render={() => <Redirect to="/" />} />*/}
 
   </Router>
 </MuiThemeProvider>

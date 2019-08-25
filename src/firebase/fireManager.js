@@ -48,7 +48,10 @@ export function getUsers_IdBySkills(skill_id) {
             let data=[];
             //debugger;
             snapshot.docs.forEach(doc => {
-                data.push(doc.data()['user-id'])
+                if(data.indexOf(doc.data()['user-id'])=== -1){
+                    data.push(doc.data()['user-id'])
+                }
+
             });
 
 
@@ -100,7 +103,25 @@ export function getUserSkills(u_id) {
             let data=[];
             //debugger;
             snapshot.docs.forEach(doc => {
+               // console.log(doc.data(),"doc.data()doc.data()doc.data()doc.data()doc.data()")
                 data.push(doc.data()['skill-id'])
+            });
+            resolve(data)
+
+        }).catch(e => reject(e));
+    })
+}
+export function getUserOthersSkillsName(u_id) {
+    return new Promise((resolve, reject) => {
+        const docRef = db.collection('Users-Skills').where("user-id", "==", u_id);
+        docRef.get().then((snapshot) => {
+            let data=[];
+            //debugger;
+            snapshot.docs.forEach(doc => {
+                if (doc.data()['skill-id'] ==='8.Others'){
+                            console.log(doc.data(),"doc.data()doc.data()doc.data()doc.data()doc.data()")
+                data.push(doc.data()['skill-name'])
+                }
             });
             resolve(data)
 

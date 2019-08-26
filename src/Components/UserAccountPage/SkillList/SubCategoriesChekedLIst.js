@@ -27,33 +27,35 @@ export default function CheckboxList(props) {
     const {catId} = props;
     const [subData, setSubData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [checked, setChecked] = React.useState([]);
+    const [checked, setChecked] = useState([]);
 
     const handleToggle = value => () => {
         const currentIndex = checked.indexOf(value.id);
         const newChecked = [...checked];
 
         if (currentIndex === -1) {
-            newChecked.push(value.id);
-            // data for Armine's function
-            const skillData = {
-                'id': value.id,
-                name: value.name
-            };
-            const userSkillData = {
-                'skill-id': value.id,
-                'user-id': props.userId
-            };
-            db.collection("Users-Skills").add(userSkillData)
-                .then(function (docRef) {
-                    // console.log("Document written with ID: ", docRef.id);
-                    props.get_sub(skillData)
-                })
-                .catch(function (error) {
-                    //console.error("Error adding document: ", error);
-                });
-            // console.log(userSkillData)
-            // console.log(skillData)
+            if(checked.length < 10) {
+                newChecked.push(value.id);
+                // data for Armine's function
+                const skillData = {
+                    'id': value.id,
+                    name: value.name
+                };
+                const userSkillData = {
+                    'skill-id': value.id,
+                    'user-id': props.userId
+                };
+                db.collection("Users-Skills").add(userSkillData)
+                    .then(function (docRef) {
+                        // console.log("Document written with ID: ", docRef.id);
+                        props.get_sub(skillData)
+                    })
+                    .catch(function (error) {
+                        //console.error("Error adding document: ", error);
+                    });
+                // console.log(userSkillData)
+                // console.log(skillData)
+            }
         } else {
             newChecked.splice(currentIndex, 1);
             const skillData = {
@@ -78,7 +80,7 @@ export default function CheckboxList(props) {
     useEffect(() => {
         getUserSkills(props.userId).then(skill => {
            // debugger;
-            console.log(props.removed_skill_id,"removed_skill_id")
+            //console.log(props.removed_skill_id,"removed_skill_id");
                 setChecked(skill);
             }
         );

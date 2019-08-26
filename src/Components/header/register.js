@@ -15,12 +15,9 @@ import {connect} from "react-redux";
     const [values, setValues] = useState({});
     const [errMessage, setErrMessage] = useState();
     const [showError, setShowError]=useState(false);
-     const[userId, setUserId]=useState();
-     const[linkName,setLinkName]=useState();
-     const uuidv1 = require('uuid/v1');
 
      useEffect(() => {
-     }, [linkName,userId,errMessage]);
+     }, [errMessage]);
     const  handleKeyPress=(e)=>{
          if (e.which == 13) {
              registerBtnClick();
@@ -45,17 +42,12 @@ import {connect} from "react-redux";
                  setErrMessage('Invalid email or password');
                 setShowError(true);
              }else{
-            let name_first_letter = values.firstName[0].toUpperCase();
-            let surname_first_letter = values.lastName[0].toUpperCase();
-            let name_peace = values.firstName.slice(1);
-            let surname_peace = values.lastName.slice(1);
-            let firstName = name_first_letter + name_peace;
-            let lastName= surname_first_letter + surname_peace;
-            console.log(name_first_letter,surname_first_letter,name_peace,surname_peace);
+            let firstName = values.firstName[0].toUpperCase() +  values.firstName.slice(1);
+            let lastName= values.lastName[0].toUpperCase() + values.lastName.slice(1);
+            //console.log(firstName,lastName);
            values.firstName = firstName;
            values.lastName=lastName;
-           values.uuid=uuidv1();
-            console.log(values,'vvvvvvaaaaaaaaalllllll');
+            //console.log(values,'vvvvvvaaaaaaaaalllllll');
             //debugger;
 
                  fire.auth().createUserWithEmailAndPassword(values.email, values.password).then((cred) => {
@@ -148,7 +140,7 @@ import {connect} from "react-redux";
                 onChange={handleChange}
             />
             {showError ? <p style={{color:'red', fontSize:'12px', marginBottom:'8px',textAlign:'left', marginLeft:'13px'}}> {errMessage}</p>: null}
-             <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick}>
+             <Button variant="contained" color="primary" className={classes.butStyle}  onClick={registerBtnClick} >
                 Register
              </Button>
         </form>

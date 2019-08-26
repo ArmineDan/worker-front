@@ -30,19 +30,40 @@ export default function SkillList(props) {
     const [openIds, setOpen] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [otherSkillName, setOtherSkill] = useState();
-    const [skills, setSkills] = useState();
     const addOtherSkill = (e)=>{
         //console.log(e.target.value);
         setInputValue(e.target.value);
         setOtherSkill(e.target.value);
     };
     const doneHandleClick = ()=>{
-        const otherData = {
-            'skill-id' :'8.Others',
-            'skill-name':otherSkillName,
-            'user-id': props.userId
+        getUserSkills(props.userId).then(skill => {
+            // debugger;
+            //console.log(props.removed_skill_id,"removed_skill_id");
+            if(skill.length <10) {
+                const otherData = {
+                    'skill-id': '8.Others',
+                    'skill-name': otherSkillName,
+                    'user-id': props.userId
 
-        };
+                };
+                const userSkillData = {
+                    'skill-id': '8.Others',
+                    'user-id': props.userId
+                };
+                //console.log(otherData);
+                //console.log(userSkillData);
+                db.collection("Users-Skills").add(otherData)
+                    .then(function (docRef) {
+                        props.get_sub(otherData)
+                        //console.log("Document written with ID: ", docRef.id);
+                    })
+                    .catch(function (error) {
+                        // console.error("Error adding document: ", error);
+                    });
+            }
+        });
+
+       };
         const userSkillData ={
             'skill-id':'8.Others',
             'user-id':props.userId
@@ -94,6 +115,7 @@ export default function SkillList(props) {
     return (
         <div className='skillDiv' style={{display:loading?'block':'none'}}>
             <h5 style={{color: 'white'}}>Choose your skills</h5>
+            <h5 style={{color: 'bisque', fontSize:'16px'}}>You can choose only 10 skills</h5>
             { catData.map(value => {
                     return (
                         <List key  = {value.id}
@@ -107,7 +129,7 @@ export default function SkillList(props) {
                             </ListItem>
                             <Collapse in={openIds.indexOf(value.id) !== -1} timeout="auto" unmountOnExit>
                                 <List  component="div" disablePadding>
-                                     <CheckboxList  removed_skill_id={props.removed_skill_id} skills = {skills} catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
+                                     <CheckboxList  removed_skill_id={props.removed_skill_id}  catId={value.id} userId ={props.userId} get_sub={props.get_sub} delete_skill_Toggle={props.delete_skill_Toggle} />
                                 </List>
                             </Collapse>
                         </List>
@@ -118,7 +140,7 @@ export default function SkillList(props) {
             <p>Input Other skills: </p>
             <div>
             <input type='text' onChange={addOtherSkill} value ={inputValue}/>
-            <Done onClick={doneHandleClick} style={{fill:"orange",backgroundColor:'#6c757d', marginTop:'0.6px', position:"absolute",height:'1.1em'}}/>
+            <Done onClick={doneHandleClick} style={{fill:"white",backgroundColor:'#ff9800', marginTop:'0.6px', position:"absolute",height:'1.1em'}}/>
             </div>
            </div>
             );

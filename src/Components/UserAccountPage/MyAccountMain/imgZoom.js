@@ -19,7 +19,6 @@ class ImgZoomIn extends React.Component{
             <div className= 'preview__header'>
                 <img className='logoStyle'  src={image} alt="Varpet Logo"/>
                 <button className = 'closeButton' onClick={this.props.close}>x</button>
-               {/*<HighlightOff   className= 'imgDelete' onClick={this.props.close}/>*/}
             </div>
             <div className='zoomInDiv'>
             </div>

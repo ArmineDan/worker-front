@@ -63,6 +63,27 @@ export default function SkillList(props) {
             }
         });
 
+       };
+        const userSkillData ={
+            'skill-id':'8.Others',
+            'user-id':props.userId
+        };
+        //console.log(otherData);
+        //console.log(userSkillData);
+        db.collection("Users-Skills").add(otherData)
+            .then(function(docRef) {
+                const otherData = {
+                    id :'8.Others',
+                    name:otherSkillName,
+
+                };
+
+             props.get_sub(otherData)
+                //console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+               // console.error("Error adding document: ", error);
+            });
          setInputValue('');
     };
     const handleClick = catId =>()=> {

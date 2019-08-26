@@ -52,12 +52,6 @@ export default function MySkills(props) {
                 <ul className="select2-selection__rendered">
                     {skills.length?
                         skills.map((item,index)=>{
-                            if(item['skill-id'] ==='8.Others'){
-                                return (
-                                    <li key={index} data-id={index} className="select2-selection__choice" title={item['skill-name']} data-select2-id="36">
-                                        <span id={item['skill-id']} className="select2-selection__choice__remove" role="presentation" onClick={delete_skill}>×</span>{item['skill-name']}</li>
-                                )
-                            }
                             return(
                                 <li key={index} data-id={index} className="select2-selection__choice" title={item.name} data-select2-id="36">
                                     <span id={item.id} className="select2-selection__choice__remove" role="presentation" onClick={delete_skill}>×</span>{item.name}</li>

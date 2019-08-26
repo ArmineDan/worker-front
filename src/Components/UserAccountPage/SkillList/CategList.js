@@ -24,22 +24,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SkillList(props) {
-    const[catData,setData] = useState([]);
-    const[loading,setLoading]= useState(false);
+    const [catData, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
     const classes = useStyles();
     const [openIds, setOpen] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [otherSkillName, setOtherSkill] = useState();
-    const addOtherSkill = (e)=>{
+    const addOtherSkill = (e) => {
         //console.log(e.target.value);
         setInputValue(e.target.value);
         setOtherSkill(e.target.value);
     };
-    const doneHandleClick = ()=>{
+    const doneHandleClick = () => {
         getUserSkills(props.userId).then(skill => {
             // debugger;
             //console.log(props.removed_skill_id,"removed_skill_id");
-            if(skill.length <10) {
+            if (skill.length < 10) {
                 const otherData = {
                     'skill-id': '8.Others',
                     'skill-name': otherSkillName,
@@ -54,6 +54,11 @@ export default function SkillList(props) {
                 //console.log(userSkillData);
                 db.collection("Users-Skills").add(otherData)
                     .then(function (docRef) {
+                        const otherData = {
+                            id: '8.Others',
+                            name: otherSkillName,
+
+                        };
                         props.get_sub(otherData)
                         //console.log("Document written with ID: ", docRef.id);
                     })
@@ -62,30 +67,9 @@ export default function SkillList(props) {
                     });
             }
         });
+          setInputValue('');
+};
 
-       };
-        const userSkillData ={
-            'skill-id':'8.Others',
-            'user-id':props.userId
-        };
-        //console.log(otherData);
-        //console.log(userSkillData);
-        db.collection("Users-Skills").add(otherData)
-            .then(function(docRef) {
-                const otherData = {
-                    id :'8.Others',
-                    name:otherSkillName,
-
-                };
-
-             props.get_sub(otherData)
-                //console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function(error) {
-               // console.error("Error adding document: ", error);
-            });
-         setInputValue('');
-    };
     const handleClick = catId =>()=> {
          // console.log(catId);
        const currentIndex = openIds.indexOf(catId);

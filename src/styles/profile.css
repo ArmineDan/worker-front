@@ -117,6 +117,7 @@ font-size: 14px;
 margin-top: 40px;
 position: relative;
 border-radius: 20px;
+box-shadow: 0 0 10px #25262A;
 }
 
 .absolute {
@@ -128,9 +129,8 @@ border-radius: 20px;
 }
 
 .flexSkill {
-    flex-basis: 38%;
-    padding: 10px 40px 10px 20px;
     background-color: #fff;
+    padding: 15px 25px;
 }
 
 .flexLightbox {
@@ -162,14 +162,19 @@ border-radius: 20px;
     text-align: start;
     line-height: 30px;
 }
+.mfp-close:hover {
+    color: #fff;
+}
 
 .listSkill li {
     background-color: #fff;
     margin-bottom: 20px;
-    padding-left: 20px;
-    border-radius: 20px;
+    padding: 0 15px;
+    border-radius: 10px;
     list-style-type: none;
     box-shadow: 0 0 10px #FFC000;
+    font-size: 13px;
+    color: #25262A;
 }
 
 .headingSkill {

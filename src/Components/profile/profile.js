@@ -135,7 +135,7 @@ class Profile extends React.Component {
                             <div className='box'/>
                             <div className='flexSkill'>
                                 <div className='skills'>
-                                    <h3 className='headingSkill'>skills</h3>
+                                    <h6 className='headingSkill'>skills</h6>
                                     <ul className='listSkill'>
                                        {userSkills.length?userSkills.map((item, index)=>{
                                         return(
@@ -146,7 +146,7 @@ class Profile extends React.Component {
                                 </div>
                             </div>
                             <div className='flexLightbox'>
-                                <h3 className='headingLbox'>works done</h3>
+                                <h6 className='headingLbox'>works done</h6>
                                 <Lightbox photos = {photosUrl}/>
                             </div>
                         </div>

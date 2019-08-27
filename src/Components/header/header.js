@@ -29,11 +29,12 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
 
-        marginRight: theme.spacing(5),
+        marginRight: 0,
         marginLeft: 0,
+        marginTop: 15,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(5),
+            marginLeft: 0,
             width: 'auto',
         },
     },
@@ -137,15 +138,21 @@ function PrimarySearchAppBar(props) {
 
     return (
 
-            <div className={classes.grow}>
 
                 <AppBar position="static">
                     <Toolbar className={classes.padding}>
+                      <div className="container-fluid clearfix">
+                        <div className="row">
+
+                        <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+
                         <div className={classes.imgDiv}>
                             <Link to="/" >
                             <img style={{width: "100%", display: "block"}} src={image} alt="Varpet Logo" onClick={set_info_show}/>
                             </Link>
                         </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon/>
@@ -159,10 +166,15 @@ function PrimarySearchAppBar(props) {
                                 inputProps={{'aria-label': 'search'}}
                             />
                         </div>
+                      </div>
+                      <div  className="col-lg-1 col-md-12 col-sm-12 col-xs-12">
+
                         <Button variant="outlined" className={classes.button} onClick={opemHotItWorks}>
                            How It Works
                         </Button>
+                      </div>
 
+                      <div  className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 
                         <div className={classes.grow}/>
                         {!props.is_login?
@@ -202,10 +214,12 @@ function PrimarySearchAppBar(props) {
 
                         </>
 }
-
+                          </div>
+                        </div>
+                      </div>
                     </Toolbar>
                 </AppBar>
-            </div>
+
 
     );
 }

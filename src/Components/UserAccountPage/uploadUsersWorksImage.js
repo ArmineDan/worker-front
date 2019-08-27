@@ -41,7 +41,6 @@ export default class UploadWorksImage extends React.Component {
         const {userId} = this.props;
         const {url} = this.state;
         if(e.target.files[0]) {
-            debugger;
             const file = e.target.files[0];
             const fileName = userId + e.target.id;
             const id = e.target.id;
@@ -63,7 +62,7 @@ export default class UploadWorksImage extends React.Component {
                 () => {
                     storage.ref('Images').child(fileName).getDownloadURL()
                         .then(url => {
-                             console.log(url,"urllllllllllll");
+                            // console.log(url,"urllllllllllll");
                             this.state.url[0].splice(id,1,url);
                             this.setState({showErr:false });
                             //console.log(this.state.url[0],'veeeeerj stateeee');
@@ -102,8 +101,7 @@ export default class UploadWorksImage extends React.Component {
                     }
                    </div>
                 {showErr ? <span style={{color:'red', fontSize:'14px', textAlign:'center'}}>*You can only upload files in .jpg /.svg/ .jpeg/ .png/ format  </span>:null }
-                {/*<div  style={{width:'130px', height:'300px', backgroundColor:'#ffc10754' }}><h6 style={{textAlign:'center',marginTop:'90%'}}> You can  upload up to 4 images</h6>  </div>*/}
-            </div>
+                </div>
                 {zoom? <ImgZoomIn imgUrl = {zoomImgUrl} close = {this.handleClose}/> :<span> </span>}
                 </>
         )

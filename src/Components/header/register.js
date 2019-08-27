@@ -17,6 +17,19 @@ import {connect} from "react-redux";
     const [showError, setShowError]=useState(false);
 
      useEffect(() => {
+         fire.auth().onAuthStateChanged((user) => {
+             console.log(user);
+             if (user) {
+                 props.history.push(
+                     {       pathname: '/my-account',
+                         state:{'userId':user.uid}
+                     }
+                 )
+
+             } else {
+                 console.log(user,"elsee")
+             }
+         });
      }, [errMessage]);
     const  handleKeyPress=(e)=>{
          if (e.which == 13) {

@@ -43,8 +43,23 @@ class Login extends React.Component{
                     errorMessage:''
                 }
             }
+            componentWillMount() {
+                fire.auth().onAuthStateChanged((user) => {
+                    console.log(user);
+                    if (user) {
+                       this.props.history.push(
+                            {       pathname: '/my-account',
+                                state:{'userId':user.uid}
+                            }
+                        )
 
-            handleChange = (e) =>{
+                    } else {
+                        console.log(user,"elsee")
+                    }
+                });
+            }
+
+    handleChange = (e) =>{
                 this.setState({[e.target.name]: e.target.value});
             };
             handleKeyPress=(e)=>{

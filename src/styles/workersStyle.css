@@ -30,6 +30,7 @@
 .MuiTypography-gutterBottom {
     margin-bottom: 0.35em;
     word-wrap: break-word!important;
+    width: fit-content;
     overflow-wrap: break-word!important;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;

@@ -5,18 +5,22 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {browserHistory} from "react-router";
 import login from "./Components/header/login";
 import register from "./Components/header/register";
 import MyAccountMain from "./Components/UserAccountPage/MyAccountMain/Main";
 import Profile from "./Components/profile/profile";
+
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { Redirect } from 'react-router-dom';
 //import { composeWithDevTools } from 'redux-devtools-extension';
 //import { routerMiddleware} from 'react-router-redux';
 import {user_status,showInfo} from './reducers/reducers';
+import SubCategories from "./Components/subCat";
+import ShowUsers from "./Components/showUsers";
+
 
 
 
@@ -40,17 +44,21 @@ const store = createStore(
 const route=(
     <Provider store={store}>
 <MuiThemeProvider theme={theme}>
-
-  <Router  history={browserHistory}>
-
+    <Router  history={browserHistory}>
+    <Switch>
     <Route exact path="/" component ={App}/>
     <Route exact path="/login" component={login} marginRight='200px'/>
     <Route exact path="/register" component={register}/>
-      <Route path="/my-account" component={MyAccountMain}/>
-      <Route  exact path='/profile/:handle' component={Profile}/>
-      {/*<Route render={() => <Redirect to="/" />} />*/}
+    <Route exact path="/my-account" component={MyAccountMain}/>
+    <Route  exact path='/profile/:handle' component={Profile}/>
+        <Route exact  path='/:cat_name' component={SubCategories}/>
 
-  </Router>
+        <Route  exact path='/:cat_name/:sub_name' component={ShowUsers}/>
+
+        <Route render={() => <Redirect to="/" />} />
+    </Switch>
+        {/*<Route render={() => <Redirect to="/" />} />*/}
+      </Router>
 </MuiThemeProvider>
     </Provider>
 )

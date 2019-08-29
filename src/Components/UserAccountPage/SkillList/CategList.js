@@ -46,12 +46,6 @@ export default function SkillList(props) {
                     'user-id': props.userId
 
                 };
-                const userSkillData = {
-                    'skill-id': '8.Others',
-                    'user-id': props.userId
-                };
-                //console.log(otherData);
-                //console.log(userSkillData);
                 db.collection("Users-Skills").add(otherData)
                     .then(function (docRef) {
                         const otherData = {

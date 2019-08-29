@@ -184,8 +184,7 @@ export default function UserInfo(props) {
         });
     };
     const save=()=>{
-        let mob = mobile?mobile.substring(1):'no';
-        mob=mob.replace(/\s/g,'');
+
 
         if( Object.keys(obj).length && !(err_a || err_m || err_ad || err_ln || err_fn)){
            // console.log(obj,"objjjjjjjjjjjjjj")

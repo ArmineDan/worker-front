@@ -1,30 +1,11 @@
-import React,{useState,useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 
-const useStyles = makeStyles({
-    col:{
-        //width:'10px',
-        float:'left'
-    },
-
-    bigAvatar: {
-        width: '100px',
-        height: '100px',
-        margin: '10px',
-        border: '5px solid #ffa500'
-    },
-    btBorder: {
-        borderBottom: 'thin solid #ffa500'
-    },
-
-
-});
 
 export default function HeaderSkillList() {
-    const classes = useStyles();
+
     return (
 
             <CardContent>

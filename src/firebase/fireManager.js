@@ -119,7 +119,7 @@ export function getUserOthersSkillsName(u_id) {
             //debugger;
             snapshot.docs.forEach(doc => {
                 if (doc.data()['skill-id'] ==='8.Others'){
-                            console.log(doc.data(),"doc.data()doc.data()doc.data()doc.data()doc.data()")
+                           // console.log(doc.data(),"doc.data()doc.data()doc.data()doc.data()doc.data()")
                 data.push(doc.data()['skill-name'])
                 }
             });
@@ -227,4 +227,17 @@ export function subscribeUser(email) {
         }).catch(e=> reject(e))
 
     })
+}
+
+export function getCategityIdByName(cat_name) {
+    return new Promise((resolve, reject) => {
+        const emailDef = db.collection('Categories').where("name", "==", cat_name);
+        emailDef.get().then((data)=>{
+            data.docs.forEach(doc=>{
+
+                resolve(doc.id)
+        })
+
+    }).catch(e=> reject(e))
+})
 }

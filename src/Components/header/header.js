@@ -125,16 +125,16 @@ function PrimarySearchAppBar(props) {
     const set_info_show=()=>{
         if(show_info)props.set_show_info(false)
     };
- const opemHotItWorks=()=>{
-     if(props.data === 'App'){
-         props.set_show_info(true)
-         props.close_users_section()
-     }
-     else if(props.data === 'account'){
-         props.goHome(true)
-
-     }
-    };
+ // const opemHotItWorks=()=>{
+ //     if(props.data === 'App'){
+ //         props.set_show_info(true)
+ //         props.close_users_section()
+ //     }
+ //     else if(props.data === 'account'){
+ //         props.goHome(true)
+ //
+ //     }
+ //    };
 
     return (
 
@@ -168,10 +168,11 @@ function PrimarySearchAppBar(props) {
                         </div>
                       </div>
                       <div  className="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-
-                        <Button variant="outlined" className={classes.button} onClick={opemHotItWorks}>
+                          <Link to="/guide" >
+                        <Button variant="outlined" className={classes.button}>
                            How It Works
                         </Button>
+                          </Link>
                       </div>
 
                       <div  className="col-lg-3 col-md-12 col-sm-12 col-xs-12">

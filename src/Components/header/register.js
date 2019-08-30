@@ -96,7 +96,7 @@ import {connect} from "react-redux";
 
     return (
       <div>
-        <Header/>
+        {/*<Header/>*/}
         <form className='loginDiv' noValidate autoComplete="on">
             <h4 style={myStyles.h4}>
                 <AccountCircle className={classes.iconColor}/>  Register page

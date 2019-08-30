@@ -120,7 +120,7 @@ class Login extends React.Component{
              return(
                <div>
 
-                   <Header/>
+                   {/*<Header/>*/}
                        < div className = "loginDiv" >
                        < img src ={workerImage} alt ="worker.png" style={myStyles.worker}/>
                    {/*<AccountCircle style = {myStyles.icon}/>*/}

@@ -186,7 +186,7 @@ refresh_user_data=()=>{
         return (
             <div>
                 {!show_loading?<Loader/>:<>
-                <Header user_status={user.id}  data="account"  goHome={this.goHome}/>
+                {/*<Header user_status={user.id}  data="account"  goHome={this.goHome}/>*/}
             <section id="my-accont" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
                     <div className="container clearfix">
@@ -214,7 +214,8 @@ refresh_user_data=()=>{
                         keyboard_arrow_up
                     </i>
                 </div>
-                <Footer/></>
+                {/*<Footer/>*/}
+                </>
                 }
             </div>
         );

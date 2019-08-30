@@ -20,6 +20,9 @@ import { Redirect } from 'react-router-dom';
 import {user_status,showInfo} from './reducers/reducers';
 import SubCategories from "./Components/subCat";
 import ShowUsers from "./Components/showUsers";
+import PrimarySearchAppBar from "./Components/header/header";
+import Footer from "./Components/Footer/Footer";
+import Steps from "./Components/Steps/steps";
 
 
 
@@ -44,20 +47,21 @@ const store = createStore(
 const route=(
     <Provider store={store}>
 <MuiThemeProvider theme={theme}>
+
     <Router  history={browserHistory}>
+        <PrimarySearchAppBar  data="App"/>
     <Switch>
     <Route exact path="/" component ={App}/>
     <Route exact path="/login" component={login} marginRight='200px'/>
     <Route exact path="/register" component={register}/>
+        <Route exact path="/guide" component={Steps}/>
     <Route exact path="/my-account" component={MyAccountMain}/>
     <Route  exact path='/profile/:handle' component={Profile}/>
-        <Route exact  path='/:cat_name' component={SubCategories}/>
-
-        <Route  exact path='/:cat_name/:sub_name' component={ShowUsers}/>
-
-        <Route render={() => <Redirect to="/" />} />
+    <Route exact  path='/:cat_name' component={SubCategories}/>
+    <Route  exact path='/:cat_name/:sub_name' component={SubCategories}/>
+    <Route render={() => <Redirect to="/" />} />
     </Switch>
-        {/*<Route render={() => <Redirect to="/" />} />*/}
+        <Footer/>
       </Router>
 </MuiThemeProvider>
     </Provider>

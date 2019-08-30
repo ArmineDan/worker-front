@@ -51,6 +51,8 @@ export default function Steps() {
 
 
     return (
+        <div className="App">
+            <header className="App-header">
         <div id="footer" className={ classes.footerBackground}>
             <div className="container clearfix">
                 <div className="row">
@@ -112,7 +114,8 @@ export default function Steps() {
             </div>
         </div>
 
-
+            </header>
+        </div>
 
     );
 

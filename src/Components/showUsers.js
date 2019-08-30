@@ -12,7 +12,7 @@ class showUsers extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            sub_name:this.props.match.params.sub_name,
+            sub_name:this.props.sub_name,
             sub:[],
             open_users_list: false,
             users: [],
@@ -20,7 +20,25 @@ class showUsers extends React.Component{
         };
 
     }
-
+    componentWillReceiveProps(props){
+        const {sub_name}=this.props;
+        //console.log(sub_name,"cat_id")
+        if(sub_name==='Others'){
+            getUsers_IdBySkills('8.Others').then((data)=>{
+                // console.log(data,"others_data")
+                this.makeData(data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+        else{
+            getUsers_IdBySkills(sub_name).then((data)=>{
+                this.makeData(data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+    }
     componentDidMount() {
         const {sub_name}=this.state;
         //console.log(sub_name,"cat_id")
@@ -41,6 +59,7 @@ class showUsers extends React.Component{
         }
 
     }
+
     makeData=(e)=>{
         // console.log(e,"skizb")
 
@@ -86,7 +105,9 @@ class showUsers extends React.Component{
 
 
     render(){
-        const {open_users_list, users}=this.state;
+
+        const {open_users_list, users,sub_name}=this.state;
+        console.log(sub_name,"data-App")
         const draw_users = users.length ? users.map((item, index) => {
             return (
                 <MediaCard key={index} users_list={item} />
@@ -97,7 +118,7 @@ class showUsers extends React.Component{
         return(
             <div className="App">
                 <header className="App-header">
-                    <PrimarySearchAppBar/>
+                    {/*<PrimarySearchAppBar/>*/}
                     {/*< SubCategories />*/}
                             <section id="masters" style={{marginBottom: '0px'}}>
                                 {open_users_list ?
@@ -123,7 +144,7 @@ class showUsers extends React.Component{
                         keyboard_arrow_up
                     </i>
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
     }

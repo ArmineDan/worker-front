@@ -12,8 +12,9 @@ class SubCategories extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            cat_name:this.props.match?this.props.match.params.cat_name:'Bathroom',
-            sub:[]
+            cat_name:this.props.match.params.cat_name,
+            sub:[],
+            sub_name:this.props.match.params.sub_name
         };
 
     }
@@ -28,10 +29,16 @@ class SubCategories extends React.Component{
 
 
     }
+    test=(e)=>{
+        console.log(e.target.getAttribute('data-id'),"teseeeeeeeeeeeeeeeeee")
+        this.setState({
+            sub_name:e.target.getAttribute('data-id')
+        })
+    }
 
     getSub=(cat_id)=>{
     getsubCategories(cat_id).then(data =>{
-          // console.log(data,"data-getsubCategories")
+      console.log(data,"data-getsubCategories")
         this.setState({
             sub:data
         })
@@ -40,26 +47,26 @@ class SubCategories extends React.Component{
 }
 
     render(){
-        const {cat_name,sub}=this.state;
-       // console.log(cat_name,"cat_idcat_idcat_id");
+        const {cat_name,sub, sub_name}=this.state;
+    console.log(sub_name,"cat_idcat_idcat_id");
         const show_cat= sub.length?sub.map((item, index)=>{
             return(
-                <Link key={index} to={{ pathname:`/${cat_name}/${item.id}`}} style={{width: '100%'}} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <Link key={index} to={{ pathname:`/${cat_name}/${item.id}`}} style={{width: '100%'}} className="col-lg-3 col-md-6 col-sm-6 col-xs-12" data-id={item.id} onClick={this.test}>
                 <div>
-                    <div data-id={item.id}  className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder cat">
-                        <div className="fbox-icon">
-                            <i className={item.icon_class}/>
+                    <div data-id={item.id}  className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder cat"  onClick={this.test}>
+                        <div className="fbox-icon"  data-id={item.id} onClick={this.test}>
+                            <i className={item.icon_class}  data-id={item.id} onClick={this.test}/>
                         </div>
-                        <span className="pointer"><h3>{item.name}</h3></span>
+                        <span className="pointer"  data-id={item.id} onClick={this.test} ><h3  data-id={item.id} onClick={this.test}>{item.name}</h3></span>
                     </div>
                 </div>
                 </Link>
             )
         }):'';
         return(
-            <div className="App">
+
+        <div className="App">
                 <header className="App-header">
-                    {this.props.match?<PrimarySearchAppBar/>:null}
             <section id="content" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
                     <div className="container clearfix">
@@ -78,17 +85,21 @@ class SubCategories extends React.Component{
                                 </div>
                             </div>
                         </div>
-                    </div>
+                     </div>
                 </div>
             </section>
+                    {
+                        sub_name ? <ShowUsers  sub_name={sub_name}/>:null
+                    }
 
 
                 </header>
-                <Router>
-                    <Route  exact path='/:cat_name/:sub_name' component={ShowUsers}/>
-                </Router>
-                {this.props.match? <Footer/>:null}
+
+                    {/*<Route   path='/:cat_name/:sub_name' component={ShowUsers}/>*/}
+
+
             </div>
+
         )
     }
 

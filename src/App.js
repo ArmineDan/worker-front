@@ -52,14 +52,14 @@ class App extends React.Component {
         window.scroll(0, 0);
         this.anim(0, "gotoTop")
     };
-    close_users_section = () => {
-        if (this.state.open_users_list) {
-            this.setState({
-                open_users_list: false
-
-            });
-        }
-    };
+    // close_users_section = () => {
+    //     if (this.state.open_users_list) {
+    //         this.setState({
+    //             open_users_list: false
+    //
+    //         });
+    //     }
+    // };
 
     componentDidUpdate() {
         window.addEventListener("scroll", () => {
@@ -95,8 +95,8 @@ class App extends React.Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <PrimarySearchAppBar user_status={user_status} data="App"
-                                         close_users_section={this.close_users_section}/>
+                    {/*<PrimarySearchAppBar user_status={user_status} data="App"*/}
+                                         {/*close_users_section={this.close_users_section}/>*/}
                     {this.props.show_info ? <Steps/> :
                         <Categories showUsers_Lists={this.showUsers}/>}
 
@@ -106,7 +106,6 @@ class App extends React.Component {
                         keyboard_arrow_up
                     </i>
                 </div>
-                <Footer/>
             </div>
         );
     }

@@ -48,7 +48,7 @@ export default class UploadWorksImage extends React.Component {
             let idxDot = file.name.lastIndexOf('.') + 1;
             let ext = file.name.substr(idxDot, file.name.length);
             let size = (file.size/ 1024)/ 1024;
-            console.log(ext,'ext');
+            //console.log(ext,'ext');
             if (  size.toFixed(1) < 1 && (ext === 'jpg' || ext === 'jpeg' || ext === 'png' || ext === 'svg' ) ) {
             const uploadTask = storage.ref(`Images/${fileName}`).put(file);
             uploadTask.on('state_changed',

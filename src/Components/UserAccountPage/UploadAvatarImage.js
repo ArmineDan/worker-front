@@ -36,8 +36,9 @@ export default class UploadAvatarImage extends React.Component {
             const file = e.target.files[0];
             let idxDot = file.name.lastIndexOf('.') + 1;
             let ext = file.name.substr(idxDot, e.target.files[0].name.length);
-            console.log(ext);
-            if (ext == 'jpg' || ext == 'jpeg' || ext == 'png' || ext == 'svg') {
+            //console.log(ext);
+            let size = (file.size/ 1024)/ 1024;
+            if ( size.toFixed(1) < 1 &&(ext ===  'jpg' || ext ===  'jpeg' || ext === 'png' || ext === 'svg')) {
             // console.log(file);
             const uploadTask = storage.ref(`Avatars/${this.props.userId}`).put(file);
             uploadTask.on('state_changed',

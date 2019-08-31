@@ -39,15 +39,17 @@ export default class UploadWorksImage extends React.Component {
 
     handleUpload = (e) =>{
         const {userId} = this.props;
-        const {url} = this.state;
         if(e.target.files[0]) {
+
             const file = e.target.files[0];
+            //console.log(file);
             const fileName = userId + e.target.id;
             const id = e.target.id;
             let idxDot = file.name.lastIndexOf('.') + 1;
             let ext = file.name.substr(idxDot, file.name.length);
-            //console.log(ext);
-            if (ext == 'jpg' || ext == 'jpeg' || ext == 'png' || ext == 'svg') {
+            let size = (file.size/ 1024)/ 1024;
+            console.log(ext,'ext');
+            if (  size.toFixed(1) < 1 && (ext === 'jpg' || ext === 'jpeg' || ext === 'png' || ext === 'svg' ) ) {
             const uploadTask = storage.ref(`Images/${fileName}`).put(file);
             uploadTask.on('state_changed',
                 //progress function

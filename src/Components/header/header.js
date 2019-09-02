@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import AccountImg from "./Account.svg"
 import Button from '@material-ui/core/Button';
 import {fire} from '../../firebase/fire';
+import "../../styles/App.css";
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,14 +31,10 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
 
-        marginRight: 0,
-        marginLeft: 0,
+
         marginTop: 15,
         width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: 0,
-            width: 'auto',
-        },
+
     },
     searchIcon: {
         width: theme.spacing(7),
@@ -56,16 +53,16 @@ const useStyles = makeStyles(theme => ({
 
     inputInput: {
         padding: theme.spacing(1, 1, 1, 7),
-        transition: theme.transitions.create('width'),
-        width: '100%',
+
         margin:'2px auto',
         [theme.breakpoints.up('md')]: {
-          width:'38vw'
+          width:'250px'
         },
         [theme.breakpoints.up('lg')]: {
-            width:'600px',
+            width:'400px!important',
 
         },
+      
     },
 
     imgDiv: {
@@ -132,6 +129,7 @@ function PrimarySearchAppBar(props) {
         if(show_info)props.set_show_info(false)
     };
 
+
     return (
 
 
@@ -140,15 +138,17 @@ function PrimarySearchAppBar(props) {
                       <div className="container-fluid clearfix">
                         <div className="row">
 
-                        <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-
+                        <div className="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                        <div id="responsiveHeader">
                         <div className={classes.imgDiv}>
                             <Link to="/" >
-                            <img style={{width: "100%", display: "block"}} src={image} alt="Varpet Logo" onClick={set_info_show}/>
+                            <img style={{ width: "100%", display: "block"}} src={image} alt="Varpet Logo" onClick={set_info_show}/>
                             </Link>
                         </div>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div id="responsiveHeader">
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon/>
@@ -163,15 +163,22 @@ function PrimarySearchAppBar(props) {
                             />
                         </div>
                       </div>
+                                              </div>
                       <div  className="col-lg-1 col-md-12 col-sm-12 col-xs-12">
+
+                          <div id="responsiveHeader">
                           <Link to="/guide" >
                         <Button variant="outlined" className={classes.button}>
                            How It Works
                         </Button>
                           </Link>
+                        </div>
+
                       </div>
 
                       <div  className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div id="responsiveHeader">
+
 
                         <div className={classes.grow}/>
                         {!props.is_login?
@@ -197,21 +204,23 @@ function PrimarySearchAppBar(props) {
 
                       <div className={classes.linkStyle}>
                           <div className={classes.row}>
-                             <img style={{height: "23px"}} className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
-                             <Link className={classes.headerLink} to={{
+                             <img style={{height: "23px", marginLeft: "10px"}} className={classes.headerIcon} src={AccountImg} alt="My Account Icon"/>
+                             <Link style={{maxWidth: "fit-content"}}className={classes.headerLink} to={{
                              pathname: '/my-account',
                              state:{'userId':props.is_login.uid}
-                             }} title="My Account">My Account</Link>
-                          </div>
-                        </div>
-                        <span style={{color: '#d46402'}}>|</span>
+                           }} title="My Profile">Profile</Link>
+
+                           <span style={{color: '#d46402' , marginRight: "15px", marginLeft: "15px"}}>|</span>
 
                       <Logout/>
+                      </div>
+                    </div>
 
 
                         </>
 }
                           </div>
+                            </div>
                         </div>
                       </div>
                     </Toolbar>

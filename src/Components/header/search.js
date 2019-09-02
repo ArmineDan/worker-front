@@ -1,25 +1,23 @@
 import React from 'react'
 import {getActiveUsers} from '../../firebase/fireManager';
-import {db} from '../../firebase/fire';
+import { Route , withRouter} from 'react-router-dom';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import {fade, makeStyles} from '@material-ui/core/styles';
 import "../../styles/App.css";
 
 
 
 
 class Users extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             list: [],
-            search: ''
+            search: this.props.match.url.srch || ''
             }
         };
 
     componentDidMount(){
-
         getActiveUsers().then(data=>{
             this.setState({list: data})
         }) }
@@ -28,48 +26,34 @@ class Users extends React.Component{
     updateSearch(event){
         this.setState({search: event.target.value.substr(0,20)})
     }
-
+    clear(){
+        this.setState({search: ''})
+    }
+    handleKeyPress=(e)=>{
+    if (e.which === 13) {
+    // console.log(this.state.search,'keyyy')
+        this.props.history.push(`/search/${this.state.search}`)
+    }
+};
     render(){
-     let filteredName=this.state.list.filter(
-         (item)=>{
-             return item.firstName.indexOf(this.state.search)!==-1 || item.lastName.indexOf(this.state.search)!==-1 || item.email.indexOf(this.state.search)!==-1
-         }
-     )
-        let list_user='';
-        if(this.state.list ){
-            list_user =filteredName.map((item,index)=>{
-                return(
-
-                    <tr key={index} id='customers'>
-                        <td>{++index}</td>
-                        <td> First Name : {item.firstName}</td>
-                        <td> Last Name : {item.lastName}</td>
-                        <td> Email: {item.email}</td>
-                        <td>Mobile: {item.mobile}</td>
-                    </tr>
-
-                )
-            })
-
-        }
-
-
+        // console.log(this.state.search,"this.state.searchthis.state.search")
         return(
             <div>
                 <SearchIcon/>
                 <InputBase
-                  
                     id='in'
                     type='text'
                     value={this.state.search}
                     onChange={this.updateSearch.bind(this)}
+                    onKeyPress ={this.handleKeyPress}
+                    onBlur={this.clear.bind(this)}
                     placeholder='Search...'/>
 
-                    {list_user}
 
             </div>
         )
     }
 
 }
-export default Users;
+export default withRouter(Users);
+//export default Users;

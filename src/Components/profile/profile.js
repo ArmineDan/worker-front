@@ -147,7 +147,7 @@ class Profile extends React.Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='flexLightbox'>
+                            <div className='flexLightboxx'>
                                 <h6 className='headingLbox'>works done</h6>
                                 <Lightbox photos = {photosUrl}/>
                             </div>

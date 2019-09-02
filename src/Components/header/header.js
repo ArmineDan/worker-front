@@ -150,10 +150,7 @@ function PrimarySearchAppBar(props) {
                         </div>
                         <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div id="responsiveHeader">
-                  
                         <Users/>
-
-
                         </div>
                       </div>
 

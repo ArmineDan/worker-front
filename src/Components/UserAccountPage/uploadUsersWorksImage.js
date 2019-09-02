@@ -29,7 +29,7 @@ export default class UploadWorksImage extends React.Component {
 
     handleZoomIn=(e)=>{
         this.setState({zoom:true,
-                             zoomImgUrl : e.target.id
+                             zoomImgIndex : e.target.id
                             })
 
     };
@@ -80,7 +80,7 @@ export default class UploadWorksImage extends React.Component {
 
 
     render(){
-        const { url,zoom,zoomImgUrl,showErr} = this.state;
+        const { url,zoom,zoomImgIndex,showErr} = this.state;
          return(
             <>
             <h2 className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom" style={{marginBlockStart:'28px'}}>My Portfolio</h2>
@@ -97,14 +97,14 @@ export default class UploadWorksImage extends React.Component {
                         className= 'inputStyle'
                         />
                         </div>
-                        <div className= 'loadDiv2'><ZoomIn   id = {index} className= 'zoomInIconStyle'/> <div className= 'loadDiv2' style={{opacity:0, width:'100%'}} id={data} onClick={this.handleZoomIn}> </div>
+                        <div className= 'loadDiv2'><ZoomIn   id = {index} className= 'zoomInIconStyle'/> <div className= 'loadDiv2' style={{opacity:0, width:'100%'}} id={index} onClick={this.handleZoomIn}> </div>
                         </div></div>
                     )
                     }
                    </div>
                 {showErr ? <span style={{color:'red', fontSize:'14px', textAlign:'center'}}>*You can only upload files in .jpg /.svg/ .jpeg/ .png/ format  </span>:null }
                 </div>
-                {zoom? <ImgZoomIn imgUrl = {zoomImgUrl} close = {this.handleClose}/> :<span> </span>}
+                {zoom? <ImgZoomIn imgUrl = {url[0]} index = {zoomImgIndex} close = {this.handleClose}/> :<span> </span>}
                 </>
         )
     }

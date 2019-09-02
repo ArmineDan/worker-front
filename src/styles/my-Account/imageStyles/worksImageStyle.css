@@ -115,13 +115,38 @@
 .imgZoom{
     width: auto;
     max-width: 100%;
-    max-height: 90vh;
+    max-height: 80vh;
     height: auto;
     display: block;
     line-height: 0;
     box-sizing: border-box;
-    padding: 40px 0;
+    padding: 40px 0 0;
     margin: 0 auto;
+}
+.arrowIcons {
+    width:50px !important;
+    height:50px !important;
+    color: darkgrey;
+    margin: 0 10px
+}
+.leftArrow{
+    position: fixed;
+    margin-left: 0;
+}
+.rightArrow{
+    position: fixed;
+    right: 0;
+}
+.arrowDiv{
+    margin: auto;
+
+    min-width: 120px;
+    position: fixed;
+    top: 10vh;
+    right: 5px;
+}
+.arrowIcons:hover{
+    cursor:pointer;
 }
 .imgDelete{
     color: white;

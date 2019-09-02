@@ -12,6 +12,7 @@ import Logout from "./logout";
 import {connect} from 'react-redux';
 import AccountImg from "./Account.svg"
 import Button from '@material-ui/core/Button';
+import Users from "./search";
 import {fire} from '../../firebase/fire';
 import "../../styles/App.css";
 
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
             width:'400px!important',
 
         },
-      
+
     },
 
     imgDiv: {
@@ -149,21 +150,13 @@ function PrimarySearchAppBar(props) {
                         </div>
                         <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div id="responsiveHeader">
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon/>
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                inputProps={{'aria-label': 'search'}}
-                            />
+                  
+                        <Users/>
+
+
                         </div>
                       </div>
-                                              </div>
+
                       <div  className="col-lg-1 col-md-12 col-sm-12 col-xs-12">
 
                           <div id="responsiveHeader">

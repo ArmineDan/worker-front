@@ -1,8 +1,6 @@
 import React from 'react';
 import './styles/App.css';
 import Categories from './Components/Categories';
-import PrimarySearchAppBar from './Components/header/header';
-import Footer from './Components/Footer/Footer';
 import Steps from './Components/Steps/steps';
 import {fire} from './firebase/fire';
 import {connect} from 'react-redux';

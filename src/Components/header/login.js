@@ -4,11 +4,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { orange } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
-//import AccountCircle from '@material-ui/icons/AccountCircle';
 import "../../styles/login-register.css";
 import {fire} from '../../firebase/fire';
 import {myStyles} from './iconbuttonstyle';
-import Header from "./header";
 import workerImage from './worker.png'
 import {connect} from 'react-redux';
 

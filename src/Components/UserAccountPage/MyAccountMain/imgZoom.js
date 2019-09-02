@@ -1,8 +1,8 @@
 import React from 'react';
 import "../../.././styles/my-Account/imageStyles/worksImageStyle.css";
 import '../../.././styles/AvatarStyle.css';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import image from "../../header/logo-var.png";
 
 
@@ -94,6 +94,7 @@ class ImgZoomIn extends React.Component{
                     {leftArrow ?< KeyboardArrowLeft className='arrowIcons leftArrow' onClick={this.handleClickLeft} />:null}
                     {rightArrow ?< KeyboardArrowRight className='arrowIcons rightArrow' onClick={this.handleClickRight}/>:null}
                 </div>
+
             </div>
             </div>
         )

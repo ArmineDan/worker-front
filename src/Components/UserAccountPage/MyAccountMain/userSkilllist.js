@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -24,6 +23,10 @@ const useStyles = makeStyles({
         color :'#ffa500',
 
     },
+    m_top: {
+        margin :'20px 0 8px'
+
+    },
 
 
 });
@@ -42,11 +45,11 @@ export default function MySkills(props) {
     };
     return (
         <>
-        <CardContent className={classes.btBorder} >
-            <Typography gutterBottom variant="h5" component="h2">
+
+            <Typography gutterBottom variant="h5" component="h2" className={classes.m_top}>
                 My Skills
              </Typography>
-         </CardContent>
+
         <div className="row clearfix edit-sk">
             <span>
                 <ul className="select2-selection__rendered">

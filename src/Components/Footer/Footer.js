@@ -1,6 +1,5 @@
 import React,{useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-//import image from './favicon.ico';
 import image from '../header/logo-footer.png';
 import {subscribeUser} from  '../../firebase/fireManager';
 
@@ -52,11 +51,11 @@ export default function Footer() {
     }, [email]);
    const getInput=(e)=>{
 
-       setErr_m('')
+       setErr_m('');
        setEmail(e.target.value)
-    }
+    };
     function validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
     const subscribe=()=>{

@@ -28,12 +28,16 @@ const useStyles = makeStyles({
     },
     width:{
         width:'69%'
+    },
+    flex:{
+         display:'flex'
     }
 
 
 });
 
 export default function UserInfo(props) {
+    let take_dbo=props.data.age.split('/')
     const classes = useStyles();
     const [editOn,setEdit]= useState(false);
     const [firstName,setFirstName]= useState();
@@ -41,6 +45,9 @@ export default function UserInfo(props) {
     const [address,setAddress]= useState();
     const [mobile,setMobile]= useState();
     const [age,setAge]= useState();
+    const [year,setYear]= useState(take_dbo[2]?+take_dbo[2]:1900);
+    const [day,setDay]= useState(take_dbo[1]?+take_dbo[1]:1);
+    const [month,setMonth]= useState(take_dbo[0]&&take_dbo[0]!== '_'?+take_dbo[0]:1);
     const [err_a,setErr_a]= useState('');
     const [save_check,setSave_check]= useState('');
     const [err_m,setErr_m]= useState('');
@@ -48,10 +55,23 @@ export default function UserInfo(props) {
     const [err_ln,setErr_ln]= useState('');
     const [err_fn,setErr_fn]= useState('');
     const [obj,setObj]= useState({});
+    let curr_year= new Date().getFullYear();
+    let days=[];
+    let years=[];
+    let months=[1,2,3,4,5,6,7,8,9,10,11,12];
 
+    for(let i=1; i<32; i++){
 
+        days[i]=i;
+    }
+    for(let i=1900; i<curr_year; i++){
+
+        years[i]=i;
+    }
     useEffect(()=>{
+
     },[editOn,firstName,lastName,address,mobile,age,obj,err_a,err_m,err_ad,err_ln,err_fn,save_check,props])
+
 
 
     const edit=(e)=>{
@@ -70,18 +90,18 @@ export default function UserInfo(props) {
 
     const valid=(e,type)=>{
         let elem=e.currentTarget;
-        let value=e.target.value;
+        let value;
+        if (type === 'age'){
+            value=e;
+        }
+       else{
+            value=e.target.value;
+        }
 
         switch(type){
             case 'age':
-                if(value<18 || value>=100 || isNaN(value)){
-                    setErr_a('The age  should be  18 - 100');
-                    elem.classList.add('not-valid')
-                                    }
-                else{
-                    elem.classList.remove('not-valid');
-                    setErr_a('')
-                }
+                //debugger
+                return !(value < 18 || value >= 75);
                 break;
             case 'mobile':
              let data= value.substring(1);
@@ -142,7 +162,7 @@ export default function UserInfo(props) {
                 }
                 break;
 
-            default:
+            default: return false
         }
     };
     const getName=(e)=>{
@@ -176,18 +196,50 @@ export default function UserInfo(props) {
             mobile: e.target.value
         });
     };
-    const getAge=(e)=>{
-        setAge(e.target.value);
+
+    const getYear=(e)=>{
+        setYear(e);
+
         setObj({
             ...obj,
-            age: e.target.value
+            age: month+'/'+day+'/'+e
         });
     };
+    const getDay=(e)=>{
+        setDay(e);
+
+        setObj({
+            ...obj,
+            age: month+'/'+e+'/'+year
+        });
+    };
+    const getMonth=(e)=>{
+        setMonth(e);
+        setObj({
+            ...obj,
+            age: e+'/'+day+'/'+year
+        });
+
+    };
+
+
+    const get_Age=(DOB)=> {
+        let today = new Date();
+        let birthDate = new Date(DOB);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age = age - 1;
+        }
+        return age;
+    }
     const save=()=>{
 
+        const age=month+'/'+day+'/'+year;
+        let count_age =get_Age(age);
 
-        if( Object.keys(obj).length && !(err_a || err_m || err_ad || err_ln || err_fn)){
-           // console.log(obj,"objjjjjjjjjjjjjj")
+        if(valid(count_age,'age') && Object.keys(obj).length && !(err_m || err_ad || err_ln || err_fn) ){
+          //console.log(obj,"objjjjjjjjjjjjjj")
             editUserInfo(props.data.id,obj).then(()=>{
                 //cancel();
                 props.refresh();
@@ -201,15 +253,17 @@ export default function UserInfo(props) {
                 console.log(e,"edit-error")
             })
         }
+        else if(!valid(count_age,'age')){
+            setSave_check("The age  should be  18 - 75")
+        }
   else{
             if(Object.keys(obj).length){
                 setSave_check("The data is missing or wrong!")
             }
 
-           // console.log("obj is emptyyyy save")
-        }
+                }
 
-      // console.log(props.data.id,"save")
+
     };
     const cancel=()=>{
         const el=document.getElementById('no');
@@ -248,7 +302,7 @@ export default function UserInfo(props) {
 
                         <Typography variant="body1" color="textSecondary" component="p" >
                             <span className={classes.color}>full name:</span>
-                            {!editOn?`${props.data.firstName } `:
+                            {!editOn?`${props.data.firstName  } `:
                                 <input className="edit" size={firstName.length} title={err_fn?err_fn:''} value={firstName} onChange={getName} onBlur={(e)=>valid(e,'firstName')} />
                             }
                             {!editOn?` ${props.data.lastName}`:
@@ -273,9 +327,54 @@ export default function UserInfo(props) {
 
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
-                            <span className={classes.color}>age:</span>
-                            {!editOn?props.data.age:
-                                <input className="edit" value={age} title={err_a?err_a:''} onChange={getAge} onBlur={(e)=>valid(e,'age')} />
+
+                            {!editOn? <><span className={classes.color}>age:</span> {get_Age(props.data.age) && get_Age(props.data.age)>0?get_Age(props.data.age)  :"_"} </>:<>
+                            <span className={classes.color}>Date of birth: </span>
+                            <Typography variant="body1" color="textSecondary" component="span" className={classes.flex} >
+                                <select className="selectpicker" id="month" onChange={(e)=>{getMonth(e.target.value)}}  onBlur={(e)=>{console.log(e.target.value,"blurrr")}}>
+                                    {
+                                        <option  defaultValue={month}>{month}</option>
+                                    }
+                                    {
+                                        months.map((item,index)=> {
+                                            return  (
+                                                <option key={index} value={item}>{item}</option>
+                                            )
+                                        })
+                                    }
+
+                                </select>
+                                <select className="selectpicker" id="day" onChange={(e)=>{getDay(e.target.value)}}>
+                                    {
+                                        <option defaultValue={day}>{day}</option>
+                                    }
+                                    {
+                                        days.map((item,index)=> {
+                                            return  (
+                                                <option key={index} value={item}>{item}</option>
+                                            )
+                                        })
+                                    }
+
+                                </select>
+
+                                <select className="selectpicker" id="year" onChange={(e)=>{getYear(e.target.value)}}>
+                                    {
+                                        <option defaultValue={year}>{year}</option>
+                                    }
+                                    {
+                                        years.map((item,index)=> {
+                                            return  (
+                                                <option key={index} value={item}>{item}</option>
+                                            )
+                                        })
+                                    }
+
+                                </select>
+                            </Typography>
+
+                            </>
+                                // <input className="edit" value={age} title={err_a?err_a:''} onChange={getAge} onBlur={(e)=>valid(e,'age')} />
                             }
 
 

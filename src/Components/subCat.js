@@ -1,10 +1,9 @@
 import React from 'react';
-import PrimarySearchAppBar from './header/header';
 import {getCategityIdByName,getsubCategories} from "../firebase/fireManager";
-import Footer from './Footer/Footer';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ShowUsers from "./showUsers";
 import {connect} from 'react-redux';
+import Loader from '../loader';
+
 
 
 
@@ -30,7 +29,23 @@ class SubCategories extends React.Component{
 
     }
     test=(e)=>{
-        console.log(e.target.getAttribute('data-id'),"teseeeeeeeeeeeeeeeeee")
+        e.stopPropagation();
+        const {cat_name}=this.state;
+        const elem = e.target.parentNode;
+        const sub = document.getElementsByClassName('sub');
+
+
+
+        if(!elem.classList.contains("check")){
+            for(let i=0; i<sub.length; i++){
+                if(sub[i].classList.contains("check")){
+                    sub[i].classList.remove('check')
+                }
+            }
+            elem.classList.add('check')
+        }
+    //    console.log(e.target.getAttribute('data-id'),"teseeeeeeeeeeeeeeeeee")
+        this.props.history.push(`/${cat_name}/${e.target.getAttribute('data-id')}`)
         this.setState({
             sub_name:e.target.getAttribute('data-id')
         })
@@ -38,7 +53,7 @@ class SubCategories extends React.Component{
 
     getSub=(cat_id)=>{
     getsubCategories(cat_id).then(data =>{
-      console.log(data,"data-getsubCategories")
+   //   console.log(data,"data-getsubCategories")
         this.setState({
             sub:data
         })
@@ -47,12 +62,12 @@ class SubCategories extends React.Component{
 }
 
     render(){
-        const {cat_name,sub, sub_name}=this.state;
-    console.log(sub_name,"cat_idcat_idcat_id");
+        const {sub, sub_name,cat_name}=this.state;
+   // console.log(sub_name,"cat_idcat_idcat_id");
         const show_cat= sub.length?sub.map((item, index)=>{
             return(
-                <Link key={index} to={{ pathname:`/${cat_name}/${item.id}`}} style={{width: '100%'}} className="col-lg-3 col-md-6 col-sm-6 col-xs-12" data-id={item.id} onClick={this.test}>
-                <div>
+
+                <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12 sub " data-id={item.id} onClick={this.test}>
                     <div data-id={item.id}  className="pointer feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder cat"  onClick={this.test}>
                         <div className="fbox-icon"  data-id={item.id} onClick={this.test}>
                             <i className={item.icon_class}  data-id={item.id} onClick={this.test}/>
@@ -60,12 +75,13 @@ class SubCategories extends React.Component{
                         <span className="pointer"  data-id={item.id} onClick={this.test} ><h3  data-id={item.id} onClick={this.test}>{item.name}</h3></span>
                     </div>
                 </div>
-                </Link>
+
             )
-        }):'';
+        }):<Loader  bg = {'rgba(64, 64, 64, 0.8)'}/>;
         return(
 
         <div className="App">
+
                 <header className="App-header">
             <section id="content" style={{marginBottom: '0px'}}>
                 <div className="content-wrap">
@@ -73,11 +89,9 @@ class SubCategories extends React.Component{
                         <div className="row clearfix center divcenter" >
                             <div className="col-lg-12">
                                 <div className="heading-block title-center-own center">
-                                    <h3>Categories</h3>
+                                    <h3>{cat_name}</h3>
                                     <span>Browse Masters By Categories</span>
-
                                 </div>
-
                                 <div id="faqs-list">
                                     <div  className="row align-items-stretch grid-border clearfix">
                                         {show_cat}
@@ -89,13 +103,9 @@ class SubCategories extends React.Component{
                 </div>
             </section>
                     {
-                        sub_name ? <ShowUsers  sub_name={sub_name}/>:null
+                        sub_name?<ShowUsers sub_name={sub_name}/>:null
                     }
-
-
                 </header>
-
-                    {/*<Route   path='/:cat_name/:sub_name' component={ShowUsers}/>*/}
 
 
             </div>

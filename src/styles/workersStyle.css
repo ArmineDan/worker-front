@@ -24,9 +24,13 @@
 .MuiCardContent-root {
     padding: 16px;
     margin-block-start: 0px;
-    cursor: auto
+    cursor: auto;
+    min-height: 120.72px;
 }
-
+.MuiCardContent-root h3 {
+    width: auto;
+    word-wrap: break-word !important;
+}
 .MuiTypography-gutterBottom {
     margin-bottom: 0.35em;
     word-wrap: break-word!important;

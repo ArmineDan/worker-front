@@ -51,7 +51,7 @@ class Categories extends React.Component{
 
     render(){
 
-        const {items,breadcrumb}=this.state;
+        const {items}=this.state;
         const div_cat = items.map((item, index)=>{
             return(
                 <Link   key={index}   to={{ pathname:`/${item.name==='Others'?'Category/Others':item.name}`}} style={{width: '100%'}} className="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
@@ -66,11 +66,7 @@ class Categories extends React.Component{
             </Link>
             )
         });
-        const nav = breadcrumb.length===1?null: breadcrumb.map((item, index)=>{
-            return(
-                    <li key={index} className={`breadcrumb-item ${item ==='Home'?'active':null}`} onClick={item ==='Home'?this.GoHome:null}><a href="#" onClick={(e)=>{e.preventDefault();}}>{item}</a></li>
-            )
-       });
+
         return(
 
           <section id="content" style={{marginBottom: '0px'}}>

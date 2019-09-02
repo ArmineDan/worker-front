@@ -1,12 +1,10 @@
 import React from 'react';
 import  SkillList from '../SkillList/CategList';
-import  Header from '../../header/header';
 import  UserInfo from './userInfo';
 import  HeaderSkillList from './skillistHeader';
 import  MySkills from './userSkilllist';
 import  '../../../styles/my-Account/style.css';
 import {getUserSkills,getSkillsData,getUserData,removeSkillFromUserList,getUserOthersSkillsName} from  '../../../firebase/fireManager';
-import Footer from "../../Footer/Footer";
 import {fire} from '../../../firebase/fire';
 import Loader from '../../../loader';
 import {connect} from 'react-redux';
@@ -75,7 +73,7 @@ refresh_user_data=()=>{
                this.props.set_user_status(user);
 
            } else {
-               console.log(user,"elsee")
+             //  console.log(user,"elsee")
            }
        });
 
@@ -90,7 +88,7 @@ refresh_user_data=()=>{
                console.log(e,"getUserData")});
 
            getUserSkills(this.props.location.state.userId).then((data)=>{
-               console.log(data,"dataaaaaaaaaaaaagetUserData");
+              // console.log(data,"dataaaaaaaaaaaaagetUserData");
 
            if(data.includes('8.Others')){
                     const data_filter=data.filter((el)=>el!=='8.Others');
@@ -120,7 +118,7 @@ refresh_user_data=()=>{
         this.setState({
             skils_id:arr
         })
-        console.log(e,"fromtaa")
+      //  console.log(e,"fromtaa")
     };
     goTop=()=>{
         window.scroll(0,0);
@@ -152,10 +150,10 @@ refresh_user_data=()=>{
             for(let i=0; i<values.length; i++){
                 data.push(values[i][0][0]);
             }
-          console.log(data,"datadatadata");
+        //  console.log(data,"datadatadata");
             if(have_others_skill){
                 getUserOthersSkillsName(this.props.location.state.userId).then(()=>{
-                    console.log(data,"data-getUserOthersSkillsName")
+               //     console.log(data,"data-getUserOthersSkillsName")
                 })
                 data.push({name:'Others',id:'8.Others'});
             }

@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../.././styles/my-Account/imageStyles/worksImageStyle.css";
 import '../../.././styles/AvatarStyle.css';
-import HighlightOff from '@material-ui/icons/HighlightOff'
 import image from "../../header/logo-var.png";
 
 
@@ -23,7 +22,7 @@ class ImgZoomIn extends React.Component{
             <div className='zoomInDiv'>
             </div>
             <div className='zoomInDiv1'>
-                <img className='imgZoom' src = {this.props.imgUrl}/>
+                <img className='imgZoom'  alt="Varpet Logo zoom" src = {this.props.imgUrl}/>
             </div>
             </div>
         )

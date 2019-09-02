@@ -7,7 +7,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import {myStyles,useStyles} from './iconbuttonstyle';
 import {fire} from '../../firebase/fire';
 import {setNewUser} from '../../firebase/fireManager';
-import Header from "./header";
 import {connect} from "react-redux";
 
  function Register(props) {
@@ -30,9 +29,9 @@ import {connect} from "react-redux";
                  console.log(user,"elsee")
              }
          });
-     }, [errMessage]);
+     }, [errMessage, props.history]);
     const  handleKeyPress=(e)=>{
-         if (e.which == 13) {
+         if (e.which === 13) {
              registerBtnClick();
              //console.log(e,'keyyy')
          }
@@ -96,7 +95,7 @@ import {connect} from "react-redux";
 
     return (
       <div>
-        {/*<Header/>*/}
+
         <form className='loginDiv' noValidate autoComplete="on">
             <h4 style={myStyles.h4}>
                 <AccountCircle className={classes.iconColor}/>  Register page

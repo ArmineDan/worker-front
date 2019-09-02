@@ -1,12 +1,11 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-//import image from './favicon.ico';
 import * as img1 from './images/st1.png';
 import * as img2 from './images/st2.png';
 import * as img3 from './images/st3.png';
 import * as img4 from './images/st4.png';
 import * as img5 from './images/st5.png';
-
+import {connect} from 'react-redux';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,9 +45,11 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function Steps() {
+function Steps() {
     const classes = useStyles();
+    useEffect(() => {
 
+    }, []);
 
     return (
         <div className="App">
@@ -120,3 +121,15 @@ export default function Steps() {
     );
 
 }
+const store = store => ({
+
+});
+
+const dispatch = dispatch => ({
+    set_user_status:list => dispatch({type:'SET_USER_STATUS', payload:list}),
+});
+
+export default connect(
+    store,
+    dispatch
+)(Steps)

@@ -519,3 +519,7 @@ input.edit {
     right: 0;
 
 }
+.selectpicker{
+    margin:0 12px;
+    outline:none
+}

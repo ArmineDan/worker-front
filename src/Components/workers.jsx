@@ -32,9 +32,19 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
     const [users, setUsers] = useState();
   //console.log(users,"users-workers")
+    const get_Age=(DOB)=> {
+        let today = new Date();
+        let birthDate = new Date(DOB);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age = age - 1;
+        }
+        return age;
+    }
     useEffect(()=>{
         setUsers(props.users_list)
-    },[users,props]);
+    },[users,props.users_list]);
   const classes = useStyles();
 
   return (
@@ -49,7 +59,7 @@ export default function MediaCard(props) {
         />
         <ImageAvatars img={users.avatar}/>
         <CardContent >
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h3">
         {users['firstName']}&nbsp;{users['lastName']}
             </Typography>
           
@@ -57,7 +67,7 @@ export default function MediaCard(props) {
               {users['address']}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Age: {users['age']}
+            Age: {get_Age(users['age']) && get_Age(users['age'])>0?get_Age(users['age']):'_'}
           </Typography>
         </CardContent>
       </CardActionArea>

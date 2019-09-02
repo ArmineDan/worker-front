@@ -6,6 +6,8 @@ import {getUserSkills,getUserData, getSkillsData} from "../../firebase/fireManag
 import Loader from '../../loader';
 
 
+
+
 class Profile extends React.Component {
     constructor(props) {
         super(props);
@@ -17,12 +19,13 @@ class Profile extends React.Component {
             user_id_route:this.props.match.params.handle,
             show_loading:false
         };
-        console.log(this.props.match.params.handle,"this.props.match.params.handle")
+
     };
 
       componentDidMount() {
           const photos = [];
          let current_user=null;
+
 
           getUserData(this.state.user_id_route).then((d)=>{
               current_user=d;
@@ -38,7 +41,6 @@ class Profile extends React.Component {
 
               getUserSkills(d.id).then(data => {
 
-                  console.log(data,"data-getUserSkills")
                   if(data.includes('8.Others')){
                       const data_filter=data.filter((el)=>el!=='8.Others');
                       this.makeData(data_filter,'8.Others')
@@ -160,4 +162,6 @@ class Profile extends React.Component {
 }
 
 
+
 export default Profile;
+

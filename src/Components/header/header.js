@@ -13,7 +13,9 @@ import {connect} from 'react-redux';
 import AccountImg from "./Account.svg"
 import Button from '@material-ui/core/Button';
 import Users from "./search";
+import {fire} from '../../firebase/fire';
 import "../../styles/App.css";
+
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -114,25 +116,19 @@ const useStyles = makeStyles(theme => ({
 
 function PrimarySearchAppBar(props) {
     const classes = useStyles();
-    const [show_info,setShow_info]= useState();
+    const [show_info,setShow_info]= useState(props.is_login);
     useEffect(() => {
-        setShow_info(props.show_info)
-            }, [props.user_status,props.show_info]);
+        fire.auth().onAuthStateChanged((user) => {
+            if (user) {
+               props.set_user_status(user)
+                         }
+        })
+        setShow_info(props.is_login)
+            },[props]);
 
     const set_info_show=()=>{
         if(show_info)props.set_show_info(false)
     };
-
- // const opemHotItWorks=()=>{
- //     if(props.data === 'App'){
- //         props.set_show_info(true)
- //         props.close_users_section()
- //     }
- //     else if(props.data === 'account'){
- //         props.goHome(true)
- //
- //     }
- //    };
 
 
     return (

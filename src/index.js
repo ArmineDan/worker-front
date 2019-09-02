@@ -18,6 +18,7 @@ import {user_status,showInfo} from './reducers/reducers';
 import SubCategories from "./Components/subCat";
 import OthersMasters from "./Components/OthersMasters";
 import PrimarySearchAppBar from "./Components/header/header";
+import Result from "./Components/header/result";
 import Footer from "./Components/Footer/Footer";
 import Steps from "./Components/Steps/steps";
 
@@ -58,6 +59,7 @@ const route=(
         <Route exact path="/guide" component={Steps}/>
         <Route exact path="/my-account" component={MyAccountMain}/>
         <Route  exact path='/profile/:handle' component={Profile}/>
+        <Route  exact path='/search/:srch' component={Result}/>
         <Route exact  path='/:cat_name' component={SubCategories}/>
         <Route exact  path='/Category/Others' component={OthersMasters}/>
         <Route  exact path='/:cat_name/:sub_name' component={SubCategories}/>

@@ -16,7 +16,21 @@
 button{
   outline: none!important;
 }
-
+input#in{
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 1.1875em;
+  margin: 17px 0;
+  display: block;
+  padding: 6px 0 7px 9px;
+  min-width: 0;
+  background: #d460214d;
+  box-sizing: content-box;
+  -webkit-tap-highlight-color: #00000005;
+  border-radius: 8px;
+}
 #gotoTop {
   opacity: 0;
   z-index: -1;

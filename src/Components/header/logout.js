@@ -11,7 +11,6 @@ import {connect} from 'react-redux';
 const useStyles = makeStyles(theme => ({
   linkStyle: {
       fontSize: "18px!important",
-      margin: "8px!important",
       color: "white!important",
       textShadow: "0px 3px 5px #0e090096",
   },

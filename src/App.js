@@ -3,6 +3,7 @@ import './styles/App.css';
 import Categories from './Components/Categories';
 import PrimarySearchAppBar from './Components/header/header';
 import Footer from './Components/Footer/Footer';
+import Users from './Components/header/search';
 import Steps from './Components/Steps/steps';
 import {fire} from './firebase/fire';
 import {connect} from 'react-redux';
@@ -78,7 +79,7 @@ class App extends React.Component {
 
 
     componentDidMount() {
-       
+
         fire.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.props.set_user_status(user)
@@ -95,12 +96,14 @@ class App extends React.Component {
         return (
             <div className="App">
                 <header className="App-header">
+              
                     {/*<PrimarySearchAppBar user_status={user_status} data="App"*/}
                                          {/*close_users_section={this.close_users_section}/>*/}
                     {this.props.show_info ? <Steps/> :
                         <Categories showUsers_Lists={this.showUsers}/>}
 
                 </header>
+
                 <div id="gotoTop" onClick={this.goTop}>
                     <i className="material-icons" style={{top: '6px', position: 'relative'}}>
                         keyboard_arrow_up
@@ -124,4 +127,3 @@ export default connect(
     store,
     dispatch
 )(App)
-

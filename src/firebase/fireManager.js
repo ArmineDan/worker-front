@@ -26,6 +26,22 @@ export function getActiveCategories() {
     })
 }
 
+export function getActiveUsers() {
+   return new Promise((resolve, reject)=>{
+       db.collection('users').where("status", "==", true).get().then((snapshot)=>{
+           const data = [];
+           const id=[];
+           snapshot.docs.forEach(doc=>{
+               const obj={...doc.data(),id:doc.id}
+               data.push(obj);
+               id.push(doc.id);
+           });
+          resolve(data)
+       }).catch(e=> reject(e));
+   })
+}
+
+
 export function getsubCategories(id) {
     return new Promise((resolve, reject)=>{
 

@@ -51,6 +51,8 @@ export default function Steps() {
 
 
     return (
+        <div className="App">
+            <header className="App-header">
         <div id="footer" className={ classes.footerBackground}>
             <div className="container clearfix">
                 <div className="row">
@@ -65,7 +67,7 @@ export default function Steps() {
                     <div className="row">
                     <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own1" >
                             <div className="title-center-own counter counter-large t300 form-style-5">
-                                <legend>Step <span class="number">1</span>  </legend>
+                                <legend>Step <span className="number">1</span>  </legend>
 
                             </div>
                             <img style={{height: "170px"}} src={img1} alt="Step1"/>
@@ -76,7 +78,7 @@ export default function Steps() {
                     </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own2">
                             <div className="title-center-own counter counter-large t300 form-style-5">
-                                <legend> Step <span class="number">2</span> </legend>
+                                <legend> Step <span className="number">2</span> </legend>
                             </div>
                             <img style={{height: "170px"}} src={img2} alt="Step2"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
@@ -86,7 +88,7 @@ export default function Steps() {
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12 own1" >
                             <div className="title-center-own counter counter-large t300 form-style-5">
-                                <legend>Step <span class="number">3</span>  </legend>
+                                <legend>Step <span className="number">3</span>  </legend>
                             </div>
                             <img style={{height: "170px"}} src={img3} alt="Step3"/>
                             <p className="text-muted mb-0 pb-5 border-bottom">
@@ -112,7 +114,8 @@ export default function Steps() {
             </div>
         </div>
 
-
+            </header>
+        </div>
 
     );
 

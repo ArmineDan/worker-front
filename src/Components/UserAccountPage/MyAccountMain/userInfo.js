@@ -69,7 +69,7 @@ export default function UserInfo(props) {
     };
 
     const valid=(e,type)=>{
-        let elem=e.currentTarget
+        let elem=e.currentTarget;
         let value=e.target.value;
 
         switch(type){
@@ -79,7 +79,7 @@ export default function UserInfo(props) {
                     elem.classList.add('not-valid')
                                     }
                 else{
-                    elem.classList.remove('not-valid')
+                    elem.classList.remove('not-valid');
                     setErr_a('')
                 }
                 break;
@@ -184,8 +184,7 @@ export default function UserInfo(props) {
         });
     };
     const save=()=>{
-        let mob = mobile?mobile.substring(1):'no';
-        mob=mob.replace(/\s/g,'');
+
 
         if( Object.keys(obj).length && !(err_a || err_m || err_ad || err_ln || err_fn)){
            // console.log(obj,"objjjjjjjjjjjjjj")
@@ -196,7 +195,7 @@ export default function UserInfo(props) {
                 const el=document.getElementById('no');
                 const el1=document.getElementById('yes');
                 el.classList.remove('on');
-                el1.classList.remove('on')
+                el1.classList.remove('on');
                 setSave_check("");
             }).catch((e)=>{
                 console.log(e,"edit-error")
@@ -229,7 +228,7 @@ export default function UserInfo(props) {
         setErr_ad('');
         setErr_ln('');
         setErr_fn('');
-    }
+    };
 
     return (
           <div className="row clearfix  brd" >

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {fire} from '../../firebase/fire';
-import SignInImage from "./SignInImage.svg"
 import {Link} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
 import LogoutImg from "./Logout.svg";

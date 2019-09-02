@@ -11,6 +11,7 @@ export default class UploadAvatarImage extends React.Component {
         this.state = {
             completed: 0,
             avatar: '',
+            errShow: false
         }
     }
     uploadClick=()=>{
@@ -30,8 +31,14 @@ export default class UploadAvatarImage extends React.Component {
     };
 
     handleUpload = (e) => {
+       //console.log (e.target.files[0].name);
         if(e.target.files[0]) {
             const file = e.target.files[0];
+            let idxDot = file.name.lastIndexOf('.') + 1;
+            let ext = file.name.substr(idxDot, e.target.files[0].name.length);
+            //console.log(ext);
+            let size = (file.size/ 1024)/ 1024;
+            if ( size.toFixed(1) < 1 &&(ext ===  'jpg' || ext ===  'jpeg' || ext === 'png' || ext === 'svg')) {
             // console.log(file);
             const uploadTask = storage.ref(`Avatars/${this.props.userId}`).put(file);
             uploadTask.on('state_changed',
@@ -51,17 +58,23 @@ export default class UploadAvatarImage extends React.Component {
                     storage.ref('Avatars').child(this.props.userId).getDownloadURL()
                         .then(url => {
                             // console.log(url);
-                            this.setState({avatar: url});
+                            this.setState({
+                                                avatar: url,
+                                                errShow:false});
                             return db.collection('users').doc(userId).update({'avatar': url});
+
 
                         });
                 })
+        } else {
+                this.setState({errShow:true});
+            }
         }
     };
 
 
     render(){
-        const { avatar,completed} = this.state;
+        const { avatar,completed,errShow} = this.state;
         const {editable} = this.props;
 
         return(
@@ -70,6 +83,7 @@ export default class UploadAvatarImage extends React.Component {
                 { avatar ? <img src={avatar } alt='' height='200' width='200' className='bigAvatar'/> : <img src={this.props.avatar } alt=''  className='bigAvatar' />}
                 <br/>
                 <LinearProgress color="primary" variant="determinate" value={completed}/>
+                {errShow ? <span style={{color:"red", fontSize:'12px'}}> You can only upload files in <br/> .jpg /.svg/ .jpeg/ .png/ format  </span>:null}
                 <br/>
                 <Button
                     variant="contained"
@@ -83,6 +97,7 @@ export default class UploadAvatarImage extends React.Component {
                         onChange={this.handleUpload}
                         type="file"
                         style={{ display: "none" }}
+                        accept='image/*'
                     />
                 </Button>
             </div>

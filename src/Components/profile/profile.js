@@ -1,7 +1,6 @@
 import React from 'react';
 import Lightbox from './lightbox';
 import "../../styles/profile.css";
-import varpet from './img/varpet.jpg'
 import Icon from '@material-ui/core/Icon';
 import {getUserSkills,getUserData, getSkillsData} from "../../firebase/fireManager";
 import Loader from '../../loader';
@@ -26,7 +25,7 @@ class Profile extends React.Component {
          let current_user=null;
 
           getUserData(this.state.user_id_route).then((d)=>{
-              current_user=d
+              current_user=d;
           //  console.log(d,"getUserData")
             d.url.map(src => {
                   let obj = {
@@ -38,25 +37,30 @@ class Profile extends React.Component {
               });
 
               getUserSkills(d.id).then(data => {
+
                   console.log(data,"data-getUserSkills")
-                  this.makeData(data)
+                  if(data.includes('8.Others')){
+                      const data_filter=data.filter((el)=>el!=='8.Others');
+                      this.makeData(data_filter,'8.Others')
+                  }
+                  else{
+                      this.makeData(data)
+                  }
                   // this.setState({
                   //     userSkills:data
                   // })
               });
-
               this.setState({
                   user: current_user,
                   photosUrl: photos
               });
-
           }).catch((e)=>{
-              this.props.history.push('/')
+              // this.props.history.push('/')
           })
       }
     close = () => {
         this.props.history.push('/')
-    }
+    };
 
 
 
@@ -131,7 +135,7 @@ class Profile extends React.Component {
                             <div className='box'/>
                             <div className='flexSkill'>
                                 <div className='skills'>
-                                    <h3 className='headingSkill'>skills</h3>
+                                    <h6 className='headingSkill'>skills</h6>
                                     <ul className='listSkill'>
                                        {userSkills.length?userSkills.map((item, index)=>{
                                         return(
@@ -142,7 +146,7 @@ class Profile extends React.Component {
                                 </div>
                             </div>
                             <div className='flexLightbox'>
-                                <h3 className='headingLbox'>works done</h3>
+                                <h6 className='headingLbox'>works done</h6>
                                 <Lightbox photos = {photosUrl}/>
                             </div>
                         </div>

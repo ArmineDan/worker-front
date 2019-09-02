@@ -88,7 +88,7 @@
     left: 0;
     z-index: 1000;
     text-align: center;
-    background-color: rgba(27, 27, 27, 0.4);
+    background-color: rgb(64, 64, 64);
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     -webkit-perspective: 1000;

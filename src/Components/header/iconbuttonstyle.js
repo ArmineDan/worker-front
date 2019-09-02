@@ -45,7 +45,8 @@ export  const myStyles ={
     },
     butStyle:{
         display: 'inline-block!important',
-        margin:'0',
+        margin:'0 5px !important',
+        padding: '8px 2px !important',
         color:'white'
     },
     pErrorStyle:{

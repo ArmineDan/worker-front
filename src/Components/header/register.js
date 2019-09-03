@@ -26,7 +26,7 @@ import {connect} from "react-redux";
                  )
 
              } else {
-                 console.log(user,"elsee")
+                 //console.log(user,"elsee")
              }
          });
      }, [errMessage, props.history]);
@@ -65,21 +65,15 @@ import {connect} from "react-redux";
                  fire.auth().createUserWithEmailAndPassword(values.email, values.password).then((cred) => {
                      setNewUser(cred.user.uid,values).then(data => {
                          if (data){
-                             fire.auth().signInWithEmailAndPassword(values.email, values.password)
-                                 .then((user)=>{
-
-                                     props.history.push(
+                                 props.history.push(
                                      {       pathname: '/my-account',
                                              state:{'userId':cred.user.uid}
                                      }
-                                     )
-                                     // console.log(this.state.linkName);
-                                 }).catch(error => {
-                                  });
-
-
-                     setShowError(false);
-                 }})}).catch(function (error) {
+                                     );
+                                 setShowError(false);
+                         }
+                     })
+                 }).catch(function (error) {
                      // Handle Errors here."
                      //const errorCode = error.code;
                      setErrMessage(error.message);

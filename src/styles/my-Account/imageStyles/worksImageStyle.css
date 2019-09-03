@@ -131,11 +131,13 @@
 }
 .leftArrow{
     position: fixed;
-    margin-left: 0;
+    left: 5px;
+    top: 50vh;
 }
 .rightArrow{
     position: fixed;
-    right: 0;
+    right: 5px;
+    top:50vh
 }
 .arrowDiv{
     margin: auto;
@@ -158,6 +160,7 @@
 
 
 .preview__header {
+    min-height: 50px;
     width: 100vw;
     font-size: 12px;
     height: 10vh;
